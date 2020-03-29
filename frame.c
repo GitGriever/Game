@@ -1,4 +1,4 @@
-void HUD(unsigned long intCounter, unsigned short timerSpecialAttack, unsigned short timetoSpecial)
+void HUD(void)
 {
 	unsigned char i;
 	for (i = 0; i < SCREENW; i++)		 // Draws a line at underneath to separate the HUD from the playing area
