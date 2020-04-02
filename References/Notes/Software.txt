@@ -1,0 +1,6 @@
+1. Go to http://users.ece.utexas.edu/~valvano/arm/download.html
+
+2. Download TExaS for Labs 5-15 (don't need 2).
+
+3. Execute the TExaS_Install.exe
+
