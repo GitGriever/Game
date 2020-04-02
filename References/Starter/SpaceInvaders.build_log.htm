@@ -1,0 +1,73 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.29.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Keisha Daco, SF State, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.29.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.29.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.36.5.0
+ 
+<h2>Project:</h2>
+C:\Users\Keisha\Documents\GitHub\game\References\Starter\SpaceInvaders.uvproj
+Project File Date:  03/28/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'SpaceInvaders'
+assembling random.s...
+assembling startup.s...
+compiling TExaS.c...
+compiling VirtualNokia5110.c...
+compiling SpaceInvaders.c...
+SpaceInvaders.c(157): error:  #29: expected an expression
+  const unsigned char SmallEnemyBonus0[] = {
+SpaceInvaders.c(164): warning:  #12-D: parsing restarts here after previous syntax error
+SpaceInvaders.c(164): error:  #67: expected a "}"
+SpaceInvaders.c(406): error:  #20: identifier "uint32_t" is undefined
+    SYSCTL_RCGCTIMER_R |= 0x04;   // 0) activate timer2
+SpaceInvaders.c(407): error:  #20: identifier "uint32_t" is undefined
+    delay = SYSCTL_RCGCTIMER_R;
+SpaceInvaders.c(410): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_CTL_R = 0x00000000;    // 1) disable timer2A during setup
+SpaceInvaders.c(411): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_CFG_R = 0x00000000;    // 2) configure for 32-bit mode
+SpaceInvaders.c(412): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_TAMR_R = 0x00000002;   // 3) configure for periodic mode, default down-count settings
+SpaceInvaders.c(413): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_TAILR_R = period-1;    // 4) reload value
+SpaceInvaders.c(414): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_TAPR_R = 0;            // 5) bus clock resolution
+SpaceInvaders.c(415): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_ICR_R = 0x00000001;    // 6) clear timer2A timeout flag
+SpaceInvaders.c(416): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_IMR_R = 0x00000001;    // 7) arm timeout interrupt
+SpaceInvaders.c(417): error:  #20: identifier "uint32_t" is undefined
+    NVIC_PRI5_R = (NVIC_PRI5_R&0x00FFFFFF)|0x80000000; // 8) priority 4
+SpaceInvaders.c(417): error:  #20: identifier "uint32_t" is undefined
+    NVIC_PRI5_R = (NVIC_PRI5_R&0x00FFFFFF)|0x80000000; // 8) priority 4
+SpaceInvaders.c(420): error:  #20: identifier "uint32_t" is undefined
+    NVIC_EN0_R = 1<<23;           // 9) enable IRQ 23 in NVIC
+SpaceInvaders.c(421): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_CTL_R = 0x00000001;    // 10) enable timer2A
+SpaceInvaders.c(424): error:  #20: identifier "uint32_t" is undefined
+    TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
+SpaceInvaders.c: 1 warning, 16 errors
+".\SpaceInvaders.axf" - 16 Error(s), 1 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

@@ -1,1 +1,11 @@
 - https://www.online-image-editor.com/ to create sprites if you don't have Paint
+
+- Read section 15.3 for more info at
+  http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C15_CompleteEmbeddedSystem.htm
+
+1. Open Paint.
+2. Reduce the size to 10x8, 12x8, or any size with an even number of pixels wide.
+3. Use the pencil.
+4. Make the background black and the pixels for the sprite white.
+5. Save as 16 color bitmap .bmp file and use the name of the sprite defined in Graphics.h
+6. Use BmpConvert.exe to convert file to a HEX file.
