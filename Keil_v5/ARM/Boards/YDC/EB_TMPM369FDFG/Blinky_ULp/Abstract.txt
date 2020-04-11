@@ -1,0 +1,43 @@
+The 'Blinky' project is a simple demo program for the Toshiba 'TMPM369FDFG' microcontroller
+using Yokogawa Digital Computer Corporation 'Evaluation Board for Toshiba TMPM369FDFG'.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+It demonstrates the use of ULINKpro Debugger.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL       =  16 MHz
+   - PLL        =  80 MHz
+   - CPU Clock  =  80 MHz
+
+ - 4 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - if any Button (S3..S6) is pressed all LEDs are lit.
+ - "Hello World" is output onto serial port UART1 (SC0)
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  SWO Trace:                 runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+
+  TracePort Trace:           runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+
+  TracePort IntructionTrace: runs from Internal Flash
+                             shows use of Instruction Trace
+					         use connector "Cortex Debug + ETM"
+
+
+ULINKpro notes
+--------------
+TMPM369_TPIU.ini enables TPIU Interfcace. 
+                 TPIU signals are available on the pins hosting them. 
+Trace pins:  TRACECLK        PA.6
+             TRACEDATA0..3   PB.0..PB.1, PA.6..PA.7    (4 bit trace data)
+             do not use these pins in your application!
+
+Instruction trace is very time and resource consuming
+therefore if you want to use instruction trace use
+nothing else (no LA, no exceptions, no ITM, no ...).

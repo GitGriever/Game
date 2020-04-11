@@ -1,0 +1,34 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files on the NAND Flash
+Memory.
+
+The NAND_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+STM32F207 Flash:
+    Standalone application for MCBSTM32F200 Board using serial
+    port (UART1/3/4) as a communication interface.
+
+    Connect a serial cable to RS232 COM port using
+    HyperTerminal at 115200 baud, 8-bits, no parity,
+    1 stop bit, XON/XOFF.
+
+Example properties:
+  - Clock settings:
+    - XTAL        =  25 MHz
+    - CPU Clock   = 120 MHz  
+  
+  - USART1: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+  - Micron MT29F4G08 4Gbit (512MB) NAND Configuration:
+
+    - Page size:            2048 + 64 bytes
+    - Pages per block:      64
+    - Number of blocks:     4096
+    - Software ECC:         Hamming (SLC)
+
+
+Jumper settings:
+    J13 and J14 must connect pins 2 and 3 to enable serial output on
+    UART1.
+

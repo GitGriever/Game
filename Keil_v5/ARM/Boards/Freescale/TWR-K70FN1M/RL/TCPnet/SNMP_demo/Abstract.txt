@@ -1,0 +1,41 @@
+This program is an SNMP Agent demo example. It shows how to 
+use a Simple Network Management Protocol to control the
+embedded system.
+
+Use this example to connect TWR-K70F120M Board to a LAN with DHCP
+server (most LANs have this). This example will configure the 
+LAN network parameters automatically using a DHCP protocol.
+
+You may connect TWR-K70F120M Board to PC directly over a crosslink
+network cable. In this case configure a PC to use a static 
+IP address 192.168.0.1
+
+If after a timeout of 5 seconds DHCP did not obtain an IP address,
+this example will use a static IP address 192.168.0.100
+
+To test this example, run windows application 'SNMPTest.exe' and
+type in the ip address of your Embedded SNMP Agent and click
+'Connect'. When connected, you can change the LCD text on
+the target, control the onboard LED diodes and monitor the
+state of onboard pushbuttons.
+
+The SNMP_demo example is available for several targets:
+
+MK70FN1M:
+    Standalone application for TWR-K70F120M Board.
+    Program code is loaded into on-chip flash.
+
+MK70FN1M Debug:
+    Standalone Debug application. Debug level configured
+    in Net_Debug.c debug configuration file.
+    Connect a serial cable to RS232 port to view output
+    messages using HyperTerminal at 115200 baud,
+    8-bits, no parity, 1 stop bit, XON/XOFF.
+
+
+Jumper settings:
+  TWR-K70FN1M board:
+    J18 must connect pins 2 and 3 (CLKIN0 is clock source)
+
+  TWR-SER board, Rev D:
+    J3 must connect pins 2 and 3 (Connect CLOCKIN0 to OSC)

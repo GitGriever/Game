@@ -1,0 +1,31 @@
+The 'RTX_Blinky' project is a simple RTX Kernel based example for
+NXP 'LPC1549' microcontroller using Keil 'MCB1500' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS V2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL   =  12 MHz
+   - SYSPLL =  72 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. Four LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+
+- phase A
+- phase B
+- phase C
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The Blinky program is available in different targets:
+
+  LPC1549 Flash: Debug/Target Driver is configured as CMSIS-DAP
+                 runs from Internal Flash located on chip
+                 (used for production or target debugging)
+
+  LPC1549 RAM:   Debug/Target Driver is configured as CMSIS-DAP
+                 runs from Internal RAM located on chip
+                 (used for target debugging)
+

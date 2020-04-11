@@ -1,0 +1,21 @@
+The PWM_1 project is a simple demo program for the ST 'STM32F103RB' 
+microcontroller using Keil 'MCBSTM32' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLK    = SYSCLK  = 72.00 MHz
+
+ - TIM4 is running at  1Hz.
+   Channel 3 has a duty cicle of 50% and lits LED PB8
+   Channel 4 has a duty cicle of 25% and lits LED PB9
+
+
+The PWM_1 program is available in different targets:
+
+  Simulator:          configured for software Simulator
+
+  STM32F103 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

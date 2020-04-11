@@ -1,0 +1,31 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL              =  12 MHz
+   - CCO0              = 240 MHz
+   - PLL0   = CCO0 / 2 = 120 MHz
+   - CCO1              = 192 MHz
+   - PLL1   = CCO1 / 4 =  48 MHz
+   - CCLK   = PLL0     = 120 MHz
+   - EMCCLK = PLL0 / 2 =  60 MHz
+   - PCLK   = PLL0 / 2 =  60 MHz
+   - USBCLK = PLL1     =  48 MHz
+
+ - Communication Interface Settings:
+   - UART2: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+EA LPC1788: Standalone application for Embedded Artists LPC1788 Board 
+            using COM port as a communication interface.
+
+IMPORTANT Note !!!:
+  for using USB1 port (on J20 conncetor) in Host mode it is necessary 
+  to solder R163 resistor of 0 Ohms
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

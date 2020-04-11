@@ -1,0 +1,36 @@
+This program shows you how to resolve an IP address of a Host
+from the Host name. It sends a DNS request to a remote DNS server. 
+
+This example will configure the LAN network parameters for 
+the evaluation board automatically if a DHCP Server is available
+in your LAN.
+
+If you do not have a DHCP server, you need to configure
+the IP address, net mask and default gateway and Primary DNS
+and Secondary DNS Server manually in the Net_Config.c configuration
+file. You have to disable also 'Dynamic Host Configuration' under 
+the 'Ethernet Network Interface' section.
+
+The DNS_demo example is configured for Keil MCB1800 Board and is
+available for several targets:
+
+LPC1857 Flash:
+    Program code is loaded into internal flash.
+    System messages printed to COM serial port.
+
+LPC1857 Flash Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+    
+    Debug level configured in Net_Debug.c debug configuration file.
+    Connect a serial cable to RS232 COM port to view
+    output messages using HyperTerminal at 115200 baud,
+    8-bits, no parity, 1 stop bit, XON/XOFF.
+
+LPC1850 Ext. Flash:
+    Program code is loaded into external NOR flash.
+    System messages printed to COM serial port.
+
+Jumper settings:
+  J13 and J16 must connect pins 2 and 3
+  to select and enable serial output on UART0/3 connector.

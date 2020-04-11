@@ -1,0 +1,5 @@
+The 'Smpl_NUTINY_120' project is a demo program for the Nuvoton 
+NUC122LD2AN controller using Nuvoton 'NuTiny-EVB_NUC122' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+This example is part of "NUC122 software package" available on Nuvoton Download page.

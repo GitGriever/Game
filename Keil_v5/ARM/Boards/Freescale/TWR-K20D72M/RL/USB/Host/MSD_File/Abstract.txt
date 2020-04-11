@@ -1,0 +1,44 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Board configuration consists of: TWR-ELEV (PRIMARY+SECONDARY) + TWR-SER + 
+                                 TWR-K20D72M
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock =  48 MHz
+   - Bus     clock =  48 MHz
+   - FlexBus clock =  24 MHz
+   - Flash   clock =  24 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - UART1 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+K20D72M:   Standalone application for the K20D72M Board.
+
+Note: 
+
+      Jumpers position on the TWR-K20D72M module:
+         - J6  = on          => Connect on board VBRD for MCU power supply
+         - J10 = off         => Disconnect on board VBRD for MCU power supply
+         - J15 = off         => Debugger mode
+         - J16 = 1-2 shorted => 5V Power from OSBDM USB powers LDO regulator
+                 6-8 shorted => VBUS signal from elevator connector connects to
+                                VREGIN to allow USB operation with complete tower kit
+         - J17 = 3-5 shorted => Board power from 3.3V regulator
+         - J18 = off         => Disconnect USB 3.3V regualtor output to MCU_PWR
+         - J20 = on          => Connect over-current signal on USB power IC MIC-2026 
+                                to PTC8
+         - J27 = on          => Enable POTENTIOMETER to ADC1_DM0
+
+      Jumpers position on the TWR-SER module:
+         - J10 = 1-2 shorted => Supply 5V on USB Connector (Host Mode)
+         - J16 = 1-2 shorted => Host Mode (supply 5V to VBUS)
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

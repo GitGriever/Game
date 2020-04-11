@@ -1,0 +1,27 @@
+The 'Blinky' project is a simple demo program for
+Atmel 'ATSAM3N4C' microcontroller using Atmel 'SAM3N-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLLA                  =  96 MHz
+   - Main Clock = PLLA / 2 =  48 MHz
+
+ - 3 LEDs blink with speed of 1 second, determined by SysTick Timer
+     working in interrupt mode
+ - if Button (USR_LEFT or USR_RIGHT) is pressed all LEDs are lit.
+ - "Hello World" is output onto serial port UART0
+   UART0 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  SAM3N RAM:             configured for on-chip RAM
+                         (used for debugging)
+
+  SAM3N Flash:           configured for on-chip Flash
+                         (used for production or target debugging)
+
+  SAM3N Flash + GPNVM:   configured for on-chip Flash bank
+                         configures GPNVM bits to boot from Flash Bank

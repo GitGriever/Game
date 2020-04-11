@@ -1,0 +1,17 @@
+The RTX_Blinky project is a simple program for the 'LM4F232'
+microcontroller using 'TI EK-LM4F232 Evaluation Board'.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL             = 16.00 MHz
+   - PLL not used
+   - SYS   = XTAL     = 16.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available for target:
+
+  LN4F232 Flash:     configured for on-chip Flash
+                     (used for production or target debugging)

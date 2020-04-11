@@ -1,0 +1,5 @@
+The 'Smpl_NuTiny-EVB_M051' project is a demo program for the Nuvoton 
+M0516LAN controller using Nuvoton 'NuTiny-EVB_M051' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+This example is part of "M051 series software package" available on Nuvoton Download page.

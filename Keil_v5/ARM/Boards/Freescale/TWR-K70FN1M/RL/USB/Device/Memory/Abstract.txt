@@ -1,0 +1,24 @@
+The Memory project is a demo program for the TWR-K70FN1M Tower
+module using a Freescale K70FN1M0VMJ12  Microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock = PLL0 clock = 120 MHz
+   - Bus     clock = PLL0 / 2   =  60 MHz
+   - FlexBus clock = PLL0 / 4   =  30 MHz
+   - Flash   clock = PLL0 / 6   =  20 MHz
+   - USBFS   clock = PLL1 clock =  48 MHz
+   
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+
+MK70:     configured for on-chip Flash ROM
+         (used for production or target debugging)
+         
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 2-3 shorted => Source 5V from USB (Bus-powered device)
+         - J16 = 3-4 shorted => Device Mode (source 5V from VBUS)         

@@ -1,0 +1,30 @@
+The Blinky project is a simple demo program for the Infineon 'XMC4500' 
+microcontroller using Infineon 'Relax Lite Kit', compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+ - 2 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+
+
+The Blinky program is available in different targets:
+
+  XMC4500 PSRAM:        runs from Internal PSRAM located on chip
+                        (used for target debugging)
+
+  XMC4500 Flash:        runs from Internal Flash (uncached) located on chip
+                        (used for production or target debugging)
+
+  XMC4500 cached Flash: runs from Internal Flash (cached) located on chip
+                        (used for production or target debugging)
+
+
+Note: Board 'Relax Lite Kit' exists in two versions
+       'prototype'  (LEDS connected to P2.14..15).
+       'productive' (LEDs connected to P1.0..1).
+      Define __PROTOTYPE selects the version 'prototype' (see 'options for target - C/C++ - Define).
+      This example is configured for version 'prototype'.

@@ -1,0 +1,8 @@
+This is a simple project template which shows how to setup emWin Graphic Library
+for the Keil MCB1800 Evaluation Board.
+
+Example is configured to run with RTX RTOS.
+
+Targets:
+  LPC1800 RAM:        runs from internal RAM	
+  LPC1800 Ext. Flash: runs from external Flash

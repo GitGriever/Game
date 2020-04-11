@@ -1,0 +1,31 @@
+This is an RL-USB-Host Human Interface Device (HID) usage example.
+
+Board configuration consists of: TWR-ELEV (PRIMARY+SECONDARY) + TWR-SER + 
+                                 TWR-K60N512
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock =  96 MHz
+   - Bus     clock =  48 MHz
+   - FlexBus clock =  48 MHz
+   - Flash   clock =  24 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - UART3 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+This example shows how to use USB Keyboard as terminal input to 
+the device and it uses UART as terminal output.
+
+The Measure example is described in detail in the Getting Started
+User's Guide.
+
+The HID_KBD program is a standalone application loaded into
+on-chip flash and available for one target:
+
+K60N512:   Standalone application for the K60N512 Board.
+
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 1-2 shorted => Supply 5V on USB Connector (Host Mode)
+         - J16 = 1-2 shorted => Host Mode (supply 5V to VBUS)
+

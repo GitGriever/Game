@@ -1,0 +1,27 @@
+The SD_Memory project is a demo program for the TWR-K60F120M Tower 
+module using a Freescale K60FN1M0VLQ12 Microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+   - USBFS   clock =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The SD_Memory program is available for the following target:
+MK60:     configured for on-chip Flash ROM
+         (used for production or target debugging)
+         
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 2-3 shorted => Source 5V from USB (Bus-powered device)
+         - J16 = 3-4 shorted => Device Mode (source 5V from VBUS)  

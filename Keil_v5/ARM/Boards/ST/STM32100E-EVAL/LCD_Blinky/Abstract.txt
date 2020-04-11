@@ -1,0 +1,25 @@
+The LCD_Blinky project is a simple program for the ST 'STM32F100ZE' 
+microcontroller using ST 'STM32100E-EVAL' evaluation board and 
+demonstrating interrupt functionality and display to graphic LCD.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.30).
+
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  8 MHz
+   - HCLK  = 24 MHz
+
+ - Displays rotating ARM 3D logo, each picture is displayed every 
+   150 ms
+ - 4 LEDs blink with speed of 50 ms, determined by SysTick Timer
+   working in interrupt mode
+
+
+ 
+The LCD_Blinky program is available for target:
+  STM32100E-EVAL Flash: runs from Internal Flash located on chip
+                        (used for production or target debugging)
+
+Note:
+  Do NOT rebuild if you are using uVision Evaluation Version!
+

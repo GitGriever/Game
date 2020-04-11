@@ -1,0 +1,13 @@
+The Memory project is a demo program for the ST STM3220G-EVAL 
+Board using a ST STM32F207 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  STM3220G HS RTX:  configured for on-chip Flash ROM, RTX version
+                   (used for production or target debugging)
+  STM3220G FS RTX:  configured for on-chip Flash ROM, RTX version
+                   (used for production or target debugging)

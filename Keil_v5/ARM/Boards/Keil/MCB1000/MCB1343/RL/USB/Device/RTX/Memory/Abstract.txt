@@ -1,0 +1,18 @@
+The Memory project is a demo program for the Keil MCB1000 Board 
+using a NXP LPC134x Microcontroller.
+
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL   =  12 MHz
+   - SYSPLL =  72 MHz
+   - USBPLL =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  MCB1000 RTX: configured for on-chip Flash ROM - RTX version
+              (used for production or target debugging)

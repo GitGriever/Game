@@ -1,0 +1,24 @@
+The 'Blinky' project is a simple demo program for the Toshiba 'TMPM369FDFG' microcontroller
+using Yokogawa Digital Computer Corporation 'Evaluation Board for Toshiba TMPM369FDFG'.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =  16 MHz
+   - PLL        =  80 MHz
+   - CPU Clock  =  80 MHz
+
+ - 4 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - if any Button (S3..S6) is pressed all LEDs are lit.
+ - "Hello World" is output onto serial port UART1 (SC0)
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  TMPM369 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)
+
+  TMPM369 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)

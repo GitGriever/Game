@@ -1,0 +1,31 @@
+The 'Program Once Mem Config' project is a used for programming the "Program Once Field"
+which is located in program flash IFR. ("Program Once Field" can be programmed only once.)
+
+  CMSIS-DAP:                    Target Driver is configured as CMSIS-DAP
+                               configures the program once field in the program flash IFR  
+                              (used for production)
+
+  ULINK:                        Target Driver is configured as ULINK
+                               configures the program once field in the program flash IFR  
+                              (used for production)
+
+Perform the following steps.
+  1. Configure the fields "Program Once Field". (MKxxFlashIFR.s)
+  2. Build the Target
+  3. Click the button "LOAD", to download to flash
+  
+  
+ULINK note: For using ULINK Debug/Target driver, Samtec FTSH-105-02-F-D or compatible connectors can be added
+      to the J6 through-hole debug connector to allow for an external debug cable to be connected.
+
+
+Selecting "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to FRDM-K20D50 user manual.
+
+ 

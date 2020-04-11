@@ -1,0 +1,36 @@
+This program is a LEDSwitch Server example. It shows you how to control
+embedded device from C++ application using TCP/IP connection. This can be
+either an ethernet, SLIP or PPP link. This example opens an UDP and TCP 
+port for listening and waits for commands coming from PC Client or
+another eval-board client application. The commands are used to control
+LED diodes to switch them on and off.
+
+In order to run this example, you need to set the network parameters to
+match your local area network.
+
+To test this example, run windows application LEDSwitch and type in
+the ip address of your Embedded LEDSwitch Server into "Board IP"
+edit box. Type also the number of transfer port into "Transfer port"
+edit box. Select one of transfer protocol (TCP or UDP). When the P2
+value in windows application is changed, this value is send to 
+eval-board and the LED on board should set as you specified in windows
+application.
+
+The same example can be tested also with another eval-board Client 
+connected to the same LAN. 
+
+The LEDSwitch example is available for several targets:
+
+XMC4500:
+    Standalone application for the Hexagon Application Kit.
+    Program code is loaded into internal flash.
+
+XMC4500 Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+
+    Debug level is configured in Net_Debug.c debug configuration file.
+    ITM debug port is used as a communication interface.
+    You can debug the application with ULINK2 from uVision Debug Session:
+    Start Debug session (Ctrl + F5) and open Debug (printf)
+    Viewer (View->Serial Windows->Debug (printf) Viewer).

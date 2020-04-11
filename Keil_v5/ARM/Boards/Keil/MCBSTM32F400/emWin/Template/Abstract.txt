@@ -1,0 +1,6 @@
+This is a simple project template which shows how to setup emWin Graphic Library
+for the Keil MCBSTM32F400 Evaluation Board.
+
+Targets:
+  MCBSTM32F400:        MCBSTM32F400 Board	
+  MCBSTM32F400 LCD_LG: MCBSTM32F400 Board with newer LCD (Ampire 240320LG)

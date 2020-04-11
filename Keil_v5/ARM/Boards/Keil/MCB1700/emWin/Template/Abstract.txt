@@ -1,0 +1,6 @@
+This is a simple project template which shows how to setup emWin Graphic Library
+for the Keil MCB1700 Evaluation Board.
+
+Targets:
+  MCB1700:        MCB1700 Board	
+  MCB1700 LCD_LG: MCB1700 Board with newer LCD (Ampire 240320LG)

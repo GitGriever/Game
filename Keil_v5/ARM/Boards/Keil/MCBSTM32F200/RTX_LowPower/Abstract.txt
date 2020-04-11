@@ -1,0 +1,22 @@
+The RTX_LowPower project is a simple RTX Kernel based example for
+ST 'STM32F207' microcontroller using Keil 'MCBSTM32F200' Evaluation Board,
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS V2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  25 MHz
+   - SYSCLK = 120 MHz
+   - HCLK   = 120 MHz
+
+Example shows how to configure RTX for Low Power applications.
+
+Application blinks the LED every 3s and goes into low power mode in between.
+Pressing the ISP push button also wakes-up the device.
+
+Power down is handled in the idle task (os_idle_demon in RTX_Conf.CM).
+
+
+The LowPower program is available for target:
+
+  STM32F207 Flash: configured for on-chip Flash
+                   (used for production or target debugging)

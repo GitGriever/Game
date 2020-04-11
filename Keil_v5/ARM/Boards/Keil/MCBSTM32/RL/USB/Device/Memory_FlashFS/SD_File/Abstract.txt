@@ -1,0 +1,24 @@
+The Memory project is a demo program for the Keil MCBSTM32 Board 
+using a ST STM32F103RBT6 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over COM Port.
+
+When WKUP (S2) button is pressed the USB Memory is unmounted from the PC
+and can be accessed from the target over COM Port. It allows to create,
+read, copy, delete files and format the card. Pressing WKUP (S2) button
+again will re-mount the USB Memory on the PC.
+
+Connect a serial cable to RS232 COM port using HyperTerminal
+  at 115200 baud, 8-bits, no parity, 1 stop bit, No Flow Control.
+
+The Memory program is available for the following target:
+  MCBSTM32:     configured for on-chip Flash ROM
+               (used for production or target debugging)
+
+Note: Set jumper J1 to PD2 for debugging

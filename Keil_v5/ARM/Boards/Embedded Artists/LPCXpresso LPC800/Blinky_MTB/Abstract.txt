@@ -1,0 +1,28 @@
+The Blinky project is a simple demo program for the NXP 'LPC812M101'
+microcontroller using Embedded Artists 'LPCXpresso LPC800' Evaluation Board,
+compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+It demonstrates the usage of MTB( Micro Trace Buffer).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =  12 MHz
+   - CPU     =  24 MHz
+
+ - 3 LEDs blink with speed depending on potentiometer position
+
+
+The Blinky program is available in different targets:
+
+  ULink-MTB:        	Configured for on-chip Flash, Debug/Target Driver is
+						configured as ULINK; shows use of MTB (Micro Trace Buffer)
+
+  ULinkPro-MTB:        	Configured for on-chip Flash, Debug/Target Driver is
+						configured as ULINKPro; shows use of MTB (Micro Trace Buffer)
+
+
+- MTB (Micro Trace Buffer) Notes
+--------------------------------
+- Dbg_MTB.ini file configures MTB settings, which allows to configure MTB RAM buffer size, buffer position, and flow control.
+- MTB allocates user-defined region of the system RAM for storing instruction address change-of-flow data packets.
+  Modify MTB position and size to define the used memory region. The position must be a multiple of the buffer size.
+  The allocated buffer region cannot be used as application RAM.

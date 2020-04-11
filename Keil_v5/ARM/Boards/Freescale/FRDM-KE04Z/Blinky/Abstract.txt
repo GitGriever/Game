@@ -1,0 +1,29 @@
+The 'Blinky' project is a simple demo program for Freescale 'MKE04' series 
+microcontroller using Freescale 'FRDM-KE04Z' evaluation board populated with
+MKE04Z8xxx4 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality
+ - Core Clock runs at 20971520 Hz                                                   
+ - SysTick Timer is used in interrupt mode
+ - Red/Green/Blue LED(PTC5,PTC4,PTB3) blink every 500 ms 
+The Blinky program is available in different targets:
+  CMSIS-DAP -Flash:                Debug/Target Driver is configured as CMSIS-DAP OpenSDA
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink -Flash:                    Debug/Target Driver is configured as ULink
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+
+
+Selecting "P&E Micro" or "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "P&E Micro" or "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - P&E Micro OpenSDA requires Freescale Kinetis OSJTAG Drivers V1.06 or higher. It must be 
+   installed to the same directory as MDK-ARM. Download the drivers from www.keil.com/download/docs/408.asp.
+ - "P&E Micro" or "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to FRDM-KL02Z user manual.

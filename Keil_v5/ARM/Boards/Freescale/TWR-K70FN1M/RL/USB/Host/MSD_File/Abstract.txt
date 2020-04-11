@@ -1,0 +1,29 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Board configuration consists of: TWR-ELEV (PRIMARY+SECONDARY) + TWR-SER + 
+                                 TWR-K70FN1M
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - USART2 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+K70FN1M:   Standalone application for the K70FN1M Board.
+
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 1-2 shorted => Supply 5V on USB Connector (Host Mode)
+         - J16 = 1-2 shorted => Host Mode (supply 5V to VBUS)
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

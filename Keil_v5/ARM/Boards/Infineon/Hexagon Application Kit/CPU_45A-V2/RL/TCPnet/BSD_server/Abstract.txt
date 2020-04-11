@@ -1,0 +1,34 @@
+This program is a BSD socket Server example. This example opens a 
+Stream (TCP) and Datagram (UDP) sockets for listening and waits for 
+commands coming from PC Client or another eval-board client. The 
+commands are used to control LED diodes to switch them on and off.
+
+In order to run this example, you need to set the network parameters 
+to match your local area network.
+
+To test this example, run windows application LEDSwitch.exe and enter
+the ip address of your Embedded BSD_Server into "Board IP" edit box. 
+Enter also the number of transfer port into "Transfer port" edit box. 
+Select one of transfer protocol (TCP or UDP). When the P2
+value in windows application is changed, this value is sent to 
+eval-board and the LED on board should light accordingly.
+
+The same example can be tested also with another eval-board Client 
+connected to the same LAN. The BSD_Server is protocol compatible to
+LEDSwitch. 
+
+The BSD_Server example is available for several targets:
+
+XMC4500:
+    Standalone application for the Hexagon Application Kit.
+    Program code is loaded into internal flash.
+
+XMC4500 Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+        
+    Debug level is configured in Net_Debug.c debug configuration file.
+    ITM debug port is used as a communication interface.
+    You can debug the application with ULINK2 from uVision Debug Session:
+    Start Debug session (Ctrl + F5) and open Debug (printf)
+    Viewer (View->Serial Windows->Debug (printf) Viewer).

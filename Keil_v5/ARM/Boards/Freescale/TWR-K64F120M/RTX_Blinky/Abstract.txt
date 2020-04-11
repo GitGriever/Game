@@ -1,0 +1,29 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale Kinetis 'MK64' 
+series microcontroller using the Freescale 'TWR-K64F120M' evaluation board 
+populated with the 'K64FN1M0VMD12' device, 
+compliant to the Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Clock Settings: Core clock = 41.94 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 4 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The RTX_Blinky program is available for different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+

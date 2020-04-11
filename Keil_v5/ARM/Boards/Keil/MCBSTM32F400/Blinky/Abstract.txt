@@ -1,0 +1,26 @@
+The 'Blinky' project is a simple program for
+ST 'STM32F407IG' microcontroller using Keil 'MCBSTM32F400' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =           25.00 MHz
+   - SYSCLK  =          168.00 MHz
+
+ - Sys Timer is used in interrupt mode
+ - LEDs are blinking with speed depending on SysTick timer interrupt period
+ 
+
+The Blinky program is available in different targets:
+
+  STM32F407 RAM:    runs from Internal RAM located on chip
+                    (may be used for target debugging)
+
+  STM32F407 Flash:  runs from Internal Flash located on chip
+                    (used for production or target debugging)
+
+  STM32F407 OPT:    STM32F407 with Flash Options Bytes
+                    (used for programming)
+
+  STM32F407 OTP:    STM32F407 with Flash One-Time Programmable Bytes
+                    (used for programming)

@@ -1,0 +1,24 @@
+The 'RTX_Blinky' project is a simple RTX Kernel based example for
+Atmel 'ATSAM3N4C' microcontroller using Atmel 'SAM3N-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLLA                  =  96 MHz
+   - Main Clock = PLLA / 2 =  48 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. LEDs are blinking simulating the activity of the clock task.
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The Blinky program is available in different targets:
+
+  SAM3N RAM:             configured for on-chip RAM
+                         (used for debugging)
+
+  SAM3N Flash:           configured for on-chip Flash
+                         (used for production or target debugging)

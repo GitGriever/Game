@@ -1,0 +1,20 @@
+The HID project is a demo program for the TWR-K60N512 Tower  
+module using a Freescale MK60N512VMD100  Microcontroller.
+
+It demonstrates an USB HID (Human Interface Device):
+  - 4 LEDs
+  - 2 BUTTONs (SW1, SW2)
+
+The USB HID is recognized by the host PC running Windows
+which will load a generic HID driver. The board LEDs
+and Push Buttons can then be accessed from the PC
+through a custom HID Client Program.
+
+The HID program is available for the following target:
+  MK60:    configured for on-chip Flash ROM
+          (used for production or target debugging)
+               
+Note:
+  SW1 will not work on Kinetis chip revision 0M33Z
+  Cause: Port pin PTA19 cannot be used as GPIO if external clock
+         is used.               

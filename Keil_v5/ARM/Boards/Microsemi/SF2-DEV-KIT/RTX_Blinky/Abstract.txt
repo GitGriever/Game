@@ -1,0 +1,32 @@
+The RTX_Blinky project is a simple RTX Kernel based example for
+Actel 'M2S050T' microcontroller using Microsemi 'SF2 Dev Kit' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =  50 MHz
+   - CPU Clock  = 100 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The Blinky program is available in different targets:
+
+  Cortex-M3 Flash: runs from Internal RAM located on chip
+                   (used for target debugging)
+
+  Cortex-M3 SRAM:  runs from Internal Flash located on chip
+                   (used for production or target debugging)
+
+Note:
+  This Example is created using Microsemi Libero® system-on-chip (SoC) software toolset.

@@ -1,0 +1,29 @@
+The 'Measure' project is a simple demo program for
+Atmel 'ATSAM3U4E' microcontroller using Atmel 'SAM3U-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+The program uses analog and digital inputs to simulate a datalogger.
+You may watch the value of analog input ADC0, ADC1 and the state 
+of USR_LEFT, USR_RIGHT Buttons on SAM3U-EK evaluation board.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLLA                  = 168 MHz
+   - Main Clock = PLLA / 2 =  84 MHz
+
+ - Output onto serial port USART1 
+   USART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+ - AD is used with DMA or IRQ
+   AD settings: 12 bit resolution
+
+
+The Measure program is available in different targets:
+
+  Simulator:     configured for software Simulator
+                 USART1 is "Serial Window #3"
+
+  SAM3U RAM:     configured for on-chip RAM
+                 (used for debugging)
+
+  SAM3U Flash:   configured for on-chip Flash

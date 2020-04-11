@@ -1,0 +1,37 @@
+This program is a LEDSwitch Client example. It is used to send commands
+to a LEDSwitch Server connected on the same LAN. The sending commands 
+control LED diodes on remote Server, how they are switched on or off.
+
+In order to run this example, you need to set the network parameters
+to match your local area network.
+
+To test this example, run application LEDSwitch on one MCB4300
+board and Client application on another MCB4300 board.
+The Client application sends the value of P2 to LEDSwitch 
+application over TCP or UDP.
+
+NOTE: IP address and MAC address of this example must be set different
+      from IP and MAC addressess on LEDSwitch Server.
+
+The Client example is configured for Keil MCB4300 Board and is
+available for several targets:
+
+LPC4357 Flash:
+    Program code is loaded into internal flash.
+
+LPC4357 Flash Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+
+    Debug level configured in Net_Debug.c debug configuration file.
+    Connect a serial cable to RS232 COM port to view
+    output messages using HyperTerminal at 115200 baud,
+    8-bits, no parity, 1 stop bit, XON/XOFF.
+
+LPC4350 Ext. Flash:
+    Program code is loaded into external NOR flash.
+
+
+Jumper settings:
+  J13 and J16 must connect pins 2 and 3
+  to select and enable serial output on UART0/3 connector.

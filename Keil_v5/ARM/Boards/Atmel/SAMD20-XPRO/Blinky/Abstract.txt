@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple demo program for
+Atmel 'ATSAMD20J18' microcontroller using Atmel 'SAM0+D Xplained pro' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =    OSC8M
+   - CPU Clock  =    1 MHz
+
+ - 1 LED blinks with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - if Button (sw0) is pressed all LEDs are lit.
+
+
+The Blinky program is available in different targets:
+
+  SAMD20 RAM:      runs from Internal RAM located on chip
+                   (used for target debugging)
+
+  SAMD20 Flash:    runs from Internal Flash located on chip
+                   (used for production or target debugging)

@@ -1,0 +1,20 @@
+The Blinky project is a simple demo program for the 
+ARM 'Microcontroller Prototyping System' Cortex-M0, done according to 
+Cortex Microcontroller Software Interface Standard (CMSIS v1.0).
+
+It blinks CPU and DUT LEDs at a constant rate with using SysTick Timer.
+
+It also demonstrates  simple execution trace capability of Cortex-M0
+with Micro Trace Buffer (MTB). Executed instructions are shown in
+Trace window.
+
+Trace can be easy configured by editing the debug initialization file
+using the Configuration Wizard.
+
+Note: MPS needs to be programmed with Cortex-M0 MTB image.
+
+The Blinky program is available in different targets:
+  MPS CM0 Ext RAM:   runs from External RAM located on the board
+                     (used for target debugging)
+  MPS CM0 Ext Flash: runs from External NOR Flash located on the board
+                     (used for production or target debugging)

@@ -1,0 +1,23 @@
+The 'FlexMemory Config' project is a used for programming the FlexMemory partition information 
+which is located in data flash IFR. Memory block can be configured as additional program, data
+flash and/or EEPROM. Typically, FlexMemory configuration is executed only once in the lifetime 
+of the device. (Applicable for MKxxx 50 Mhz devices with FlexMemory Block)
+
+  FlexMem Cfg - ULINK:         Target Driver is configured as ULINK
+                                configures the followings in data flash IFR:  
+                                - The relative sizes of Data Flash size
+                                  and EEPROM Backup size within FlexNVM area
+                                - The relative size of EEPROM within FlexRAM area
+                              (used for production)
+
+  FlexMem Cfg - ULINKPro:      Target Driver is configured as ULINKPro
+                                configures the followings in data flash IFR:  
+                                - The relative sizes of Data Flash size
+                                  and EEPROM Backup size within FlexNVM area
+                                - The relative size of EEPROM within FlexRAM area
+                              (used for production)
+
+Perform the following steps to configure the data flash IFR.
+  1. Configure the "EEPROM size", "EEPROM Split Factor", and "FlexNVM Partition Code". (MKxx50MhzDataIFR.s)
+  2. Build the Target
+  3. Click the button LOAD, to download to flash

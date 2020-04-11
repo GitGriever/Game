@@ -1,0 +1,24 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device and do the same on the SD Card. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  12 MHz
+   - PLL0   = 400 MHz
+   - PLL1   =  48 MHz
+   - CCLK   = 100 MHz
+   - USBCLK =  48 MHz
+
+ - Communication Interface Settings:
+   - UART1: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_SD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MCB1700:   Standalone application for Keil MCB1700 Board using
+           COM port as a communication interface.
+
+Note: Jumpers position:
+         - "D-"    -> HOST position (3-4 shorted)
+         - "D+"    -> HOST position (3-4 shorted)

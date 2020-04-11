@@ -1,0 +1,25 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Toshiba 'TMPM395FWXBG' microcontroller using Keil 'MCBTMPM395' 
+evaluation board and is compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v1.30).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  20 MHz
+   - CCLK  =  20 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. One LED is blinking representing a clock task. Four
+task simulate the output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The Blinky program is available in different targets:
+  MCBTMPM395 Flash:     configured for on-chip Flash
+                        (used for production or target debugging)

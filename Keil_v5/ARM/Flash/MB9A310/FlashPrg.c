@@ -1,0 +1,258 @@
+/* -----------------------------------------------------------------------------
+ * Copyright (c) 2014 ARM Ltd.
+ *
+ * This software is provided 'as-is', without any express or implied warranty. 
+ * In no event will the authors be held liable for any damages arising from 
+ * the use of this software. Permission is granted to anyone to use this 
+ * software for any purpose, including commercial applications, and to alter 
+ * it and redistribute it freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must not 
+ *    claim that you wrote the original software. If you use this software in
+ *    a product, an acknowledgment in the product documentation would be 
+ *    appreciated but is not required. 
+ * 
+ * 2. Altered source versions must be plainly marked as such, and must not be 
+ *    misrepresented as being the original software. 
+ * 
+ * 3. This notice may not be removed or altered from any source distribution.
+ *   
+ *
+ * $Date:        15. April 2014
+ * $Revision:    V1.00
+ *  
+ * Project:      Flash Programming Functions for Fujitsu MB9A310K/110K Series
+ * --------------------------------------------------------------------------- */
+
+/* History:
+ *  Version 1.00
+ *    Initial release
+ */ 
+
+#include "..\FlashOS.H"        // FlashOS Structures
+
+typedef volatile unsigned long    vu32;
+typedef          unsigned long     u32;
+typedef volatile unsigned short   vu16;
+typedef          unsigned short    u16;
+
+#define M16(adr) (*((vu16 *) (adr)))
+
+// Peripheral Memory Map
+#define FIF_BASE          (0x40000000)
+#define HWWDT_BASE        (0x40011000)
+
+#define FIF               ((FIF_TypeDef *) FIF_BASE)
+#define HWWDT             ((WDT_TypeDef *) HWWDT_BASE)
+
+
+typedef struct {             // Flash Interface
+  vu32 FASZR;                // Offset: 0x000 (R/W) Flash Access Size Register
+  vu32 FRWTR;                // Offset: 0x004 (R/W) Flash Read Wait Register
+  vu32 FSTR;                 // Offset: 0x008 (R/W) Flash Status Register
+  vu32 RESERVED0;
+  vu32 FSYNDN;               // Offset: 0x010 (R/W) Flash Sync Down Register
+} FIF_TypeDef;
+
+typedef struct {             // Watchdog Timer
+  vu32 LDR;                  // offset: 0x000 (R/W) Watchdog Timer Load Register
+  vu32 VLR;                  // Offset: 0x004 (R/W) Watchdog Timer Value Register
+  vu32 CTL;                  // Offset: 0x008 (R/W) Watchdog Timer Control Register
+  vu32 ICL;                  // Offset: 0x00C (R/W) Watchdog Timer Clear Register
+  vu32 RIS;                  // Offset: 0x010 (R/W) Watchdog Timer Interrupt Status Register
+  vu32 RESERVED0[763];
+  vu32 LCK;                  // Offset: 0xC00 (R/W) Watchdog Timer Lock Register
+} WDT_TypeDef;
+
+
+/* MB9A310K/MB9A110K device
+  -------------+-----------+-------------+-------------+-------------+-------------+-------------+--------------
+               |           |  1st write  |  2nd write  |  3rd write  |  4th write  |  5th write  |  6th write
+     Command   | Number of |-------------+-------------+-------------+-------------+-------------+--------------
+               | writes    | Addr.| Data | Addr.| Data | Addr.| Data | Addr.| Data | Addr.| Data | Addr.| Data
+  -------------+-----------+------+------+------+------+------+------+------+------+------+------+------+-------
+  Read/Reset         1      0xXXX  0xF0   RA     RD     --     --     --     --     --     --     --     --
+  Write              4      0x1550 0xAA   0x0AA8 0x55   0x1550 0xA0   PA     PD     --     --     --     --
+  Chip erase         6      0x1550 0xAA   0x0AA8 0x55   0x1550 0x80   0x1550 0xAA   0x0AA8 0x55   0x1550 0x10
+  Sector erase       6      0x1550 0xAA   0x0AA8 0x55   0x1550 0x80   0x1550 0xAA   0x0AA8 0x55   SA     0x30
+ */
+
+
+/* define Address for command write cycle */
+#if 1
+  #define ADDR_1st    0x1550
+  #define ADDR_2nd    0x0AA8
+  #define ADDR_3rd    0x1550
+  #define ADDR_4th    0x1550
+  #define ADDR_5th    0x0AA8
+  #define ADDR_6th    0x1550
+#endif
+
+union fsreg {                  // Flash Status Register
+  struct b  {
+    unsigned int q0:1;
+    unsigned int q1:1;
+    unsigned int q2:1;
+    unsigned int q3:1;
+    unsigned int q4:1;
+    unsigned int q5:1;
+    unsigned int q6:1;
+    unsigned int q7:1;
+  } b;
+  unsigned int v;
+} fsr;
+
+unsigned long base_adr;
+
+
+/*
+ * Check if Program/Erase completed
+ *    Parameter:      adr:  Block Start Address
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+
+int Polling (unsigned long adr) {
+  unsigned int q6;
+
+  fsr.v = M16(adr);
+  q6 = fsr.b.q6;
+  do {
+    fsr.v = M16(adr);
+    if (fsr.b.q6 == q6) return (0);                     // Done
+    q6 = fsr.b.q6;
+  } while (fsr.b.q5 == 0);                              // Check for Timeout
+  fsr.v = M16(adr);
+  q6 = fsr.b.q6;
+  fsr.v = M16(adr);
+  if (fsr.b.q6 == q6) return (0);                       // Done
+  M16(adr) = 0xF0;                                      // Reset Device
+  return (1);                                           // Failed
+}
+
+
+/*
+ *  Initialize Flash Programming Functions
+ *    Parameter:      adr:  Device Base Address
+ *                    clk:  Clock Frequency (Hz)
+ *                    fnc:  Function Code (1 - Erase, 2 - Program, 3 - Verify)
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+
+int Init (unsigned long adr, unsigned long clk, unsigned long fnc) {
+
+  HWWDT->LCK = 0x1ACCE551;
+  HWWDT->LCK = 0xE5331AAE;
+  HWWDT->CTL = 0;                                       // Disable Watchdog
+
+  base_adr = adr;
+
+  return (0);                                           // Done
+}
+
+
+/*
+ *  De-Initialize Flash Programming Functions
+ *    Parameter:      fnc:  Function Code (1 - Erase, 2 - Program, 3 - Verify)
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+
+int UnInit (unsigned long fnc) {
+
+  return (0);                                           // Done
+}
+
+
+/*
+ *  Erase complete Flash Memory
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+#if 0   // JIRA case SDMDK-2052: Flash Erase does erase RC clock calibration settings
+int EraseChip (void) {
+  vu32 dummy;
+
+  FIF->FASZR = 0x01;                                    // set CPU programming mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  // Start Chip Erase Command
+  M16(base_adr + ADDR_1st) = 0xAA;
+  M16(base_adr + ADDR_2nd) = 0x55;
+  M16(base_adr + ADDR_3rd) = 0x80;
+  M16(base_adr + ADDR_4th) = 0xAA;
+  M16(base_adr + ADDR_5th) = 0x55;
+  M16(base_adr + ADDR_6th) = 0x10;
+
+  if (Polling(base_adr) != 0) return (1);               // Wait until Erase completed
+
+  FIF->FASZR = 0x02;                                    // set CPU ROM mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  return (0);
+}
+#endif
+
+/*
+ *  Erase Sector in Flash Memory
+ *    Parameter:      adr:  Sector Address
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+
+int EraseSector (unsigned long adr) {
+  vu32 dummy;
+
+  FIF->FASZR = 0x01;                                    // set CPU programming mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  // Start Erase Sector Command
+  M16(base_adr + ADDR_1st) = 0xAA;
+  M16(base_adr + ADDR_2nd) = 0x55;
+  M16(base_adr + ADDR_3rd) = 0x80;
+  M16(base_adr + ADDR_4th) = 0xAA;
+  M16(base_adr + ADDR_5th) = 0x55;
+  M16(adr)     = 0x30;                                  // erase fist   internal sector
+  M16(adr + 4) = 0x30;                                  // erase second internal sector
+
+  do {
+    fsr.v = M16(adr);
+  } while (fsr.b.q3 == 0);                              // Wait for Sector Erase Timeout
+
+  if (Polling(adr) != 0) return (1);                    // Wait until Erase completed
+
+  FIF->FASZR = 0x02;                                    // set CPU ROM mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  return (0);
+}
+
+
+
+/*
+ *  Program Page in Flash Memory
+ *    Parameter:      adr:  Page Start Address
+ *                    sz:   Page Size
+ *                    buf:  Page Data
+ *    Return Value:   0 - OK,  1 - Failed
+ */
+
+int ProgramPage (unsigned long adr, unsigned long sz, unsigned char *buf) {
+  int  i;
+  vu32 dummy;
+
+  FIF->FASZR = 0x01;                                    // set CPU programming mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  for (i = 0; i < ((sz+1)/2); i++)  {
+    // Start Program Command
+    M16(base_adr + ADDR_1st) = 0xAA;
+    M16(base_adr + ADDR_2nd) = 0x55;
+    M16(base_adr + ADDR_3rd) = 0xA0;
+    M16(adr) = *((u16 *) buf);
+    if (Polling(adr) != 0) return (1);
+    buf += 2;
+    adr += 2;
+  }
+
+  FIF->FASZR = 0x02;                                    // set CPU ROM mode
+  dummy = FIF->FASZR;                                   // dummy read
+
+  return (0);
+}

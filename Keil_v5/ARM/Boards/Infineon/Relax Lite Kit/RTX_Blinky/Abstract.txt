@@ -1,0 +1,29 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Infineon 'XMC4500' microcontroller using Infineon 'Relax Lite Kit' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  XMC4500 PSRAM: runs from Internal PSRAM located on chip
+                 (used for target debugging)
+
+  XMC4500 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)
+
+
+
+Note: Board 'Relax Lite Kit' exists in two versions
+       'prototype'  (LEDS connected to P2.14..15).
+       'productive' (LEDs connected to P1.0..1).
+      Define __PROTOTYPE selects the version 'prototype' (see 'options for target - C/C++ - Define).
+      This example is configured for version 'prototype'.

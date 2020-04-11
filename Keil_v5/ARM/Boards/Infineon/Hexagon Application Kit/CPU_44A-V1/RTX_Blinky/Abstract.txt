@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Infineon 'XMC4400' microcontroller using Infineon 'CPU_44A-V1' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  XMC4400 PSRAM: runs from Internal PSRAM located on chip
+                 (used for target debugging)
+
+  XMC4400 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)

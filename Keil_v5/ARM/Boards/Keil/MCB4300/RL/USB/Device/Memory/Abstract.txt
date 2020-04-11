@@ -1,0 +1,18 @@
+The Memory project is a demo program for the Keil MCB4300 Board 
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  LPC4357_USB0 Flash:        configured for internal Flash
+                            (used for production or target debugging)
+  LPC4350_USB0 Ext. Flash:   configured for external Flash
+                             because of performance reasons, USB routines
+                             are running from RAM,
+                            (used for production or target debugging)
+  LPC4357_USB1 Flash:        configured for internal Flash
+                            (used for production or target debugging)
+  LPC4350_USB1 Ext. Flash:   configured for external Flash
+                            (used for production or target debugging)

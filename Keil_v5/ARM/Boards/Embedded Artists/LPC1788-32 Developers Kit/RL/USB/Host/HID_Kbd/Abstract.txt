@@ -1,0 +1,32 @@
+This is an RL-USB-Host Human Interface Device (HID) usage example.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL              =  12 MHz
+   - CCO0              = 240 MHz
+   - PLL0   = CCO0 / 2 = 120 MHz
+   - CCO1              = 192 MHz
+   - PLL1   = CCO1 / 4 =  48 MHz
+   - CCLK   = PLL0     = 120 MHz
+   - EMCCLK = PLL0 / 2 =  60 MHz
+   - PCLK   = PLL0 / 2 =  60 MHz
+   - USBCLK = PLL1     =  48 MHz
+
+ - Communication Interface Settings:
+   - UART2: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+This example shows how to use USB Keyboard (connected to any port) 
+as terminal input to the device and it uses COM port as terminal output.
+
+The Measure example is described in detail in the Getting Started
+User's Guide.
+
+The HID_KBD program is a standalone application loaded into
+on-chip flash and available for one target:
+
+EA LPC1788: Standalone application for Embedded Artists LPC1788 Board 
+            using COM port as a communication interface.
+
+IMPORTANT Note !!!:
+  for using USB1 port (on J20 conncetor) in Host mode it is necessary 
+  to solder R163 resistor of 0 Ohms

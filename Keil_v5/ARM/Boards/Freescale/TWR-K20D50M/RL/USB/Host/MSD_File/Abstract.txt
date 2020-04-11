@@ -1,0 +1,46 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Board configuration consists of: only TWR-K20D50M
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock =  48 MHz
+   - Bus     clock =  48 MHz
+   - FlexBus clock =  24 MHz
+   - Flash   clock =  24 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - ITM
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+K20D50M:   Standalone application for the K20D50M Board.
+
+Note: 
+
+      Jumpers position on the TWR-K20D50M module: 
+         - J11 = off         => Disable Yellow LED driving by PTC9
+         - J15 = 1-2 shorted => Potentiometer Enable (ADC0_DM3)
+         - J23 = 1-2 shorted => VDDA to MCU_PWR
+         - J24 = off         => Disconnect target power of JTAG connector
+         - J25 = 1-2 shorted => VBRD to MCU_PWR
+         - J26 = 1-2 shorted => PTC9 control of K20 USB ENA
+         - J29 = 3-5 shorted => P3.3V_REG powers VBRD(MCU_PWR)
+         - J29 = 3-5 shorted => P3.3V_REG powers VBRD(MCU_PWR)
+         - J30 = 1-2 shorted => Regulator powered by OSJTAG USB
+                 5-6 shorted => K20 USB power the K20 Regulator
+         - J32 = 1-2 shorted => Enable USB Flag
+         - J34 = off         => OSJTAG mode
+         - J35 = 1-2 shorted
+         - J36 = 1-2 shorted
+
+      Power should be provided through J12 mini USB connector on the 
+      TWR-K20D50M board and J31 micro USB connector on the TWR-K20D50M 
+      board is used for the USB Host functionality.
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

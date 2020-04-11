@@ -1,0 +1,28 @@
+The 'Blinky' project is a simple demo program for
+ST 'STM32F429ZI' microcontroller using ST 'STM32F429I-Discovery' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =             8.00 MHz
+   - SYSCLK  =           180.00 MHz
+   - HCLK    = SYSCLK  = 180.00 MHz
+
+ - Sys Timer is used in interrupt mode
+ - LEDs are blinking with speed depending on SysTick timer interrupt period
+ - colour GLCD display shows
+   - init message
+   - Button status
+   - LED status
+
+
+The Blinky program is available in different targets:
+
+  STM32F429 RAM:      configured for on-chip RAM
+                      (used for target debugging)
+
+  STM32F429 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+  STM32F429 OPT:      STM32F429 with Flash Options Bytes
+                      (used for programming)

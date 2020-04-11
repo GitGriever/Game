@@ -1,0 +1,22 @@
+The 'Blinky' project is a simple demo program for Freescale 'MK40' series 
+microcontroller using Freescale 'KWIKSTIK' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - 4 Mhz EXternal Oscillator
+ - Core Clock runs at 24 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - JLink and Freescale Logo on the SLCD, turns on/off every 3 seconds  
+
+The Blinky program is available in different targets:
+  JLink - Flash:                 Debug/Target Driver is configured as JLink
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  JLink - RAM:                   Debug/Target Driver is configured as JLink
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+
+
+ 

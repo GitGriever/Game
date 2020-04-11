@@ -1,0 +1,32 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL            =  12 MHz
+   - PLL             = 120 MHz
+   - PLLUSB          =  48 MHz
+   - SYS    = PLL    = 120 MHz
+   - CPU    = SYS    = 120 MHz
+   - CCU    = SYS    = 120 MHz
+   - PERIPH = CPU    = 120 MHz
+   - USB    = PLLUSB =  48 MHz
+
+ - Communication Interface Settings:
+   - ITM channel
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+  XMC4500 Flash ITM:    runs from Internal Flash located on chip using 
+                        ITM channel as a communication interface.
+                        (used for production or target debugging)
+
+
+Notes:   - Cable necessary for connecting USB memory device should have 
+           USB micro-A plug connector on one side and Standard USB Type-A 
+           receptacle connector on the other side.
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

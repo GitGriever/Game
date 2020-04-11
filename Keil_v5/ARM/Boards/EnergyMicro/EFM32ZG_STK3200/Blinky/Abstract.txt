@@ -1,0 +1,16 @@
+The 'Blinky' project is a simple example for
+Energy Micro EFM32 ZeroGecko Series using Energy Micro EFM32ZG_STK3200 Starter Kit.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =    
+   - CPU     =    14.00 MHz
+
+ - 2 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+
+
+The Blinky program is available in different targets:
+
+  EFM32ZG222F32 Flash:            runs from Internal Flash located on chip
+                                  (used for production or target debugging)

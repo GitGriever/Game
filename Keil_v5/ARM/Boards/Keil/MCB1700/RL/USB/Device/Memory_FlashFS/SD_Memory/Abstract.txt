@@ -1,0 +1,20 @@
+The Memory project is a demo program for the Keil MCB1700 Board 
+using a NXP LPC17xx Microcontroller.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL            =  12 MHz
+   - PLL0            = 400 MHz
+   - CCLK   = PLL0/4 = 100 MHz
+   - PLL1            =  48 MHz
+   - USBCLK = PLL1   =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  MCB1700:     configured for on-chip Flash ROM
+              (used for production or target debugging)

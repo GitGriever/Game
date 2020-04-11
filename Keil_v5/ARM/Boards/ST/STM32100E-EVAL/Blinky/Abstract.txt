@@ -1,0 +1,33 @@
+The 'Blinky' project is a simple program for the ST 'STM32F100ZE'
+using ST 'STM32100E-EVAL' Evaluation Board and demonstrating 
+interrupt functionality, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v1.30).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =   8 MHz
+   - SYSCLK  =  24 MHz
+
+ - LED blink with speed depending on potentiometer position
+   - Sys Timer is used in interrupt mode
+ - colour GLCD display shows
+   - init message
+   - AD value and bargraph (depending on potentiometer position)
+   - buttons and joystick status
+ - AD value is output onto serial port USART2 
+   - USART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+ - AD is used with DMA or IRQ (see file Blinky.c)
+   AD settings: 12 bit resolution
+
+
+
+The Blinky program is available in different targets:
+
+  STM32100E-EVAL RAM:    runs from Internal RAM located on chip, GLCD disabled
+                         (used for target debugging)
+
+  STM32100E-EVAL Flash:  runs from Internal Flash located on chip
+                         (used for production or target debugging)
+
+  STM32100E-EVAL Trace:  runs from Internal Flash located on chip
+                         (configured for Exception trace & SWO )

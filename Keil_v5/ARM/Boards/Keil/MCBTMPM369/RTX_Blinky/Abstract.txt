@@ -1,0 +1,20 @@
+The 'RTX_Blinky' project is a simple demo program for the Toshiba 'TMPM369FDFG' microcontroller
+using the Keil MCBTMPM369 evaluation board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =  16 MHz
+   - PLL        =  80 MHz
+   - CPU Clock  =  80 MHz
+
+ - 1 LED blinks with a fixed speed.
+   (two RTX tasks are used to blink the LED)
+
+
+The Blinky program is available in different targets:
+  TMPM369 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)
+  TMPM369 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)
+

@@ -1,0 +1,19 @@
+The Blinky project is a simple demo program for the Nuvoton 'NUC140VE' 
+microcontroller using Keil 'MCBNUC1XX' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  =  22 MHz (IRC22M)
+
+ - SysTick Timer is used in interrupt mode
+ - 8 LEDs blink with speed depending on potentiometer position
+ - AD conversion is done in IRQ mode
+ - AD settings: 12 bit resolution
+
+
+The Blinky program is available in different targets:
+
+  NUC140 Flash:  configured for on-chip Flash
+                 (used for production or target debugging)

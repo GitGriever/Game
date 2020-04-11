@@ -1,0 +1,33 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale 'MKM34' series 
+microcontroller using Freescale 'TWR-KM34Z50M' evaluation board populated with
+MKM34Z128xxx5 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 48 MHz                                                   
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 4 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+ - SysTick Timer is used in interrupt mode
+ - AD conversion is done in polling mode
+ - AD settings: 16 bit resolution
+ - AD value (potentiometer position) is output on the Segment LCD 
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The RTX_Blinky program is available in different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)

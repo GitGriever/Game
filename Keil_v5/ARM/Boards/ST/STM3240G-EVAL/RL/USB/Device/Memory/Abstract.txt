@@ -1,0 +1,12 @@
+The Memory project is a demo program for the ST STM3240G-EVAL Board
+using a ST STM32F407 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  STM3240G HS:     configured for on-chip Flash ROM
+  STM3240G FS:     configured for on-chip Flash ROM
+                  (used for production or target debugging)

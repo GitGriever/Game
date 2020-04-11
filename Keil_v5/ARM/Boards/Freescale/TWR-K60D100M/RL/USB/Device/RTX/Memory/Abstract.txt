@@ -1,0 +1,18 @@
+The Memory project is a demo program for the TWR-K60D100M Tower  
+module using a Freescale MK60DN512VMD10  Microcontroller.
+
+Example functionality: 
+ - Clock Settings:
+   - Core clock     = 96MHz 
+   - BusClock       = 48MHz 
+   - FlexBus        = 48MHz 
+   - Flash clock    = 24MHz
+   
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+  MK60DN512VMD10:    Debug/Target Driver is configured as ULINKPro
+                     runs from Internal Flash located on chip
+                     (used for production or target debugging)

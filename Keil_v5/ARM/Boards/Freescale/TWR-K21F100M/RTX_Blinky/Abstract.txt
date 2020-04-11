@@ -1,0 +1,36 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale 'MK21' series 
+microcontroller using Freescale 'TWR-K21F100M' evaluation board populated with
+MK21FN1M0xxx10 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 48 MHz                                                   
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 3 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The RTX_Blinky program is available in different targets:
+  K21FN1M0 (ULink-Flash):          Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  K21FN1M0 (ULink-RAM):            Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  K21FN1M0 (ULPro-Flash)           Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  K21FN1M0 (ULPro-RAM)             Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)

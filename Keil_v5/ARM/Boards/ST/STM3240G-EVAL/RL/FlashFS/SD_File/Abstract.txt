@@ -1,0 +1,23 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the SD/MMC 
+Flash Memory Card and format the card. 
+
+The SD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+STM32F407 Flash:
+    Standalone application for STM3240G-EVAL Board using ITM
+    debug port as a communication interface.
+
+    Download application into target, start debug session (Ctrl + F5),
+    open Debug (printf) Viewer and start code execution - press Run (F5).
+           
+Example properties:
+
+  - Clock settings:
+    - XTAL        =  25 MHz
+    - CPU Clock   = 168 MHz
+    
+Notes:
+  - SD card data line is shared with RS232 line, JP22 must be set to open
+    to enable MicroSD card

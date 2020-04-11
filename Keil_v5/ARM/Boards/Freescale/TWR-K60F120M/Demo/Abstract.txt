@@ -1,0 +1,27 @@
+The 'Demo' project is a simple demonstration program for Freescale Kinetis 'MK60' 
+series microcontroller using the Freescale 'TWR-K60F120M' evaluation board 
+populated with the 'K60FN1M0VLQ12' device, 
+compliant to the Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Board configuration consists of: TWR-ELEV (PRIMARY+SECONDARY) + TWR-SER + 
+                                 TWR-K60F120M
+
+System Settings:
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+ - Communication Interface Settings:
+   - USART5 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+Example functionality:
+ - SysTick Timer is used in interrupt mode
+ - 1 LED blinks with speed determined by ADC value (potentiometer position)
+ - 2 LEDs show two buttons state
+ - ADC value is output every 1 second to the Communication Interface
+
+The Demo program is available for one target:
+
+K60F120M:   Standalone application for the K60F120M Board.
+

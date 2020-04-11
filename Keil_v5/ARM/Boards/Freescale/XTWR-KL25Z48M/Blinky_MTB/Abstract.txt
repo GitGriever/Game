@@ -1,0 +1,23 @@
+The 'Blinky' project is a simple demo program for Freescale 'MKL20' series 
+microcontroller using Freescale 'XTWR-KL25Z48M' evaluation board populated with
+MKL25Z128xxx4 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+It demonstrates the usage of MTB( Micro Trace Buffer).
+
+Example functionality
+ - Core Clock runs at 48000000 Hz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 2 LEDs (PTA.5,16) blink every 250 ms 
+ 
+The Blinky program is available in different targets:
+  ULink-MTB:                     Debug/Target Driver is configured as ULINK
+                                   shows use of MTB(Micro Trace Buffer)
+
+  ULinkPro-MTB:                  Debug/Target Driver is configured as ULINKPro
+                                   shows use of MTB(Micro Trace Buffer)
+
+- MTB(Micro Trace Buffer) Notes
+-------------------------------
+- DBG_MTB.ini file configures MTB settings, which allows to configure MTB RAM buffer size, buffer position, and flow control.
+- MTB allocates user-defined region of the system RAM for storing instruction address change-of-flow data packets.
+  Modify MTB position and size to define the used memory region. The position must be a multiple of the buffer size.
+  The allocated buffer region cannot be used as application RAM.

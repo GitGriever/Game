@@ -1,0 +1,37 @@
+This example program shows how to use the RTX CAN Driver on
+'ST STM3240G-EVAL' Evaluation Board with
+'ST STM32F407IGT6' microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL               =  25 MHz
+   - CPUCLK             = 168 MHz
+   - APB1 CLK = CAN CLK =  42 MHz
+
+ - send converted analog value in first byte in CAN message on
+   CAN 1 controller every 1 second
+ - receive CAN message on CAN 1 controller
+ - display lower 4-bit of received byte values on 4 LEDs
+   CAN 1 controller speed: 500 kbits
+
+This example shows how to use RTX CAN Driver.
+
+You may change the value of analog input with potentiometer
+and watch the values on LEDs change accordingly.
+
+The CAN_Ex1 example program is available for one target:
+
+STM32F407 Flash:  runs from Internal Flash located on chip
+                  (used for production or target debugging)
+
+
+Notes:      
+  - to use this example on real CAN network remove 
+    CAN_hw_testmode line from CAN_Ex1.c file
+
+STM3240G-EVAL Notes:
+  - Jumpers Settings needed for example to work:
+    JP7:  shorted 1-2, JP10: shorted 1-2, JP3: shorted 1-2
+
+  - PD0 and PB5 are disconnected from the CAN transceiver and used for 
+    FSMC and USB_OTG_HS when jumper JP10 is not fitted (default setting).

@@ -1,0 +1,21 @@
+The IWDG project is a simple demo program for the ST 'STM32F103RB' 
+microcontroller using Keil 'MCBSTM32' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLK    = SYSCLK  = 72.00 MHz
+
+ - Independent watchdog is configured to fire after 2 seconds
+   led PB15 is lit when IWDG is no longer reloded
+   led PB12 is lit when restart was caused by IWDG.
+
+
+The IWDG program is available in different targets:
+
+  Simulator:          configured for software Simulator
+
+  STM32F103 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

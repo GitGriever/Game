@@ -1,0 +1,11 @@
+This is a simple project template which shows how to setup emWin Graphic Library
+for the Keil MCB4300 Evaluation Board.
+
+Targets:
+  LPC4350 RAM:        runs from internal RAM	
+  LPC4350 Ext. Flash: runs from external Flash
+
+Following Targets are for Flash-based parts only!
+(Valid Flash Signature is created with ElfDwT tool. See "Options for Target" - "User")
+
+  LPC4357 Flash:      runs from internal Flash

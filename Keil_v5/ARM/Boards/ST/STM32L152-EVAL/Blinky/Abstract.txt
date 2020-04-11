@@ -1,0 +1,47 @@
+The LCD_Blinky project is a simple demo program for the ST 'STM32L152VB' 
+microcontroller using ST 'STM32L152-EVAL' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           32.00 MHz
+   - HCLK    = SYSCLK  = 32.00 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs blink with speed depending on potentiometer position
+ - colour GLCD display shows
+   - init message
+   - AD value and bargraph (depending on potentiometer position)
+ - LCD displays a rotating text
+ - AD conversion is done in DMA mode
+ - AD settings: 12 bit resolution
+ - AD value is output onto serial port UART2 
+   - UART2 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+Jumper setting: 
+    JP7:   [1 2] 3   (LCD)
+    JP8:   [1 2] 3   (LCD)
+    JP18:  closed    (LED3)
+    JP19:  open      (USART2_TX)
+
+
+
+The Blinky program is available in different targets:
+
+  STM32L152 RAM:       configured for Internal RAM located on chip, GLCD disabled
+                      (used for target debugging)
+
+  STM32L152 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+  STM32L152 OPT:      configured for on-chip Flash + Options Bytes
+                      (used for programming)
+
+  STM32L152 Trace:    configured for on-chip Flash
+                      Shows exception trace, Output is redirected to SWO
+
+
+Note:
+  LED4 shares pin with USART2.
+  LCD glass module shares pins with USART3.

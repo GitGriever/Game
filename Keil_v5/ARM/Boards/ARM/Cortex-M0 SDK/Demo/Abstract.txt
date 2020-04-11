@@ -1,0 +1,20 @@
+The 'Demo - Simulator' project is a simple program for the Cortex-M0 System Design Kit
+and is demonstrating the functionality of GPIO, 32-bit Timer and UART. Pin 0 of GPIO0/1
+is toggled in Timer0/1 Interrupt Service routine.
+
+
+Example Settings:                                                   
+ - Clock Settings:
+   HCLK   =   100 MHz
+   PCLK   =   100 MHz
+ - Peripheral Settings
+   Timer 0 runs in Interrupt Mode       (Interval: 1 ms)  
+   Timer 1 runs in Interrupt Mode       (Interval: 2 ms)  
+   UART3 is used in High-Speed Test & Polling Mode
+   GPIO1 Pin 5 is set as alternate function "UART3 TXD"
+
+Example Functionality:                                                   
+ - Timer 0 ISR Handler toggles GPIO0 Pin 0 every 100 ms
+ - Timer 1 ISR Handler toggles GPIO0 Pin 0 every 200 ms
+ - UART3 is outputted to serial window UART 3#
+ - Changes of GPIO0/1 pin 0 values are recorded and shown in Logic Analyzer window.

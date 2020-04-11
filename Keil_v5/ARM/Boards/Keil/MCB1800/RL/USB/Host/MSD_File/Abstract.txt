@@ -1,0 +1,31 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLL0                  = 480 MHz
+   - PLL1                  = 180 MHz
+   - CPU  clock = PLL1     = 180 MHz
+   - USB0 clock = PLL0     = 480 MHz
+   - USB1 clock = PLL1 / 3 =  60 MHz
+
+ - Communication Interface Settings:
+   - UART3: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is an application adapted for 
+'MCB1800 Evaluation Board' with 'NXP LPC18xx microcontroller', 
+it is availabe for 3 targets:
+
+  LPC1857 Flash:       downloads to and executes from internal Flash
+                      (used for production or target debugging)
+  
+  LPC1850 Ext. Flash:  downloads to and executes from external NOR Flash
+                      (used for production or target debugging)
+
+  LPC1850 RAM:         downloads to and executes from internal RAM
+                      (used for target debugging)
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

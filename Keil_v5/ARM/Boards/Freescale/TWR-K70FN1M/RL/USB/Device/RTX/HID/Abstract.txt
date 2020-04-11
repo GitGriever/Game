@@ -1,0 +1,19 @@
+The HID project is a demo program for the TWR-K70FN1M Tower
+module using a Freescale K70FN1M0VMJ12  Microcontroller.
+
+It demonstrates an USB HID (Human Interface Device):
+  - 4 LEDs
+  - 2 BUTTONs (SW1, SW2)
+
+The USB HID is recognized by the host PC running Windows
+which will load a generic HID driver. The board LEDs
+and Push Buttons can then be accessed from the PC
+through a custom HID Client Program.
+
+The HID program is available for the following target:
+  MK70 RTX:  configured for on-chip Flash ROM
+            (used for production or target debugging)
+
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 2-3 shorted => Source 5V from USB (Bus-powered device)
+         - J16 = 3-4 shorted => Device Mode (source 5V from VBUS)        

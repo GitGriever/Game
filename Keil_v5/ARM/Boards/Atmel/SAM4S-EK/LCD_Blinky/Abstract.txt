@@ -1,0 +1,33 @@
+The 'LCD_Blinky' project is a simple program fo
+Atmel 'ATSAM4S16' microcontroller using Atmel 'SAM4S-EK' evaluation board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLLA                  =  96 MHz
+   - Main Clock = PLLA     =  96 MHz
+
+ - Displays rotating ARM 3D logo, each picture is displayed every 150 ms
+ - 3 LEDs blink with speed of 50 ms, determined by SysTick Timer
+   working in interrupt mode
+
+
+The Blinky program is available for target:
+
+  SAM4S Flash:   configured for on-chip Flash
+                 (used for production or target debugging)
+
+
+
+Notes: - In EVAL version of uVision do not rebuild the target as
+         this example's size exceeds EVAL version limitation
+
+Picture conversion procedure:
+1. Convert picture to 16 BPP (R - 5bits, G - 6bits, B - 5bits)
+2. Remove header from bmp by hex editor, remaining file size should
+   be equal to (width * height * 2) bytes
+3. Convert prepared file without header to C array
+
+
+Serial Wire Viewer Core Clock:  = 96 MHz.

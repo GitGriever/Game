@@ -1,0 +1,517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<!-- Copyright (C) 2019 Arm Ltd. All rights reserved. -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Release notes for Arm Compiler 6.13.1</title>
+
+<style type="text/css">
+<!--
+body { font-family: times new roman, serif; margin: 20px; }
+h1 { font-size: xx-large; font-weight: bold; color: #0091BD; text-align: center; }
+h2 { color: #0091BD; font-size: 24px; }
+h3 { color: #0091BD; font-size: 20px; }
+h4 { color: #0091BD; font-size: 16px; }
+h5 { color: #0091BD; font-size: 14px; font-style: italic; }
+dt { font-weight: bold; }
+p { color: black; }
+span { color: black }
+.builddata { color: #0091BD; text-align: center; }
+.bookref { font-style: italic; }
+.guiref { font-weight: bold; }
+table, th, td { border: 1px solid #0091BD; border-collapse:collapse; padding-left:10px; padding-right:10px; font-size:0.9em; }
+th { background-color:#0091BD; color: white; text-align: left; }
+
+.toc {
+    list-style-type: none;
+}
+.tab { margin-left: 40px; }
+-->
+</style>
+
+</head>
+<body>
+
+<img alt="Arm Logo" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAIMAAAAqCAYAAACQjuhAAAAACXBIWXMAABcRAAAXEQHKJvM/AAAE
+BElEQVR42u2c23GjMBSG/zD7vpRACbiCkKGAdSoIVCC7AuwKbFVgbwX2FsCEVBC2gng7IBXsPkis
+GcLlSGAMtv4Zv3iMLkefjs4RkgEjIyOjsh60n+SxA8AD8AjAlZ+yUgAJgF9gflJRhtdSSwbmp8S2
+OI2/KdbPYxtAAOCH7INau3XqFM/MC3U6NXVyMP9E7PNc2t8DYFeUl8o+HC8DgxhAJhuiohOANZi/
+L5T1t+WZBMx/IrRpBSBqGZiHwoDsKoxX3wYg/DJAanV6ADY1E6ZKewBLMD+rgSCSMKvYftkGhaXk
+CXh8APCqAQLkTNiBx69yZg4vHm8AHBRAgBzArEOdC2kzV+GpAMA7eOyWyhLfq4GQ2/4AHu+6wyBm
+07smBGV5AIYHQhhiofHksXKG0uHbaLbYkXZyCyDsFEH+ClkDEBahQ4HGbKLMtteB/UKg+dy6Q52L
+jm22pTfNQejHDgJSRRj6bUQVEGPXkRTMXVbuBcZgURW8Ww0guBcEYSriN9y3iAaDWM8PGhVkMvrO
+P6cJGyutTSu7lnu2Tx/KNO3tyczkv741rHWOQsF7mR+nNalQINNRe0SDLfYRxOAUg9sX2fe+vcJR
+pnen0qSLNGOLTJa3r0j9d8TxmwPY1sNwzmOp+WvYOINE51fg8VY2cn5lCDIAzzVtTmRbgy9G7qaw
+sjyRpSzB408Fm+d2f6qMZ5ifgMczAB+EyfdYhMHqEHWnAGZkV8r8DMx/ll7kmiA8tba5XxCOreUx
+f6Xo4p8bA9scMsUgvgqGF6JRQ638m/mhdJnX0Jq0vd2vlmRoqEsyrQ+U8px6GEQG4Qxg1BBddvV0
+vQLztyNOTd+Iv/tJ9sSKQapVEVC0r1ddjSoaygcfmOH1W3EJo9gu6bXMwpa3VRFQ9EMmLQMZUm9X
+gCFRmCCU36YXgNGug8EZbIYJ9znk+j3lPQ8176EpdRj6DcCSWzHkLci68uB9DtbT4bMIHbc+KRiM
+1ANlA8MdreN3u0z0LccMwXRhcI3J7geGtoDHLr/27KhHMwTjhYGyhvfz1lG8vvXMEIwXBsouHeup
+7rkx/7hhoOwjOPJsZFevEBnzjxkGsTFDWSo2HY+6RyaTmEY2QXmbaEP37oPwKgtj+mnAsAdtH9+V
+QDgKIKxgTlxPCAa1swYuxDWwVSMUPA7A4w8TJ4xbdaejtzifEqYsGRGACDzOb/7+AfBdwmLSx0nD
+wPwMPA6hfgWu7mq+0URjhhyIBOKsotHdwyCA2KPbxVOjm4FBALG6gIfIjNeZIgxnDzFDPyd3ThAX
+WfbG/FOEQQCRgvkzOaNPmt5gDXELKzWmH5+6/MFX8c+l3AYAEogLrsepHQMzMOjD4ZT2JVIz+EZG
+E9U/yX9anPUqLjMAAAAASUVORK5CYII="/>
+
+
+
+
+
+
+
+<h1>Release notes for Arm Compiler 6.13.1</h1>
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2>
+
+<ol class="toc">
+  <li>1. <a href="#introduction">Introduction</a>
+    <ol class="toc">
+      <li>1.1. <a href="#configuration">Arm Compiler 6 Configuration</a></li>
+      <li>1.2.  <a href="#supportlevels">What's Supported in Arm Compiler 6.13.1?</a></li>
+    </ol>
+  </li>
+  <li>2. <a href="#install">Installation Instructions</a>
+    <ol class="toc">
+      <li>2.1. <a href="#install_armds">Integration into Arm Development Studio 2018.0 or later</a></li>
+      <li>2.2. <a href="#install_keil">Integration into Keil MDK 5.22 or later</a></li>
+      <li>2.3. <a href="#install_standalone">Use as a standalone toolchain installation</a></li>
+      <li>2.4. <a href="#install_linux">Installation on Linux</a></li>
+      <li>2.5. <a href="#install_windows">Installation on Windows</a></li>
+    </ol>
+  </li>
+  <li>3. <a href="#uninstall">Uninstall</a></li>
+  <li>4. <a href="#documentation">Documentation</a></li>
+  <li>5. <a href="#feedback">Feedback and Support</a></li>
+  <li>6. <a href="#history">Release History and Changes</a></li>
+</ol>
+
+
+<a name="introduction"></a>
+<h2>1. Introduction</h2>
+
+
+
+
+
+
+<p>
+This is the initial set of release notes provided at the time of the release. For the latest copy of the release notes, see <a href="https://developer.arm.com/products/software-development-tools/compilers/arm-compiler/downloads/version-6/6-13-1">the latest version</a> on <a href="https://developer.arm.com">https://developer.arm.com</a>.
+</p>
+
+
+
+
+<p>
+
+Arm Compiler 6.13.1 is an update release to Arm Compiler 6.13 and is intended for use:
+
+</p>
+<ul>
+<li>In conjunction with an Arm Development Studio toolkit.</li>
+<li>In conjunction with a Keil MDK toolkit.</li>
+<li>As a standalone toolchain installation, provided you have a license for a suitable toolkit.</li>
+</ul>
+
+<p>
+Contact your sales representative or visit <a href="https://developer.arm.com/buy-arm-products">https://developer.arm.com/buy-arm-products</a> to enquire about a license. Visit <a href="https://developer.arm.com/support/licensing">https://developer.arm.com/support/licensing</a> to manage your licenses or access troubleshooting resources.
+</p>
+
+<p>
+If you are using a floating license, your license server must be running <tt>armlmd</tt> and <tt>lmgrd</tt> version 11.14.1.0 or later.
+Arm recommends that you always use the latest version of the license server software that is available from <a href="https://developer.arm.com/products/software-development-tools/license-management/downloads">https://developer.arm.com/products/software-development-tools/license-management/downloads</a>.
+</p>
+
+<a name="configuration"></a>
+<h3>1.1 Arm Compiler 6 Configuration</h3>
+
+<p>
+The Arm Compiler 6.13 toolchain includes the following:
+</p>
+
+<ul>
+  <li><span style="font-weight:bold">armclang:</span> Compiler and integrated assembler based on LLVM and Clang technology.</li>
+  <li><span style="font-weight:bold">armasm:</span> Legacy assembler for armasm-syntax assembly code. Use the armclang integrated assembler for all new assembly files.</li>
+  <li><span style="font-weight:bold">armar:</span> Archiver which enables sets of ELF object files to be collected together.</li>
+  <li><span style="font-weight:bold">armlink:</span> Linker that combines objects and libraries to produce an executable.</li>
+  <li><span style="font-weight:bold">fromelf:</span> Image conversion utility and dissembler.</li>
+  <li><span style="font-weight:bold">Arm C++ libraries:</span> Libraries based on the LLVM libc++ project.</li>
+  <li><span style="font-weight:bold">Arm C libraries:</span> Runtime support libraries for embedded systems.</li>
+</ul>
+
+<a name="supportlevels"></a>
+<h3>1.2 What's Supported in Arm Compiler 6.13.1?</h3>
+
+<p>
+The following table lists the target Arm Architectures and Processors supported in Arm Compiler 6.13. The exact set of targets depends on which license and toolkit you are using. The table is correct at the time of the Arm Compiler 6.13 release but may change in the future. Check with your supplier for more information.
+</p>
+
+<table style="text-align: center;">
+<tbody>
+<tr>
+  <td colspan="2" rowspan="3"><b>Target</b></td>
+  
+  <td colspan="8"><span style="font-weight:bold">License</span></td>
+</tr>
+<tr>
+  <td colspan="4"><span style="font-weight:bold">Keil MDK<br>(Windows Only)</span></td>
+  <td colspan="4"><span style="font-weight:bold">Arm Development Studio<br>(Linux and Windows)</span></td>
+</tr><tr>
+<td><b>Lite</b></td>
+<td><b>Essential</b></td>
+<td><b>Plus</b></td><td><b>Professional</b></td>
+<td><b>Bronze</b></td>
+<td><b>Silver</b></td>
+<td><b>Gold</b></td>
+<td><b>Platinum</b></td>
+</tr><tr>
+  <td>Future Arch</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td><td>Yes</td>
+</tr>
+<tr><td rowspan="1">Armv8.6-A</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td></tr>
+<tr>
+  <td rowspan="3">Armv8-A up to 8.5-A</td>
+  <td>Neoverse N1/E1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Cortex-A77/76AE/76/65AE/65</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td><td>Yes</td>
+</tr><tr>
+  <td>Cortex-A75/73/72/57/55/53/35/32
+</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Armv7-A</td>
+  <td>Cortex-A17/15/12/9/8/7/5</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Armv8-R</td>
+  <td>Cortex-R52</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td rowspan="2">Armv7-R</td>
+  <td>Cortex-R8/7/5 </td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Cortex-R4F/4 </td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Armv8.1-M</td>
+  <td>-</td>
+  <td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td><td>Yes</td>
+</tr>
+
+<tr>
+  <td rowspan="2">Armv8-M</td>
+  <td>Star</td>
+  <td>-</td>
+
+
+<td>-</td><td>-</td><td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td><td>Yes</td>
+</tr><tr>
+  
+  <td>Cortex-M35P/33/23</td>
+  <td>-</td>
+<td>Non-secure only</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td rowspan="2">Armv7-M</td>
+  <td>SC300</td>
+  <td>-</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Cortex-M7/4/3</td>
+  <td>32 Kbyte code limit</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td rowspan="2">Armv6-M</td>
+  <td>SC000</td>
+  <td>-</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+<tr>
+  <td>Cortex-M1/0/0+</td>
+  <td>32 Kbyte code limit</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td><td>Yes</td>
+</tr>
+</tbody></table>
+
+<p>
+For more information about the level of support for these targets and the toolchain features, refer to the product documentation.
+</p>
+
+<p>
+Arm Development Studio Platinum Edition is reserved for Arm partners developing the latest IP before it becomes available in devices. It includes all the features of Gold, and additionally has support for the latest announced IP from Arm. Please contact Arm for more information.
+</p>
+
+<a name="install"></a>
+<h2>2. Installation Instructions</h2>
+
+<p>
+If you received Arm Compiler 6.13.1 as part of a toolkit, for example Arm Development Studio, the toolkit installer takes care of the installation process.
+Please refer to the installation instructions for the toolkit in such cases.
+</p>
+
+<p>
+For all other cases, you must select an appropriate installation location depending on how you intend to use Arm Compiler 6.13.1:
+</p>
+<ul>
+  <li>Integrated into Arm Development Studio 2018.0 or later.</li>
+  <li>Integrated into Keil MDK 5.22 or later.</li> 
+  <li>As a standalone toolchain installation.</li>
+</ul>
+
+<p>
+Unless you are using Keil MDK, Arm Compiler 6.13 can be installed in any location, including the default location, providing this is outside of an Arm Development Studio product installation directory.
+</p>
+
+<p>
+Please refer to the configuration instructions at <a href="https://developer.arm.com/tools-and-software/software-development-tools/license-management/resources/product-and-toolkit-configuration">https://developer.arm.com/tools-and-software/software-development-tools/license-management/resources/product-and-toolkit-configuration</a> and also the relevant sections below.
+</p>
+
+<a name="install_armds"></a>
+<h3>2.1. Integration into Arm Development Studio 2018.0 or later</h3>
+<p>
+You can integrate the toolchain with Arm Development Studio 2018.0 or later by following the instructions available at 
+<a href="https://developer.arm.com/docs/101470/latest/configure-arm-development-studio/register-a-compiler-toolchain">https://developer.arm.com/docs/101470/latest/configure-arm-development-studio/register-a-compiler-toolchain</a>.
+</p>
+
+<a name="install_keil"></a>
+<h3>2.2. Integration into Keil MDK 5.22 or later</h3>
+<p>
+Arm Compiler 6.13.1 must be installed underneath the <tt>ARM</tt> subdirectory of the Keil MDK installation directory.
+For example, if your Keil MDK installation directory is in <tt>C:\Keil_v5</tt>, the recommended installation path is <tt>C:\Keil_v5\ARM\ARMCompiler6.13.1</tt>.
+</p>
+
+<p>
+After it is installed, you can integrate the toolchain into a Keil MDK project by following the instructions in the tutorial available at <a href="http://www.keil.com/support/man/docs/uv4/uv4_armcompilers.htm">http://www.keil.com/support/man/docs/uv4/uv4_armcompilers.htm</a>.
+</p>
+
+<p>
+Only the <b>32-bit Windows</b> variant of Arm Compiler 6.13.1 can be used with a Keil Single-User License or Keil Floating-User License.
+</p>
+
+<a name="install_standalone"></a>
+<h3>2.3. Use as a standalone toolchain installation</h3>
+<p>Ensure that the <tt>ARMLMD_LICENSE_FILE</tt> environment variable is pointing to your license file or license server.</p>
+
+<a name="install_linux"></a>
+<h3>2.4. Installation on Linux</h3>
+
+<p>Arm Compiler 6.13.1 has been tested on the following supported platforms:</p>
+<ul>
+<li>Red Hat Enterprise Linux 6 Workstation, 64-bit only.</li>
+<li>Red Hat Enterprise Linux 7 Workstation, 64-bit only.</li>
+<li>Ubuntu Desktop Edition 16.04 LTS, 64-bit only.</li>
+<li>Ubuntu Desktop Edition 18.04 LTS, 64-bit only.</li>
+</ul>
+<p>Arm Compiler 6.13.1 is not expected to work on older platforms.</p>
+
+<p>
+To install Arm Compiler 6.13.1, run (not <tt>source</tt>) <tt>install_x86_64.sh</tt> and follow the on-screen instructions. The installer unpacks Arm Compiler 6.13.1 into your chosen directory.
+</p>
+
+<p>
+The <tt>armclang</tt> binary is dynamically linked to a copy of libstdc++ installed under your chosen directory as part of Arm Compiler 6.13.1.
+</p>
+
+<a name="install_windows"></a>
+<h3>2.5. Installation on Windows</h3>
+
+<p>Arm Compiler 6.13.1 has been tested on the following supported platforms:</p>
+<ul>
+<li>Windows Server 2012, 64-bit only.</li>
+<li>Windows 7 Enterprise SP1.</li>
+<li>Windows 7 Professional SP1.</li>
+<li>Windows 8.1 Enterprise, 64-bit only.</li>
+<li>Windows 8.1 Professional, 64-bit only.</li>
+<li>Windows 10 Enterprise, 64-bit only.</li>
+<li>Windows 10 Professional, 64-bit only.</li>
+</ul>
+<p>Arm Compiler 6.13.1 is not expected to work on older platforms.</p>
+
+<p>Arm Compiler 6.13.1 has been tested on the latest feature update of Windows 10 available as of November 2019.
+It is expected to work well on later updates.</p>
+
+<p>
+To install Arm Compiler 6.13.1, run <tt>win-x86_64\setup.exe</tt> on a supported 64-bit Windows platform or <tt>win-x86_32\setup.exe</tt> on a supported 32-bit Windows platform and follow the on-screen instructions.
+If you have an earlier version of Arm Compiler 6 installed and you wish to perform an upgrade, it is recommended that you uninstall the previous version before installing the new version of Arm Compiler 6.
+</p>
+
+<p>
+Arm Compiler 6.13.1 is built with Microsoft Visual Studio 2017 and requires the Universal C Runtime in Windows to be installed. For further information see <a href="https://support.microsoft.com/en-gb/help/2999226/update-for-universal-c-runtime-in-windows">https://support.microsoft.com/en-gb/help/2999226/update-for-universal-c-runtime-in-windows</a>.
+</p>
+
+<a name="uninstall"></a>
+<h2>3. Uninstall</h2>
+<p>
+On Linux, delete the Arm Compiler 6.13.1 installation directory.
+</p>
+<p>
+On Windows, use <span class="guiref">Programs and Features</span> in
+<span class="guiref">Control Panel</span>, select
+<span class="guiref">ARM Compiler 6.13.1</span>, and click the
+<span class="guiref">Uninstall</span> button.
+</p>
+
+<a name="documentation"></a>
+<h2>4. Documentation</h2>
+<p>
+<a href="https://developer.arm.com/tools-and-software/embedded/arm-compiler/documentation/version-6-13">Arm Compiler 6.13.1 documentation</a> is available on <a href="https://developer.arm.com">https://developer.arm.com</a> and comprises:
+</p>
+<ul>
+<li><span>User Guide.</span></li>
+<li><span>Reference Guide.</span></li>
+<li><span>Arm C and C++ Libraries and Floating-Point Support User Guide.</span></li>
+<li><span>Migration and Compatibility Guide.</span></li>
+<li><span>Errors and Warnings Reference Guide.</span></li>
+</ul>
+
+<p>
+From this release, the Reference Guide has been extended to incorporate reference information for all the Arm Compiler tools. This includes reference information that was provided in separate User Guide documents in previous releases.
+</p>
+
+<p>
+In January 2018, Arm published information about the <i>Variant 1: bounds check bypass (CVE-2017-5753)</i> vulnerability. Refer to <a href="https://developer.arm.com/support/security-update/compiler-support-for-mitigations">https://developer.arm.com/support/security-update/compiler-support-for-mitigations</a> and use the <i>Migration path</i> recommendations with this Arm Compiler release to help mitigate against the vulnerability. Note that the API of the mitigation is subject to change.
+<p>
+
+<a name="feedback"></a>
+<h2>5. Feedback and Support</h2>
+
+<p>
+Your feedback is important to us, and you are welcome to send us defect reports and suggestions for improvement on any aspect of the product.
+Contact your supplier or visit <a href="https://developer.arm.com/support">https://developer.arm.com/support</a> and open a case with feedback or support issues.
+Where appropriate, please provide the <span style="white-space:nowrap"><tt>--vsn</tt></span> output from the tool, the complete content of any error message that the tools produce, and include any source code, other files, and command-lines necessary to reproduce the issue.
+</p>
+
+
+
+<a name="history"></a>
+<h2>6. Release History and Changes</h2>
+<p>The following are the releases to date of the Arm Compiler 6.13 series:</p>
+<ul>
+  <li>6.13.1 (released November 2019)</li>
+
+</ul>
+<p>Below is a summary of the changes in each release, including new features and defect fixes. Changes are listed since the previous release in each case unless otherwise specified. Each itemized change is accompanied by a unique SDCOMP-&lt;NNNNN&gt; identifier. If you need to contact Arm about a specific issue within these release notes, please quote the appropriate identifier.</p>
+
+<h3>Changes in Arm Compiler 6.13.1</h3>
+
+
+
+
+
+
+
+
+
+
+</body></html>

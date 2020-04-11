@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+the ST 'STM32W108CC' microcontroller using DiZiC 'MB954' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - SCLK  =             24.00 MHz
+   - FCLK    = SCLK/2  = 12.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  STM32W108 RAM:      configured for on-chip RAM
+                      (used for target debugging)
+
+  STM32W108 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

@@ -1,0 +1,39 @@
+The Memory project is a demo program for the ST STM3220G-EVAL 
+Board using STM32F207IG Microcontroller.
+
+Example functionality:
+
+  - Clock settings:
+    - XTAL          =  25 MHz
+    - PLL VCO Clock = 240 MHz
+    - CPU Clock     = 120 MHz
+    - USB Clock     =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over ITM Debug Port.
+
+
+When Wakeup button is pressed the USB Memory is unmounted from the PC
+and can be accessed from the target over ITM Debug Port. It allows to 
+create, read, copy, delete files and format the card.
+Pressing Wakeup button again, will re-mount the USB Memory on the PC.
+
+
+The Memory program is a standalone application loaded into
+on-chip flash and available for one target:
+
+STM32F207 Flash:
+    Standalone application for STM3220G-EVAL Board using RTX kernel
+    and ITM debug port as a communication interface.
+
+    Download application into target, start debug session (Ctrl + F5),
+    open Debug (printf) Viewer and start code execution - press Run (F5).
+
+Notes:
+  - SD card data line is shared with RS232 line, JP22 must be set to open
+    to enable MicroSD card

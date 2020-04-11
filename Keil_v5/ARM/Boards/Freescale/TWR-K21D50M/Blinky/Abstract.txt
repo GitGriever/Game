@@ -1,0 +1,33 @@
+The 'Blinky' project is a simple demo program for Freescale 'MK21' series 
+microcontroller using Freescale 'TWR-K21D50M' evaluation board populated with
+MK21DN512xxx5 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 48 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs (PTD.4..6) blink every 250 ms 
+The Blinky program is available in different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  UlinkPro-Flash:                  Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  UlinkPro-RAM:                    Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  PE OSJTAG-Flash:                Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  PE OSJTAG-RAM:                  Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+ 

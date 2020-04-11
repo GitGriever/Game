@@ -1,0 +1,45 @@
+The Blinky_ULp project is a simple demo program for the Fujitsu 'MB9BF506R' 
+microcontroller using Keil 'MCB9B500' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.00).
+
+It demonstrates the use of ULINKpro Debugger.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =   4 MHz
+   - CCLK  =  80 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - 8 LEDs blink with speed depending on potentiometer position
+ - AD conversion is done in IRQ mode
+ - AD settings: 12 bit resolution
+ - AD value is output onto ITM debug port #0
+
+
+
+The Blinky program is available in different targets:
+  RAM:                       runs from Internal RAM located on chip
+
+  SWO Trace:                 runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+                             use connector "Cortex Debug" or "Cortex Debug + ETM"
+                             In debug session open window "watch 1", "Debug (printf) Viewer", "Logic Analyzer"
+
+  TracePort Trace:           runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+                             use connector "Cortex Debug + ETM"
+                             In debug session open window "watch 1", "Debug (printf) Viewer", "Logic Analyzer"
+
+  TracePort IntructionTrace: runs from Internal Flash
+                             shows use of Instruction Trace
+                             use connector "Cortex Debug + ETM"
+                             In debug session open window "Instruction Trace"
+
+
+ULINKpro notes
+--------------
+MB9BF50x_TP.ini enables TPIU interface
+
+Instruction trace is very time and resource consuming
+therefore if you want to use instruction trace use
+nothing else (no LA, no exceptions, no ITM, no ...).

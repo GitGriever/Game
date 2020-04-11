@@ -1,0 +1,29 @@
+The RTX_Blinky project is a simple RTX Kernel based example for
+Fujitsu 'MB9AFA32N' microcontroller using Keil'MCB9AFA32N' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =   4 MHz
+   - CPU Clock  =  20 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The Blinky program is available in different targets:
+
+  MB9AFA32N RAM:   runs from Internal RAM located on chip
+                   (used for target debugging)
+
+  MB9AFA32N Flash: runs from Internal Flash located on chip
+                   (used for production or target debugging)

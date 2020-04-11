@@ -7,8 +7,8 @@
 #define MAX_X	84
 #define MAX_Y	48
 
-#define LCDW     84
-#define LCDH     48
+#define LCD_W     84
+#define LCD_H     48
 
 void LCD_init(void);
 

@@ -1,0 +1,30 @@
+The SD_File project is a demo program for the Embedde Artist 
+LPC1788-32 Developers Kit using NXP LPC1850 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over serial port.
+
+When Wakeup button is pressed the USB Memory is unmounted from the PC
+and can be accessed from the target over serial port. It allows to 
+create, read, copy, delete files and format the card.
+Pressing Wakeup button again, will re-mount the USB Memory on the PC.
+
+Connect a serial cable to RS232 UART1/3/4 port using HyperTerminal
+  at 115200 baud, 8-bits, no parity, 1 stop bit, No Flow Control.
+
+The HID program is available for the following target:
+  MCB1788_USB1:  configured for on-chip Flash ROM
+                (used for production or target debugging)
+  MCB1788_USB2:  configured for on-chip Flash ROM
+                (used for production or target debugging)
+
+Jumper settings (OEM Base Board Rev A):
+  To enable UART2: - JP12: Connect pin 2 and 3
+                   - JP13: Connect pin 2 and 3
+                   - JP6:  Connect pin 5 and 6,
+                           pins 1, 2, 3, 4 must be open

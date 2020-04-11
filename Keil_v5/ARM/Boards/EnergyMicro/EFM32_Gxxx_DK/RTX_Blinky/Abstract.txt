@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for Energy Micro
+EFM32 Gecko Series using Energy Micro EFM32-Gxxx-DK Development Kit.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =    
+   - CPU     =    14.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  EFM32G290F128 Flash:            populated with EFM32G290F128 MCU board
+                                  runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  EFM32G890F128 Flash:            populated with EFM32G890F128 MCU board
+                                  runs from Internal Flash located on chip
+                                  (used for production or target debugging)

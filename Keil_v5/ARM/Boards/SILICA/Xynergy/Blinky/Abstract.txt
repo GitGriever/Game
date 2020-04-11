@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple program for the STM32F217
+microcontroller using Silica 'Xynergy' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =  25.00 MHz
+   - SYSCLK  = 120.00 MHz
+   - HCLK    = 120.00 MHz
+
+ - Sys Timer is used in interrupt mode
+ - ST LEDs are blinking with speed depending on SysTick timer interrupt period
+ 
+
+The Blinky program is available in different targets:
+
+  STM32F217 Flash:  runs from Internal Flash located on chip
+                    (used for production or target debugging)
+
+  STM32F217 RAM:    runs from Internal RAM located on chip
+                    (may be used for target debugging)

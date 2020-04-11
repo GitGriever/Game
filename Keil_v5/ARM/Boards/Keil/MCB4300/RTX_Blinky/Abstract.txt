@@ -1,0 +1,37 @@
+The RTX_Blinky project is a simple RTX Kernel based example
+for the NXP 'LPC4350' microcontroller using Keil 'MCB4300'
+Evaluation Board, compliant to Cortex Microcontroller
+Software Interface Standard (CMSIS V2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL =  12 MHz
+   - CPU  = 180 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. Four LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The BLINKY example program is available for several targets:
+
+  LPC4350 Ext. Flash:  runs from NOR Flash located on board
+                       (used for production or target debugging)
+
+  LPC4350 RAM:         runs from Internal RAM located on chip
+                       (may be used for target debugging)
+
+
+Following Targets are for Flash-based parts only!
+(Valid Flash Signature is created with ElfDwT tool. See "Options for Target" - "User")
+
+  LPC4357 Flash:       configured for on-chip Flash BankA
+                       (Booting from BANK A)

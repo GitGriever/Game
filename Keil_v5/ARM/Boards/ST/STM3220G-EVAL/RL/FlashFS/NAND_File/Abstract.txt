@@ -1,0 +1,35 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files on the NAND Flash
+Memory.
+
+
+The NAND_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+STM3220F-EVAL:
+    Standalone application for STM3220F-EVAL Board using ITM
+    debug port as a communication interface.
+
+    Download application into target, start debug session (Ctrl + F5),
+    open Debug (printf) Viewer and start code execution - press Run (F5).
+
+
+
+Example properties:
+
+  - Clock settings:
+    - XTAL        =  25 MHz
+    - CPU Clock   = 120 MHz
+
+
+Samsung KFG1216U2A 512Mbit (64MB) OneNAND Configuration:
+
+  - Page size:            2048 + 64 bytes
+  - Pages per block:      64
+  - Number of blocks:     512
+
+
+Notes:
+  - JP 14, JP15 must be keept on open for OneNAND application.
+  - OneNAND manages ECC in hardware
+

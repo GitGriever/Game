@@ -1,0 +1,33 @@
+The Memory project is a demo program for the TWR-K60N512
+Board using MK60N512VMD100 Microcontroller.
+
+Example functionality:
+
+  - Clock settings:
+    - XTAL          = 25 MHz
+    - CPU Clock     = 96 MHz
+    - USB Clock     = 48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over serial port.
+
+When SW2 button is pressed the USB Memory is unmounted from the PC
+and can be accessed from the target over serial port. It allows to 
+create, read, copy, delete files and format the card.
+Pressing SW2 button again, will re-mount the USB Memory on the PC.
+
+Connect a serial cable to RS232 UART1/3/4 port using HyperTerminal
+  at 115200 baud, 8-bits, no parity, 1 stop bit, No Flow Control.
+
+
+The Memory program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MK60N512 Flash:
+    Standalone application for TWR-K60N512 Board using RTX kernel
+    and serial port as communication interface

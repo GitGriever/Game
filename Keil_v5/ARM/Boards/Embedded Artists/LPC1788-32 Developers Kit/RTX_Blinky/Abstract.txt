@@ -1,0 +1,25 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+NXP 'LPC1788' microcontroller using Embedded Artists 'LPC1788-32 Developer's Kit', 
+compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL              =  12 MHz
+   - PLL0              = 120 MHz
+   - PLL1              =  48 MHz
+   - CCLK   = PLL0 / 1 = 120 MHz
+   - PCLK   = PLL0 / 2 =  60 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  Simulator:     configured for software Simulator
+
+  LPC1788 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)
+
+  LPC1788 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)

@@ -1,0 +1,20 @@
+The 'Blinky' project is a simple demo program for
+TI 'TM4C123GH6PGE' microcontroller using TI 'EK-LM4F232' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL             = 16.00 MHz
+   - SYS   = PLL/8    = 50.00 MHz
+
+ - 1 LED blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+
+
+The Blinky program is available in different targets:
+
+  TM4C123 RAM:           configured for on-chip RAM
+                         (used for debugging)
+
+  TM4C123 Flash:         configured for on-chip Flash
+                         (used for production or target debugging)

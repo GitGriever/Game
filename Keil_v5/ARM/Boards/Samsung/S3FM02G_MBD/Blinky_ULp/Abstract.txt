@@ -1,0 +1,28 @@
+The 'Blinky' project is a simple demo program for Samsung S3FM02G  
+microcontroller using Samsung 'S3FM02G_MBD' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+It demonstrates the use of ULINKpro Debugger.
+
+Example functionality
+ - HCLK runs at 37.5 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs (D.5..8) blink every 250 ms 
+
+The Blinky program is available in different targets:
+  TracePort IntructionTrace: runs from Internal Flash
+                             shows use of Instruction Trace
+                             use connector "Cortex Debug + ETM"
+
+
+ULINKpro notes
+--------------
+Dbg_TPIU.ini enables TPIU Interfcace. 
+                 TPIU signals are available on the pins hosting them. 
+Trace pins:  TRACEDCLK        P3.4
+             TRACEDATA0..3    P3.0..P3.3    (4 bit trace data)
+             do not use these pins in your application!
+
+Instruction trace is very time and resource consuming
+therefore if you want to use instruction trace use
+nothing else (no LA, no exceptions, no ITM, no ...).

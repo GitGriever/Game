@@ -1,0 +1,23 @@
+The 'Blinky' project is a simple demo program for Toshiba 'TMPM374FWUG' 
+microcontroller using Toshiba 'M374-STK' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  10 MHz
+   - CCLK  =  80 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs blink with speed of 200ms
+ - "hello World" is output onto serial port SC0 
+ - SC0 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The Blinky program is available in different targets:
+  TMPM374 Flash:  runs from Internal Flash located on chip
+                  (used for production or target debugging)
+
+  TMPM374 RAM:    runs from Internal RAM located on chip
+                  (used for target debugging)
+
+  TMPM374 SWO:    runs from Internal Flash located on chip
+                  (configured SWO and exception trace)

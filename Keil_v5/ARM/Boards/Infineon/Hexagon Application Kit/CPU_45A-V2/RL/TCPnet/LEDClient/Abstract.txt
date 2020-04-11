@@ -1,0 +1,30 @@
+This program is a LEDSwitch Client example. It is used to send commands
+to a LEDSwitch Server connected on the same LAN. The sending commands 
+control LED diodes on remote Server, how they are switched on or off.
+
+In order to run this example, you need to set the network parameters
+to match your local area network.
+
+To test this example, run application LEDSwitch on one Hexagon
+Application Kit board and Client application on another board.
+The Client application sends the value of P2 to LEDSwitch 
+application over TCP or UDP.
+
+NOTE: IP address and MAC address of this example must be set different
+      from IP and MAC addressess on LEDSwitch Server.
+
+The Client example is available for several targets:
+
+XMC4500:
+    Standalone application for the Hexagon Application Kit.
+    Program code is loaded into internal flash.
+
+XMC4500 Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+
+    Debug level is configured in Net_Debug.c debug configuration file.
+    ITM debug port is used as a communication interface.
+    You can debug the application with ULINK2 from uVision Debug Session:
+    Start Debug session (Ctrl + F5) and open Debug (printf)
+    Viewer (View->Serial Windows->Debug (printf) Viewer).

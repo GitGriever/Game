@@ -1,0 +1,13 @@
+The Memory project is a demo program for the Keil MCBSTM32F400
+Board using a ST STM32F407 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  MCBSTM32F400_FS RTX:   configured for on-chip Flash ROM, RTX version
+                        (used for production or target debugging)
+  MCBSTM32F400_HS RTX:   configured for on-chip Flash ROM, RTX version
+                        (used for production or target debugging)

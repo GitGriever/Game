@@ -1,0 +1,20 @@
+The 'Blinky' project is a simple RTX based program for
+TI 'TM4C129XNCZAD' microcontroller using TI 'EK-TM4C129x' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL             = 25.00 MHz
+   - SYS =  PIOSC     = 16.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  TM4C129 RAM:           configured for on-chip RAM
+                         (used for debugging)
+
+  TM4C129 Flash:         configured for on-chip Flash
+                     (used for production or target debugging)

@@ -1,0 +1,30 @@
+The LCD_Blinky project is a simple demo program for the ST 'STM32L152VB' 
+microcontroller using ST 'STM32L152-EVAL' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           32.00 MHz
+   - HCLK    = SYSCLK  = 32.00 MHz
+
+ - ARM logo rotates on GLCD
+ - potentiometer position is displayed as bargraph on  GLCD
+ - status of buttons and joystick are displayed on GLCD
+ - 4 LEDs blink
+
+Jumper setting: 
+    JP18:  closed    (LED3)
+    JP19:  closed    (LED4)
+
+
+ 
+The LCD_Blinky program is available for target:
+
+  STM32L152 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+
+Note:
+  Do NOT rebuild if you are using uVision Evaluation Version!
+

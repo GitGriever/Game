@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple demo program for
+NXP 'LPC11U68' microcontroller using NXP 'LPC11U68 Xpresso V2' Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  12 MHz
+   - SYSPLL =  48 MHz
+
+
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs blink with speed depending on potentiometer position
+
+
+The Blinky program is available in different targets:
+
+  LPC11U68 RAM:    runs from Internal Flash
+                   (used for target debugging)
+
+  LPC11U68 Flash:  runs from Internal Flash
+                   (used for production or target debugging)

@@ -1,0 +1,21 @@
+The Memory project is a demo program for the TWR-K60N512 Board
+using MK60N512VMD100 Microcontroller.
+
+Example functionality:
+  
+  - Clock settings:
+    - XTAL          =  50 MHz
+    - CPU Clock     =  96 MHz
+    - USB Clock     =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+The Memory program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MK60N512 Flash:  Configured for on-chip Flash ROM
+                (used for production or target debugging)

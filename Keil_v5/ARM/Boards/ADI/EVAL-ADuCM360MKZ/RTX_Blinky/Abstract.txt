@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+'ADuCM360' microcontroller using AnalogDevices 'EVAL-ADuCM360MKZ' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =    
+   - CPU     =    (HFOSC) 16.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  ADuCM360 Flash:     configured for on-chip Flash
+                      (used for production or target debugging)
+
+  ADuCM360 RAM:       configured for on-chip RAM
+                      (used for target debugging)

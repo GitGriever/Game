@@ -1,0 +1,35 @@
+The Blinky project is a simple demo program for the Infineon 'XMC4500' 
+microcontroller using Infineon 'CPU_45A-V2' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - 1 LED blinks with speed depending on potentiometer position
+ - AD conversion is done in interrupt mode
+ - AD settings: 12 bit resolution
+
+
+The Blinky program is available in different targets:
+
+  TracePort Trace:           runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+                             use connector "ARM 20-Pin Connector"
+
+  TracePort IntructionTrace: runs from Internal Flash
+                             shows use of Instruction Trace, ITM output
+                             use connector "ARM 20-Pin Connector"
+
+
+XMC4500 notes
+-------------
+for device A11 use Debug Port JTAG
+for device A13 use Debug Port SW
+
+
+ULINKpro notes
+--------------
+TracePort.ini enables synchronous 4bit Trace Interface

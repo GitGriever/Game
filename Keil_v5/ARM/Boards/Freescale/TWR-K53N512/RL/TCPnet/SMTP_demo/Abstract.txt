@@ -1,0 +1,45 @@
+This program is an SMTP Client example. It shows you how to send 
+a dynamic email to an email address. This example will configure 
+the LAN network parameters for the evaluation board automatically
+if a DHCP Server is available in your LAN.
+
+If you do not have a DHCP server, you need to configure
+the IP address, net mask and default gateway and Primary DNS
+and Secondary DNS Server manually in the Net_Config.c configuration
+file. You have to disable also 'Dynamic Host Configuration' under 
+the 'Ethernet Network Interface' section.
+
+WARNING!!!
+
+You need to modify SMTP_uif.c user interface module and enter:
+ - sender email address,
+ - recipient email address 
+ - email subject
+
+and optionally for external SMTP authentication:
+ - SMTP username
+ - SMTP password
+
+Modify also the SMTP_demo.c and enter:
+ - SMTP server IP address
+
+Sent email will have about 40 kBytes.
+
+The SMTP_demo example is available for several targets:
+
+
+MK53N512:
+    Standalone application for TWR-K53N512 Board.
+    Program code is loaded into on-chip flash.
+
+MK53N512 Debug:
+    Standalone Debug application. Debug level configured
+    in Net_Debug.c debug configuration file.
+    Connect a serial cable to RS232 port to view output
+    messages using HyperTerminal at 115200 baud,
+    8-bits, no parity, 1 stop bit, XON/XOFF.
+
+
+Jumper settings:
+  TWR-SER board, Rev D:
+    J3 must connect pins 2 and 3 (Connect CLOCKIN0 to OSC)

@@ -1,0 +1,31 @@
+The RTX_Blinky project is a simple RTX Kernel based example
+for the Triad 'TSX-1001' microcontroller using Keil 'MCBTSX1001'
+Evaluation Board, compliant to Cortex Microcontroller
+Software Interface Standard (CMSIS V2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =           44.00 MHz
+   - SYSCLK  =           22.00 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+
+The Blinky program is available in different targets:
+
+  TSX1001 Flash:    runs from Internal Flash located on chip
+                    (used for production or target debugging)
+
+  TSX1001 RAM:      runs from Internal RAM located on chip
+                    (may be used for target debugging)

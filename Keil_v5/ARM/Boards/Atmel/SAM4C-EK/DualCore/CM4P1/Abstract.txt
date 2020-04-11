@@ -1,0 +1,28 @@
+The 'CM4P1 Blinky' project is a simple demo program for
+Atmel 'ATSAM4C16C' microcontroller using Atmel 'SAM4C-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+This example demonstrates how to configure dual core application project
+in order to use SAM4C CM4P1 core together with SAM4C CM4P0 core.
+
+Example functionality:
+ - Clock Settings:
+   - CPU = 8.00 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - LED D10 is toggled with the speed depending on SysTick Timer interrupt period
+
+ 
+The CM4P1 Blinky program is available for target:
+
+  SAM4C_CM4P1:     runs from Internal RAM located on chip
+                   (may be used for target debugging)
+
+
+
+Note:
+  CM4P1 application image "CM4P1_Image.c" is copied into CM4P0 project folder and
+  loaded into internal RAM using CM4P0 core.
+  
+  Debug of the CM4P1 application is possible after CM4P1 image is loaded into SRAM1
+  and CM4P1 core is released from reset by CM4P0.

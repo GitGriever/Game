@@ -1,0 +1,31 @@
+This example program shows how to use the RTX CAN Driver on 
+'Keil MCB4300 Evaluation Board' with 
+'NXP LPC4350' microcontroller.
+
+Clock Settings:
+ - XTAL                  =  12 MHz
+ - PLL0                  = 480 MHz
+ - PLL1                  = 180 MHz
+ - CPU  clock = PLL1     = 180 MHz
+
+Example functionality:
+ - send converted analog value in first byte in CAN message on 
+   CAN1 controller every 1 second
+ - display received and transmitted byte values and count on 
+   LCD display
+   CAN1 controller speed: 500 kbits
+
+This example shows how to use RTX CAN Driver.
+
+You may change the value of analog input with potentiometer 
+and watch the values on LCD display change accordingly.
+
+
+The CAN_Ex1 example program is available for several targets:
+
+  LPC4357 Flash:         downloads to and executes from internal Flash
+                        (used for target debugging)
+  LPC4350 Ext. Flash :   downloads to and executes from external Flash
+                        (used for target debugging)
+  LPC4350 RAM:           downloads to and executes from internal RAM
+                        (used for target debugging)

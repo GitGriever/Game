@@ -1,0 +1,22 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the SD/MMC
+Flash Memory Card and format the card.
+
+The SD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MK60F120M Flash:
+    Standalone application for TWR-K60F120M Board using RS232
+    serial port as a communication interface.
+
+    Connect a serial cable to RS232 COM port using
+    HyperTerminal at 115200 baud, 8-bits, no parity,
+    1 stop bit, XON/XOFF.
+
+Example properties:
+  - Clock settings:
+    - XTAL        =  50 MHz
+    - CPU Clock   = 120 MHz
+    - SD Clock    =  24 MHz
+
+  - RS232: 115200 baud, 8 data bits, no parity, 1 stop bit

@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Fujitsu 'MB9BF506R' microcontroller using Keil 'MCB9B500' 
+Development Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:  
+ - Clock Settings:
+   - XTAL  =   4 MHz
+   - CCLK  =  80 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  MB9BF506R Flash:  configured for on-chip Flash
+                    (used for production or target debugging)
+
+  MB9BF506R RAM:    configured for on-chip RAM
+                    (used for target debugging)

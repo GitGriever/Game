@@ -1,0 +1,31 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files on the NAND Flash
+Memory.
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - USART2 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+ - MT29F2G16ABAEAWP NAND Flash Settings:
+   - Page Size:   2048 + 64 bytes
+   - Block Size:  64 pages
+   - Device Size: 2048 blocks
+
+
+The NAND_FILE program is a standalone application loaded into
+on-chip flash and available for single target:
+
+MK60FN1M Flash:
+    Standalone application for TWR-K60F120M Board using RS232
+    serial port as a communication interface.
+
+    Connect a serial cable to RS232 COM port using
+    HyperTerminal at 115200 baud, 8-bits, no parity,
+    1 stop bit, XON/XOFF.

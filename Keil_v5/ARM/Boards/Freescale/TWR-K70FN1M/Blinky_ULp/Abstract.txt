@@ -1,0 +1,37 @@
+The 'Blinky' project is a simple demo program for Freescale 'MK70' series 
+microcontroller using Freescale 'TWR-K70FN1M' evaluation board populated with
+K70FN1M0VMJ12 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 20971520 Hz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs (PTA.11,28,29) blink every 1 sec
+ - LED's ON/OFF Status is output onto ITM debug port #0
+   
+The Blinky program is available in different targets:
+  SWO Trace:                   runs from Internal Flash
+                               shows use of ITM output, Exception Trace
+
+  TracePort Trace:             runs from Internal Flash
+                               shows use of ITM output, Exception Trace
+
+  TracePort Instruction Trace: runs from Internal Flash
+                               shows use of ITM output, Instruction Trace
+
+  Embedded Trace Buffer      : runs from Internal Flash
+                               shows use of ITM output, Instruction Trace
+
+- ULINKpro notes
+--------------
+K70_TracePort.ini enables synchronous 4bit Trace Interface
+ETM Trace pins:  TRACECK         PTA5
+                 TRACED0..3      PTA6..PTA9    (4 bit trace data)
+                 do not use these pins in your application!
+
+K70_TracePort.ini is not required for using the Embedded Trace Buffer.
+
+TWR-K70FN1M notes 
+--------------
+Remove R138 and place R137 to connect the Trace Clock to the debug connector. 
+(This clock is multiplexed with the external USB PHY clock (ULPI_CLK) 
+and the USB clock function is the default.)

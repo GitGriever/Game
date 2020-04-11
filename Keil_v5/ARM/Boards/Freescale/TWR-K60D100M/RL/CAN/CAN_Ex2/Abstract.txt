@@ -1,0 +1,39 @@
+This example program shows how to use the RTX CAN Driver on 
+'Freescale TWR-K60D199M Evaluation Board' with 
+'Freescale Kinetis MK60DN512' microcontroller.
+
+ - Clock Settings:
+   - Core    clock =  96 MHz
+   - Bus     clock =  48 MHz
+   - FlexBus clock =  48 MHz
+   - Flash   clock =  24 MHz
+
+ - Communication Interface Settings:
+   - CAN1:   500 kbits
+
+Example functionality:
+ - set converted analog value every 1 second to a message that 
+   will be automatically returned upon reception of remote 
+   transmission request (ID = 0x20)
+ - send Remote Transmission Request every 1 second and 
+   display higher 4 bits of received byte in hexadecimal 
+   representation on 4 LEDs (ID = 0x21)
+
+This example shows how to use RTX CAN Driver.
+
+You may change the value of analog input with potentiometer 
+and watch the values on LEDs change accordingly.
+
+Note: 
+      Jumpers position on the TWR-SER module:
+         - J5  = 1-2  shorted
+                 3-4  shorted
+                 5-6  shorted
+                 7-8  shorted
+                 9-10 shorted
+      J7 pin 1 is CANH, J7 pin 3 is CANL
+
+The CAN_Ex2 example program is available for one target:
+
+K60DN512:   Standalone application.
+

@@ -1,0 +1,22 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+NXP 'LPC11U37' microcontroller using NGX 'BlueBoard-LPC11U37', 
+compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL              =  12 MHz
+   - PLL0              =  48 MHz
+   - PLL1              =  48 MHz
+   - CCLK   = PLL0 / 1 =  48 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  LPC11U37 RAM:   runs from Internal RAM located on chip
+                  (used for target debugging)
+
+  LPC11U37 Flash: runs from Internal Flash located on chip
+                  (used for production or target debugging)

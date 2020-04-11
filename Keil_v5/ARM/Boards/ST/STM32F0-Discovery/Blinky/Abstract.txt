@@ -1,0 +1,23 @@
+The Blinky project is a simple demo program for the ST 'STM32F051R8' 
+microcontroller using ST 'STM32F0-Discovery' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - SYSCLK  =           48.00 MHz
+   - HCLK    = SYSCLK  = 48.00 MHz
+
+ - 2 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - if Button USER is pressed all LEDs are lit.
+
+
+
+The Blinky program is available in different targets:
+
+  STM32F051 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+  STM32F051 RAM:      configured for on-chip RAM
+                      (used for target debugging)
+

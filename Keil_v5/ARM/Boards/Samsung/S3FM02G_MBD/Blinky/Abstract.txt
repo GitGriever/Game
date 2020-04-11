@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple demo program for Samsung S3FM02G  
+microcontroller using Samsung 'S3FM02G_MBD' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - HCLK runs at 37.5 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs (D.5..8) blink every 250 ms 
+The Blinky program is available in different targets:
+  S3FM02G - Flash:                 runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  S3FM02G - RAM:                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  S3FM02G - Flash + Smart Opt:     S3FM02G with Smart Option
+                                  (used for programming)
+
+
+
+ 

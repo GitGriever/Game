@@ -1,0 +1,23 @@
+This example program shows how to use the RTX CAN Driver on 
+'LM3S2110 CAN DEVICE' with 'Luminary LM3S2110' microcontroller 
+(should be used with 'LM3S8962 EVALUATION BOARD' board 
+to see complete functionality).
+
+Example functionality:
+ - set incrementing value in first byte in CAN message 
+   that will automatically be sent upon reception of 
+   remote transmission request
+ - display LSB bit of set byte on STATUS LED
+   CAN controller speed: 500 kbits
+
+This example shows how to use RTX CAN Driver.
+
+The CAN_Ex2 example program is available for several targets:
+
+LM3S2110 Flash: runs from Internal Flash located on chip
+                (used for production or target debugging)
+
+Notes:      
+  - this example works together with CAN_Ex2 example for 
+    'LM3S8962 EVALUATION BOARD' board which can be found 
+    in folder: Boards\Luminary\EK-LM3S8962\RL\CAN\CAN_Ex2

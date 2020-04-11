@@ -1,0 +1,22 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Holtek 'HT32F1755' microcontroller using Holtek 'HT32F1755/2755 
+Development Board', compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLKC   = SYSCLK  = 72.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  HT32F1755 Flash:  configured for on-chip Flash
+                    (used for production or target debugging)
+
+  HT32F1755 RAM:    configured for on-chip RAM
+                    (used for target debugging)

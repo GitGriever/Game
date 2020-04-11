@@ -1,0 +1,23 @@
+The 'Hello' project is a simple program for 
+Sonix 'SN32F109' microcontroller using SONiX 'SN32F100_Starter_Kit' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =
+   - CPU     =    (IHRC) 12.00 MHz
+
+ - "Hello World" is output onto serial port UART1
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  SN32F109 Flash JLink: configured for on-chip Flash (uses JLink Debugger)
+                        (used for production or target debugging)
+
+  SN32F109 Flash:       configured for on-chip Flash (uses ULINK2/ME Debugger)
+                        (used for production or target debugging)
+
+  SN32F109 RAM:         configured for on-chip RAM (uses ULINK2/ME Debugger)
+                        (used for target debugging)

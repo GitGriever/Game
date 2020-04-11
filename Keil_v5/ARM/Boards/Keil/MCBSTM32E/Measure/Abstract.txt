@@ -1,0 +1,29 @@
+The 'Measure' project is a simple program for the ST 'STM32F103ZE'
+microcontroller using Keil 'MCBSTM32E' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLK    = SYSCLK  = 72.00 MHz
+
+The example uses analog and digital inputs to simulate a datalogger.
+You may watch the value of analog input POT1 and the state of the
+Joystick (Buttons right, left, up, select) on MCBSTM32E evaluation board.
+
+ - AD conversion is done in DMA mode
+ - AD settings: 12 bit resolution
+ - Logged data is output onto serial port USART2 
+   - USART2 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Measure program is available in different targets:
+
+  Simulator:          configured for software Simulator
+
+  STM32F103 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+  STM32F103 RAM:      configured for on-chip RAM
+                      (used for target debugging)

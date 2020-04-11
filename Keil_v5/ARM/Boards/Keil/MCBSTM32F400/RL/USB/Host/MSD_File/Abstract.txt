@@ -1,0 +1,26 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  25 MHz
+   - CPUCLK = 168 MHz
+   - USBCLK =  48 MHz
+
+ - Communication Interface Settings:
+   - USART3: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MCBSTM32F400: Standalone application for Keil MCBSTM32F400 Board using
+           OTG_FS and OTG_HS as USB Ports and COM port as a communication interface.
+
+Notes:   - Cable necessary for connecting USB memory device should have 
+           USB micro-A plug connector on one side and Standard USB Type-A 
+           receptacle connector on the other side.
+           Set jumpers J13 and J14 to 1-2 position, to select UART3.
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

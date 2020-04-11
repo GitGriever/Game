@@ -1,0 +1,21 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the SD/MMC 
+Flash Memory Card and format the card. 
+
+The SD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+STM32F217 Flash:
+    Standalone application for MCBSTM32F200 Board using serial
+    port USB FTDI (UART6) as a communication interface.
+
+    Connect a serial cable to USB FTDI COM port using
+    HyperTerminal at 115200 baud, 8-bits, no parity,
+    1 stop bit, XON/XOFF.
+           
+Example properties:
+  - Clock settings:
+    - XTAL        =  25.00 MHz
+    - CPU Clock   = 120.00 MHz
+
+  - USB FTDI (USART6): 115200 baud, 8 data bits, no parity, 1 stop bit

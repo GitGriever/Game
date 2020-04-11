@@ -1,0 +1,25 @@
+The 'Blinky' project is a simple program for the SN32F717 microcontroller
+using SONiX 'SN32F717_Starter_Kit' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =
+   - CPU     =    (IHRC) 12.00 MHz
+
+ - 2 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - "Hello World" is output onto serial port UART0
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  SN32F717 Flash JLink: configured for on-chip Flash (uses JLink Debugger)
+                        (used for production or target debugging)
+
+  SN32F717 Flash:       configured for on-chip Flash (uses ULINK2/ME Debugger)
+                        (used for production or target debugging)
+
+  SN32F717 RAM:         configured for on-chip RAM (uses ULINK2/ME Debugger)
+                        (used for target debugging)

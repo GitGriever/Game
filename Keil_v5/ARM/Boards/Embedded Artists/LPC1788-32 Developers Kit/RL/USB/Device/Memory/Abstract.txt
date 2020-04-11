@@ -1,0 +1,14 @@
+The Memory project is a demo program for the Embedded Artists
+LPC1788-32 Developers Kit using a NXP LPC1788 Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  MCB1788_USB1:  configured for on-chip Flash ROM
+                (used for production or target debugging)
+  MCB1788_USB2:  configured for on-chip Flash ROM
+                (used for production or target debugging)
+

@@ -1,0 +1,19 @@
+The RTX_Blinky project is a simple program for the 'LM4F120'
+microcontroller using 'TI EK-LM4F120XL Evaluation Board'.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL             = 16.00 MHz
+   - SYS   = XTAL     = 16.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  LM4F120 RAM:       runs from Internal RAM located on chip
+                     (used for target debugging)
+
+  LM4F120 Flash:     configured for on-chip Flash
+                     (used for production or target debugging)

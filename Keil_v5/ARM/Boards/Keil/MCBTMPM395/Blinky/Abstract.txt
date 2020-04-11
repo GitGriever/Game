@@ -1,0 +1,24 @@
+The 'Blinky' project is a simple demo program for the Toshiba 'TMPM395FWXBG' 
+microcontroller using Keil 'MCBTMPM395' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  20 MHz
+   - CCLK  =  20 MHz
+ - AD settings: 10 bit resolution
+
+ - SysTick Timer is used in interrupt mode
+ - 2 LEDs blink with speed depending on potentiometer position
+ - when any of buttons PB7, PB5 is pressed appropriate LED is turned on
+
+The Blinky program is available in different targets:
+  MCBTMPM395 Flash:  runs from Internal Flash located on chip
+                     (used for production or target debugging)
+
+  MCBTMPM395 RAM:    runs from Internal RAM located on chip
+                     (used for target debugging)
+
+  MCBTMPM395 Trace:  runs from Internal Flash located on chip
+                     (configured for instruction trace with ULINKpro
+                      use connector "Cortex Debug + ETM"            )

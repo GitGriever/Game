@@ -1,0 +1,34 @@
+The Memory project is a demo program for the Atmel SAM3U-EK Board.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - PLLA                  = 168 MHz
+   - Main Clock = PLLA / 2 =  84 MHz
+
+   - USART port: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+NAND Flash device is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over COM Port.
+
+When USR-RIGHT button is pressed the USB Memory is unmounted from
+the PC and can be accessed from the target over USART Port. It
+allows to create, read, copy, delete files and format the NAND
+Flash. Pressing USR-RIGHT button again will re-mount the USB Memory
+on the PC.
+
+The Memory program is a standalone application loaded into
+on-chip flash and available for one target:
+
+SAM3U-EK:  Standalone application for ATSAM3U-EK Board using
+           USART port as a communication interface.
+
+           Connect a serial cable to RS232 COM port using
+           HyperTerminal at 115200 baud, 8-bits, no parity,
+           1 stop bit, No Flow Control.

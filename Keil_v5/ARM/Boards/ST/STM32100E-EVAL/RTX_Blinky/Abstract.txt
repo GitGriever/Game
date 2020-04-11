@@ -1,0 +1,24 @@
+The RTX_Blinky project is a simple RTX Kernel based example
+for the ST 'STM32F100ZE' using ST 'STM32100E-EVAL' 
+Evaluation Board and and is compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v1.30).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =   8 MHz
+   - SYSCLK  =  24 MHz
+
+The simple RTX Kernel based example simulates the step-motor driver.
+LEDs are blinking simulating the activity of the clock task.
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The Blinky program is available in different targets:
+
+
+  STM32100E-EVAL RAM:    runs from Internal RAM located on chip, GLCD disabled
+                         (used for target debugging)
+
+  STM32100E-EVAL Flash:  runs from Internal Flash located on chip
+                         (used for production or target debugging)

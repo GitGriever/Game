@@ -1,0 +1,20 @@
+The 'Blinky' project is a simple demo program for Freescale 'MKM34' series 
+microcontroller using Freescale 'TWR-KM34Z50M' evaluation board populated with
+MKM34Z128xxx5 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 48 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs (PTC1,PTD1,PTF1,PTE5) blink every 500 ms 
+ - AD conversion is done in polling mode 
+   AD settings: 16 bit resolution
+   AD value (potentiometer position) is output on the Segment LCD 
+
+The Blinky program is available in different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)

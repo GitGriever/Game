@@ -1,0 +1,21 @@
+The LCD_Blinky project is a simple program for the 'LM4F232'
+microcontroller using 'TI EK-LM4F232 Evaluation Board'.
+
+It blinks the Status LED and shows time and button 
+states on OLED display.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL             = 16.00 MHz
+   - PLL not used 
+   - SYS   = XTAL     = 16.00 MHz
+ - LED STATUS toggles every 1 second
+   (LED STATUS is connected to PG2)
+ - Button states are shown on OLED display
+ - If SW5 is pressed time is stopped
+
+
+The Blinky program is available for target:
+
+  LN4F232 Flash:     configured for on-chip Flash
+                     (used for production or target debugging)

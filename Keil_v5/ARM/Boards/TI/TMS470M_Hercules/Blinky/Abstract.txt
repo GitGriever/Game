@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple demo program for TI TMS470Mx series
+microcontroller using the TI 'TMS470M Hercules' evaluation board 
+populated with the 'TMS470MF06607' device.
+
+Example functionality
+ - Clock Settings:
+   - Core    clock =  80 MHz
+ - SysTick Timer is used in interrupt mode
+ - 6 LEDs (HET0..5) blink every 500 ms (250 ms on, 250 ms off) 
+
+The Blinky program is available for different targets:
+  JLink - Flash:                  Debug/Target Driver is configured as JLINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  JLink - RAM:                    Debug/Target Driver is configured as JLINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+JLink Note:
+- Regular J-Link hardware version must be higher than 8.00.

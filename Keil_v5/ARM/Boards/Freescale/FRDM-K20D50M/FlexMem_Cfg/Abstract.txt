@@ -1,0 +1,37 @@
+The 'FlexMemory Config' project is a used for programming the FlexMemory partition information 
+which is located in data flash IFR. Memory block can be configured as additional program, data
+flash and/or EEPROM. Typically, FlexMemory configuration is executed only once in the lifetime 
+of the device. (Applicable for MKxxx 50 Mhz devices with FlexMemory Block)
+
+  CMSIS-DAP:                    Target Driver is configured as CMSIS-DAP
+                                configures the followings in data flash IFR:  
+                                - The relative sizes of Data Flash size
+                                  and EEPROM Backup size within FlexNVM area
+                                - The relative size of EEPROM within FlexRAM area
+                              (used for production)
+
+  ULINK:                        Target Driver is configured as ULINK
+                                configures the followings in data flash IFR:  
+                                - The relative sizes of Data Flash size
+                                  and EEPROM Backup size within FlexNVM area
+                                - The relative size of EEPROM within FlexRAM area
+                              (used for production)
+
+Perform the following steps to configure the data flash IFR.
+  1. Configure the "EEPROM size", "EEPROM Split Factor", and "FlexNVM Partition Code". (MKxx50MhzDataIFR.s)
+  2. Build the Target
+  3. Click the button LOAD, to download to flash
+
+
+ULINK note: For using ULINK Debug/Target driver, Samtec FTSH-105-02-F-D or compatible connectors can be added
+      to the J6 through-hole debug connector to allow for an external debug cable to be connected.
+
+
+Selecting "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to FRDM-K20D50 user manual.

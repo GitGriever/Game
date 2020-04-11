@@ -1,0 +1,18 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the SD/MMC 
+Flash Memory Card and format the card. 
+
+The SD_FILE program is a standalone application loaded into
+on-chip flash and available for two targets:
+
+LM3S6965:  Standalone application for Luminary LM3S6965 Board
+           using COM# virtual serial port.
+
+           Use HyperTerminal and select the COM# Windows has 
+           assigned to the Virtual COM port on the LM3S6965 
+           evaluation board. Set the serial connection to
+           115200 baud, 8-bits, no parity, 1 stop bit and no 
+           flow control.
+
+Note: SD Card and OLED display share the same SPI interface on
+      EK-LM3S6965 Evaluation Board.

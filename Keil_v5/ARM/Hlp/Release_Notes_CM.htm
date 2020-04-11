@@ -1,0 +1,882 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title>MDK-ARM - Release Notes</title>
+<meta http-equiv=content-language content=en-us>
+<meta name=GENERATOR content="Microsoft FrontPage 12.0">
+<meta name=ProgId content=FrontPage.Editor.Document>
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<style>
+
+
+    p{font-family:verdana;font-size:10pt}
+    .LI2{margin-top:6px;margin-bottom:6px}
+    Release{background-color:#ccc;font-weight:bold;padding:6px}
+    .ToolT{font-size:8pt;color:#808080}
+    .TinyT{font-size:8pt;text-align:center}
+    h1{font-family:verdana;font-size:18pt;color:#000080;font-weight:bold;text-align:center;margin-right:3px}
+    h2{font-family:verdana;font-size:14pt;color:#000080;font-weight:bold;margin-top:24px;margin-bottom:3px;background-color:#ccc;padding:6px}
+    h3{font-family:verdana;font-size:11pt;font-weight:bold;margin-top:24px;margin-bottom:3px;background-color:#ccc;padding:6px}
+    h4{font-family:verdana;font-size:10pt;font-weight:bold;color:#FFFFFF;margin-top:24px;margin-bottom:3px;background-color:#0000FF;padding:6px}
+    h5{font-family:verdana;font-size:10pt;font-weight:bold;color:#800000;margin-top:3px;margin-bottom:1px;}
+    pre{font-family:courier new;font-size:10pt;background-color:#cfc;margin-left:24px;margin-right:24px}
+    ul{font-family:verdana;font-size:10pt;list-style-type:square}
+    ol{font-family:verdana;font-size:10pt}li{margin-left:12pt;padding-left:0;margin-top:12px;margin-bottom:6px}
+    ul 
+    li 
+    pre{margin-top:6pt;font-family:courier new;font-size:9pt;background-color:#cfc;margin-left:0px;margin-right:0px}
+    note{margin-top !important:20pt; margin-bottom !important:12pt; font-family:verdana;font-size:10pt;background-color:#cfc; margin-left !important:12px; margin-right !important:12px}
+    ul 
+    li 
+    ul{margin-top:6pt;margin-bottom:6pt;margin-left:0pt;padding-left:0}ul li ul li{margin-top:3pt;margin-bottom:3pt}
+    ul
+    li 
+    ol{margin-top:6pt;margin-bottom:6pt;margin-left:12pt;padding-left:0}ul li ol li{margin-top:3pt;margin-bottom:3pt}
+.style1 {font-weight: normal;}
+.style2 {color: #FF0000;}
+.prelim {color: Red; }
+</style>
+</head>
+<body><h1>Release Notes for<br>
+MDK Cortex-M legacy support</h1>
+<p align=center>This file contains release notes and last minute changes.</p>
+<p class=TinyT>Information in this file, the accompany manuals, and software is<br>
+Copyright © 2018 ARM Ltd and ARM Germany GmbH.<br>All rights reserved.</p>
+<hr><h2>Contents</h2>
+  <ol>
+    <li class=LI2><a href="#WhatsNew">What's New in the MDK Cortex-M legacy package.</a></li>
+    <li class=LI2><a href="#ExamplePrograms">Example Programs</a></li>
+    <li class=LI2><a href="#DeviceDatabase">Device Database™</a></li>
+    <li class=LI2><a href="#PeripheralSimulation">Peripheral Simulation</a></li>
+    <li class=LI2><a href="#TechnicalSupport">Technical Support</a></li>
+    <li class=LI2><a href="#ContactDetails">Contact Details</a></li>
+  </ol>
+<p>
+  The <a target="_blank" href="http://www.keil.com/arm/mdk.asp"><b>Microcontroller Development Kit (MDK-ARM)</b></a> supports software development for and debugging of 
+  <b>Cortex-M</b> processor-based devices. A detailed description of 
+  <b>MDK-ARM</b> can be found in the section <b>Complete User's Guide Selection</b>
+  of the µVision window <b>Books</b>. 
+  The <b>Getting Started User's Guide</b> is a good introduction to the main concepts of <b>MDK-ARM</b> and gives guidelines for programming ARM devices.
+</p>
+
+<h2><a name="WhatsNew"></a>What's New in the MDK Cortex-M legacy package.</h2>
+
+<p>The next sections list the changes for each release of the MDK Cortex-M legacy package.</p>
+
+
+<h3> MDK Version 5.25 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+      <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+       <ul>
+          <li> Corrected: <b>LFN</b> name compare function.</li>
+       </ul>
+      </li>
+
+
+      <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+        <ul>
+         <li>Updated the <b>Graphic Component emWin</b> to version <b>5.46e</b> in folder <b>..\ARM\Segger\emWin\</b> and affected examples.</li>
+        </ul>
+      </li>
+
+  </ul></li>
+
+</ul>
+
+
+
+<h3> MDK Version 5.24 Legacy support for Cortex-M devices</h3>
+<ul>
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/nxp/arm.htm"><b>NXP</b></a><br>
+        <ul>
+           <li>Added: internal EEPROM support for <b>LCP18xx</b> based devices in header file <b>.\ARM\INC\NXP\LPC18xx\LPC18xx.h</b>.</li>
+       </ul>
+      </li></ul>
+
+     </ul></li>
+
+
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+       <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+         <ul>
+         <li> Corrected: nonaligned writes to the end of <b>NOR</b> sectors.</li>
+       </ul></li>
+  
+      <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+        <ul>
+         <li>Corrected: non-ASCII character in file <b>.\ARM\Segger\emWin\emWin\Sample\Application\GUIDemo\GUIDEMO_Listview.c</b>.</li> 
+        </ul>
+      </li>
+
+  </ul></li>
+
+</ul>
+
+
+<h3> MDK Version 5.23 Legacy support for Cortex-M devices</h3>
+<ul>
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/toshiba/arm.htm"><b>Toshiba</b></a><br>
+        <ul>
+           <li>Added: ULinkPro project for the <b>MCBTMPM360</b> board in the <b>.\Boards\Keil\MCBTMPM360\Blinky_ULp\</b> folder.</li>
+       </ul>
+      </li></ul>
+
+     </ul></li>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+      <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+        <ul>
+         <li>Added: IMAGE_Private.h header file to folder <b>emWin\Include</b>.</li> 
+        </ul>
+      </li>
+
+  </ul></li>
+
+</ul>
+
+
+
+
+
+<h3> MDK Version 5.22 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+      <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+        <ul>
+         <li>Updated the <b>Graphic Component emWin</b> to version <b>5.36f</b> in folder <b>..\ARM\Segger\emWin\</b> and affected examples.</li>
+        </ul>
+      </li>
+
+  </ul></li>
+
+</ul>
+
+
+<h3> MDK Version 5.21 Legacy support for Cortex-M devices </h3>
+<ul>
+
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+        <ul>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+            <ul>
+             <li> Improved: mount speed for <b>FAT-32</b> formatted removable devices.</li>
+          </ul></li>
+
+        </ul></li>
+
+   </ul></li>
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+        <ul>
+           <li>Added: missing MATRIXARB register in LPC177x_8x header file in folder <b>.\INC\NXP\LPC177x_8x\</b>.</li>
+
+       </ul>
+      </li></ul>
+
+     </ul></li>   
+
+
+
+
+</ul>
+
+
+<h3> MDK Version 5.20 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul><li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+
+      <ul>
+      <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-can.asp"><font color="#0065AF" size="2"><b>[CAN]</b></font></a>
+        <ul><li>Corrected: CAN Driver ID filtering for <b>Kinetis</b> devices.</li></ul>
+      </li>
+
+      <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-usb.asp"><font color="#0065AF" size="2"><b>[USB Device]</b></font></a>
+         <ul>
+           <li>Added: <b>INQUIRY [vital product data pages : 0x00 and 0x80]</b> command for <b>USB Mass Storage Devices</b>.</li>
+         </ul>
+      </li>
+      </ul>
+
+    </li></ul>
+  </li>
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/Freescale/arm.htm"><b>Freescale</b></a><br>
+        <ul>
+           <li>Corrected: BlankCheck function for the Kinetis Flash Algorithm <b>MK_P128_50MHZ.FLM</b> in folder <b>.\Startup\NXP\LPC407x_8x_177x_8x\</b>.
+           </li>
+       </ul>
+      </li></ul>
+
+     </ul></li>   
+  
+  
+
+
+</ul>
+
+
+
+
+<h3> MDK Version 5.18 Legacy support for Cortex-M devices</h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+  
+        <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+          <ul>
+           <li>Updated the <b>Graphic Component emWin</b> to version <b>5.32b</b> in folder <b>..\ARM\Segger\emWin\</b> and affected examples.</li>
+          </ul>
+        </li>
+  
+  </ul></li>
+
+ 
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+        <ul>
+           <li>Added: EMC configuration to the <b>system_LPC407x_8x_177x_8x.c</b> file in folder <b>.\Startup\NXP\LPC407x_8x_177x_8x\</b>.</li>
+       </ul>
+      </li></ul>   
+
+     </ul></li>  
+ 
+
+</ul>
+
+
+
+<h3> MDK Version 5.17 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+        <ul>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-tcpnet.asp"><font color="#0065AF" size="2"><b>[TCPnet]</b></font></a>
+            <ul>
+              <li>Added support for content type <b>"text/plain"</b> in HTTP Server POST requests from HTTP client.</li>
+            </ul>
+          </li>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+            <ul>
+             <li> Corrected: under some circumstances a delete operation in the <b>FAT</b> name cache can cause an application crash.</li>
+          </ul></li>
+
+        </ul></li>
+
+   </ul></li>
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+        <ul>
+           <li>Updated: the LPC_SYSCON_Type in LPC15xx header file in folder <b>.\INC\NXP\LPC15xx\</b>.</li>
+           <li>Updated: the <b>system_LPC18xx.c, system_LPC43xx.c, and system_LPC43xx_M0.c</b> files wich causes an error when compiled with <b>C99</b> option.</li>
+       </ul>
+      </li></ul>
+
+     </ul></li>
+
+
+
+</ul>
+
+<h3> MDK Version 5.16 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+  <ul>
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+        <ul>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-tcpnet.asp"><font color="#0065AF" size="2"><b>[TCPnet]</b></font></a>
+            <ul>
+              <li>Enhancement: the <b>DHCP</b> client updates <b>DNS</b> information during the lease renewal.</li>
+            </ul>
+          </li>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/kernel.asp"><b>[RTX]</b></a>
+            <ul>
+              <li>Corrected: the context switching behaviour for <b>Cortex-M4</b> based devices with <b>FPU</b>. 
+               Under some circumstances the context switching could lead to a crash when the thread which was using the <b>FPU</b> were terminated.</li>
+            </ul></li>
+
+        </ul>
+        </li>
+
+
+        <li><a target="_blank" href="http://www.keil.com/pack/doc/mw/Graphic/html/index.html"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+          <ul>
+           <li>Updated the <b>Graphic Component emWin</b> to version <b>5.30</b> which includes multilayer and multidisplay support.</li>
+          </ul>
+        </li>
+
+   </ul></li>
+
+   
+   
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/freescale/arm.htm"><b>Freescale Semiconductor</b></a><br>
+        <ul>
+           <li>Corrected: flash programming algorithm for <b>Kinetis KW40Z</b> devices.</li>
+       </ul>
+      </li></ul>   
+   
+     </ul></li>
+   
+   
+   
+</ul>
+
+
+<h3> MDK Version 5.15 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+       <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+       <ul>
+         <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-tcpnet.asp"><font color="#0065AF" size="2"><b>[TCPnet]</b></font></a>
+           <ul>
+             <li>Added: full <b>FTP</b> server path information in case of user access control.</li>
+             <li>Corrected: an error when processing fragmented <b>POST</b> requests.</li>		   
+           </ul>
+         </li>
+       </ul>
+       </li>
+     </ul>
+   </li>
+
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/atmel/arm.htm"><b>Atmel</b></a><br>
+        <ul>
+          <li>Reworked: <b>ATSAM4C32_2048</b> flash programming algorithm.</li>
+          <li>Added: <b>ATSAM4C_256.FLM</b> flash programming algorithm for <b>ATSAM4C</b> based devices.</li>
+          <li>Updated: device support files for <b>STM32F4xx</b> based devices.</li>
+       </ul>
+      </li></ul>
+
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+       <ul>
+           <li>Updated: LPC18xx.h header file. This includes now the FLASHCFGA and FLASHCFGB register.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/stmicroelectronics/arm.htm"><b>STMicroelectronics</b></a><br>
+        <ul>
+          <li>Updated: Blinky_ULp example for the <b>STM3220G-EVAL</b> and <b>STM3240G-EVAL</b> evaluation boards.</li>
+        </ul>
+       </li></ul>
+
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/ti/arm.htm"><b>Texas Instruments</b></a><br>
+        <ul>
+         <li>Corrected: XTALI frequency to 16MHz for <b>TM4C123</b> based devices.</li>
+         <li>Updated: device support files for <b>TM4C123</b> based devices.</li>
+        </ul>
+       </li></ul>
+
+
+    </ul></li>   
+   
+   
+
+</ul>
+
+
+<h3> MDK Version 5.14 Legacy support for Cortex-M devices </h3>
+<ul>
+
+  <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+       <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+       <ul>
+         <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-usb.asp"><font color="#0065AF" size="2"><b>[USB Device]</b></font></a>
+           <ul>
+             <li> Added: <b>INQUIRY [vital product data pages : 0x00 and 0x80]</b> command for <b>USB Mass Storage Devices</b>.</li>
+           </ul>
+         </li>
+         <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-tcpnet.asp"><font color="#0065AF" size="2"><b>[TCPnet]</b></font></a>
+           <ul>
+             <li> Corrected: Vulnerability to <b>Spank Attack</b> and <b>Spoofed RST packets</b>.</li>
+           </ul>
+         </li>
+       </ul>
+       </li>
+     </ul>
+   </li>
+</ul>
+
+
+<h3> MDK Version 5.13 Legacy support for Cortex-M devices </h3>
+<ul>
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/freescale/arm.htm"><b>Freescale Semiconductor</b></a><br>
+        <ul>
+         <li>Updated: MK_P512.FLM flash programming algorithm for Kinetis K60 devices.</li>
+        </ul>
+      </li></ul>
+
+     </ul></li>
+
+
+</ul>
+
+
+<h3> MDK Version 5.12a Legacy support for Cortex-M devices </h3>
+<ul>
+
+    <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+          <ul>
+
+
+              <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+              <ul>
+                  <li> Corrected: when a embedded drive is full, the system fails to write allocation information 
+                       and correctly close a file. So the drive becomes corrupted.</li>
+                  <li> Corrected: EFS fails to detect full blocks during fopen in case of a RAM drive.</li>
+              </ul></li>
+
+
+
+          </ul></li>
+
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/gui.asp"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+            <ul><li>Updated: <b>Segger emWin graphic library</b> version <b>5.26a</b> in folder <b>..\ARM\Segger\emWin\</b>.</li></ul>
+          </li>
+
+    </ul></li>
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/energymicro/arm.htm"><b>EnergyMicro</b></a><br>
+        <ul>
+        <li>Updated: <b>emlib</b> library to version <b>3.20.7</b> in folder in folder <b>..\ARM\RV31\LIB\EnergyMicro\emlib\</b>. Updated support for <b>EFM32GG</b>, <b>EFM32LG</b>, <b>EFM32TG</b>, <b>EFM32WG</b>, and <b>EFM32ZG</b> devices.</li>
+        <li>Updated: startup- and system files in folder <b>..\ARM\Startup\EnergyMicro\</b> for <b>EFM32G</b>, <b>EFM32GG</b>, <b>EFM32LG</b>, <b>EFM32TG</b>, <b>EFM32WG</b>, and <b>EFM32ZG</b> based devices.</li>
+        </ul>
+      </li></ul>
+
+
+    </ul></li>
+
+
+</ul>
+
+
+<h3> MDK Version 5.12 Legacy support for Cortex-M devices </h3>
+<ul>
+
+    <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+          <ul>
+
+              <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><b>[FlashFS]</b></a>
+              <ul>
+                  <li> Added : basic support for eMMC devices (MMC NAND flash).</li>
+                  <li> Corrected: multithread file write function which could cause corruption of the EFS file system.</li>
+                  <li> Corrected: an frename function issue when using FAT name cache. After renaming a file it was still possible to open it using old file name.</li>
+                  <li> Corrected: timestamp handling when the file size remains unchanged after a write access.</li>
+              </ul></li>
+
+              <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-usb.asp"><b>[USB Device </b></a> <b>and</b>
+                  <a target="_blank" href="http://www.keil.com/rl-arm/rl-usbhost.asp"><b> USB Host]</b></a>
+              <ul>
+                  <li> Removed: USB Host OHCI delay of 1 ms when returning from an interrupt service routine.</li>
+              </ul></li>
+
+              <li><a target="_blank" href="http://www.keil.com/rl-arm/kernel.asp"><b>[RTX]</b></a>
+              <ul>
+                 <li>Corrected: an RTX mailbox issue which occurs when multiple tasks are sending to the same mailbox and are blocked.</li>
+              </ul></li>
+
+
+          </ul></li>
+
+    </ul></li>
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/freescale/arm.htm"><b>Freescale Semiconductor</b></a><br>
+        <ul>
+           <li>Added: 160kB flash programming algorithm for KW4x devices.</li>
+           <li>Added: flash programming algorithms Kinetis KV4x devices.</li>
+           <li>Added: support for K02F, K11DxxxA, K21DxxxA, and K21FxxxA devices.</li>
+           <li>Added: Kinetis L KL17Z, KL27Z, KL33Z, and KL43Z devices.</li>
+           <li>Added: support for Kinetis KL03Z devices.</li>
+           <li>Udpated:  CMSIS files for Kinetis EA devices.</li>
+
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+       <ul>
+           <li>Added: 32kB flash programming algorithm for NXP LPC82x devices.</li>
+           <li>Added: for LPC11E6x devices.</li>
+           <li>Corrected: SD clock divider setting for LPC43xx and LPC18xx devices.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/stmicroelectronics/arm.htm"><b>STMicroelectronics</b></a><br>
+        <ul>
+            <li>Updated: flash programming algorithms for SAM4 devices.</li>
+            <li> Corrected: BusMode function for STM32F2xx/4xx series. The SDIO driver was handling pin PD4 instead of pin PD2.</li>
+        </ul>
+       </li></ul>
+
+    </ul></li>
+
+
+</ul>
+
+
+<h3> MDK Version 5.11a Legacy support for Cortex-M devices </h3>
+<ul>
+
+    <li>
+     Removed references to <b>absacc.h</b> from affected examples. This file no longer ships as part of MDK-ARM.
+     Use the <b>_attribute_</b> syntax instead of the macro <b>__at</b>.	 
+    </li>
+
+    <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+
+      <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+      <ul>
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><font color="#0065AF" size="2"><b>[FlashFS]</b></font></a>
+         <ul>
+          <li> Corrected: timestamp handling in case file size was unchanged after update.</li>
+          <li> Corrected: ffind() when searching directory without wildcard character included.</li>
+          <li> Corrected: ffind() handling of directory separators “\” and “/”.</li>
+          <li> Corrected: overlap detection in fcheck() for EFS.</li>
+         </ul>
+        </li>
+
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-tcpnet.asp"><font color="#0065AF" size="2"><b>[TCPnet]</b></font></a>
+         <ul>
+          <li> Corrected: file upload failure in HTTP Server.</li>
+          <li> Corrected: file upload failure in FTP client.</li>
+        </ul>
+        </li>
+
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-usb.asp"><font color="#0065AF" size="2"><b>[USB Device </b></a> <b>and</b>
+            <a target="_blank" href="http://www.keil.com/rl-arm/rl-usbhost.asp"><b> USB Host]</b></font></a>
+          <ul>
+           <li> Corrected: USB Device problem with HID in transfers.</li>
+           <li> Corrected: USB Host keyboard handling.</li>
+           <li> Corrected: USB Device driver for LPC11Uxx series.</li>
+          </ul>
+        </li>
+
+        </ul></li>
+
+
+          <li><a target="_blank" href="http://www.keil.com/rl-arm/gui.asp"><font color="#0065AF" size="2"><b>[Segger Graphic Library]</b></font></a>
+            <ul><li>Updated: <b>Segger emWin graphic library</b> version <b>5.24b</b> in folder <b>..\ARM\Segger\emWin\</b> and affected examples.</li></ul>
+          </li>
+  
+
+     </ul></li>
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/atmel/arm.htm"><b>Atmel</b></a><br>
+        <ul>
+          <li>Added: support for SAMD21 and SAMR12 based devices.</li>
+          <li>Added: support for SAM4C32 and SAM4CM32 based devices.</li>
+          <li>Updated: support for SAMD20 based devices.</li>		  
+       </ul></li></ul>
+
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/freescale/arm.htm"><b>Freescale Semiconductor</b></a><br>
+        <ul>
+          <li>Added: support for Kinetis E Series (KE02/KE04/KEA) devices.</li>
+          <li>Added: support for Kinetis K24F256 devices.</li>
+          <li>Updated:updated USB Device driver for TWR-K70FN1M, XTWR-KL25Z48M, TWR-K70F120M, TWR-K60N512, TWR-K60F120M,<br> 
+              TWR-K60D100M, TWR-K53N512, TWR-K40X256, TWR-K20D72M, and TWRK20D50M modules.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/NXP/arm.htm"><b>NXP</b></a><br>
+       <ul>
+          <li>Added: support for LPC11E6x based devices.</li>
+          <li>Updated: device header file for LPC43xx Series.</li>
+          <li>Updated: USB  Device driver for MCB11U10 board.</li>
+          <li>Updated: USB Device driver for LPC18xx and LPC4300 devices fixing memory overwrite problem.</li>
+          <li>Updated: device header file for LPC407x_8x and 177x_8x based devices with latest available version.</li>
+       </ul>
+      </li></ul>
+
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/sonix/arm.htm"><b>Sonix</b></a><br>	   
+        <ul>
+           <li>Added: support for SN32F760.</li>
+        </ul>
+       </li></ul>
+
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/stmicroelectronics/arm.htm"><b>STMicroelectronics</b></a><br>
+        <ul>
+           <li>Added: board support for STM32L1xx Nucleo Board.</li>
+           <li>Added: support for STM32F402 device.</li>
+           <li>Updated: STM32F0 CMSIS Core files to version 1.3.1 of ST STD Peripheral Library.</li>
+           <li>Updated: support for STM32F3 series..</li>
+        </ul>
+       </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/ti/arm.htm"><b>Texas Instruments</b></a><br>	   
+        <ul>
+           <li>Updated: support for TM4C123 and TM4C129 devices.</li>
+        </ul>
+       </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/toshiba/arm.htm"><b>Toshiba</b></a><br>	   
+        <ul>
+           <li>Added: support for TMPM461 device.</li>
+           <li>Updated: TMPM440 system and header file for adding FPU support.</li>
+        </ul>
+       </li></ul>
+
+
+
+    </ul></li>
+
+
+
+
+
+</ul>
+
+
+<h3> MDK Version 5.10 Legacy support for Cortex-M devices </h3>
+<ul>
+
+<li>
+   Thisversion of this legacy support package contains the state of the <b>MDK-ARM 473</b> release with the additions listed below <br>
+   Detailed informations about the current <b>MDK-ARM 473</b> release are included in the <a target="_blank" href="Release_Notes_473.htm"><b>Release_Notes_473</b></a>.
+</li>
+
+
+    <li><a target="_blank" href="http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php"><font color="#0065AF" size="2"><b>[CMSIS]</b></font></a>
+     <ul>
+       <li>Updated to <b>CMSIS 4.0</b> including:
+         <ul>
+         <li> <b>CMSIS-CORE</b> <b>3.30</b> (updated).</li>
+         <li> <b>CMSIS-DSP</b>  <b>1.4.2</b> (updated).</li>
+
+       </ul></li>
+
+     </ul></li>
+
+
+
+
+    <li><font color="#0065AF" size="2"><b>[Device Support]</b></font>
+    <ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/atmel/arm.htm"><b>Atmel</b></a><br>
+        <ul>
+          <li>Added: SAMG51 and SAMG53 based devices. SAMG51G18, SAMG51N18, SAMG53G19, and SAMG53N19.</li>
+          <li>Added: SAM4C series devices. SAM4CP16B, SAM4CMP16C, SAM4CMP8C, SAM5CMS16C, and SAM4CMS8C.</li>
+       </ul></li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/cypress/arm.htm"><b>Cypress</b></a><br>
+       <ul>
+          <li>Added: PSoC4 based devices. CY8C4013SXI-411, CY8C4013LQI-411, CY8C4013SXI-400, CY8C4013SXI-410, <br>
+              CY8C4014LQI-421, CY8C4014LQI-412, CY8C4014SXI-411, CY8C4014SXI-421, CY8C4014LQI-422, <br>
+              CY8C4014LQI-SLT1, and CY8C4014LQI-SLT2.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/freescale/arm.htm"><b>Freescale Semiconductor</b></a><br>
+        <ul>
+          <li>Added: SKEAZ devices added: SKEAZ128xx4, SKEAZ4xxx4, SKEAZN16xxx2, SKEAZN32xxx2, SKEAZN64xxx2, and SKEAZN8xxx4.</li>
+          <li>Added: KE04Z and KE02Z devices added: MKE04Z8xxx4, MKE02Z16xxx2, MKE02Z32xxx2, and MKE02Z64xxx2.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/spansion/arm.htm"><b>Spansion</b></a><br>
+       <ul>
+         <li>Added: S6E1A11B0A, S6E1A11C0A, S6E1A12B0A, and S6E1A12C0A devices.</li>
+       </ul>
+      </li></ul>
+
+      <ul><li><a target="_blank" href="http://www.keil.com/dd/chips/stmicroelectronics/arm.htm"><b>STMicroelectronics</b></a><br>
+        <ul>
+          <li>Added: STM32F4 based devices. STM32F401CD, STM32F401RD, STM32F401VD, STM32F401CE, STM32F401RE, and STM32F401VE.</li>
+        </ul>
+       </li></ul>
+
+    </ul></li>
+
+
+
+    <li><font color="#0065AF" size="2"><b>[Middleware]</b></font>
+    <ul>
+      <li><a target="_blank" href="http://www.keil.com/rl-arm/rl_benefits.asp"><font color="#0065AF" size="2"><b>[ARM Middleware]</b></font></a>
+      <ul>
+
+        <li><a target="_blank" href="http://www.keil.com/rl-arm/rl-flash.asp"><font color="#0065AF" size="2"><b>[FlashFS]</b></font></a>
+        <ul>
+        <li>Corrections in <b>FlashFS</b>: <b>FAT</b> file name processing has been reworked. Library version <b>4.74</b>. FTP server interface module fixed (filenames with leading '.' were not listed).</li>
+        </ul></li>
+      </ul></li>
+     </ul></li>
+
+
+   </ul>
+  
+
+
+</ul>
+   <h2><a name=DeviceDatabase></a>Device Database™</h2>
+   <p>
+    A unique feature of the Keil µVision IDE is the <a href="http://www.keil.com/dd" target="_blank">Device Database™</a> 
+    which contains information about more than 3000 supported microcontrollers. 
+    When you create a new µVision project and select the target chip from the database, µVision sets all assembler, compiler, linker, and debugger options for you. 
+    The only option you must configure is the memory map.</p><p>As new devices become available, 
+    they are added to the database along with data sheets and header files. 
+   </p>
+
+   <h2><a name=PeripheralSimulation></a>Peripheral Simulation</h2>
+   <p>
+    The µVision5 Debugger provides <a href="http://www.keil.com/uvision/db_sim.asp" target="_blank">complete simulation</a> 
+    for the CPU and on-chip peripherals of the most popular ARM-powered microcontroller devices. 
+    To discover which peripherals of a device are supported, in µVision5 select the Simulated Peripherals item 
+    from the Help menu. You may also use the web-based <a href="http://www.keil.com/dd" target="_blank">Device Database™</a>. 
+    We are constantly adding new devices and simulation support for on-chip peripherals so be sure to check Device Database™ often.
+   </p>
+
+<h2><a name=TechnicalSupport></a>Technical Support</h2>
+   <p>
+    At Keil Software, we are dedicated to providing you with the best development tools and technical support. 
+    That's why we offer numerous ways you can get the technical support you need to complete your embedded projects.
+   </p>
+<ul>
+  <li class=LI2><a href="http://www.keil.com/support/knowledgebase.asp" target="_blank"><b>Technical Support Knowledgebase</b></a><br>
+   More than 2500 technical support questions and answers are available in the Support Solutions Knowledgebase. 
+   When a new question arises, it is added to the knowledgebase which is continuously published to the Web. 
+   This enables you to get technical support at times when our support staff is unavailable.</li>
+  <li class=LI2><a href="http://www.keil.com/appnotes" target="_blank"><b>Application Notes</b></a><br>
+   Numerous Application Notes help you decipher complex features and implement robust applications.</li>
+  <li class=LI2><a href="http://www.keil.com/download/file/" target="_blank"><b>Example Programs and Files</b></a><br>
+   Utility programs, example code, and sample projects are regularly added to the Download File section of the web site.</li>
+  <li class=LI2><a href="http://www.keil.com/forum" target="_blank"><b>Discussion Forum</b></a><br>
+   Post questions, comments, and suggestions to the Keil Software Discussion Forum and interact with other Keil users around the world.</li>
+  <li class=LI2><a href="http://www2.keil.com/support/silver" target="_blank"><b>Contact Technical Support</b></a><br>
+   Describes how to contact the Technical Support.</li>
+</ul>
+
+<p>Many of the features of our Technical Support Knowledgebase and Web Site are the results of your suggestions. 
+   If you have any ideas that will improve them, please <a href="http://www.keil.com/support/feedback.asp" target="_blank">give us your feedback</a>!</p>
+
+<h2><a name=ContactDetails></a>Contact Details</h2>
+<p>
+  If you experience any problems or have any questions about this product, 
+  contact one of our <a href="http://www.keil.com/distis" target="_blank">distributors</a> or offices for assistance.
+</p>
+
+<div align=center><center><table border=0 cellpadding=5 cellspacing=0>
+<tr>
+<td valign=top nowrap bgcolor="#ffffcc" style="border:1 solid #800000">
+  <p>
+   <b>In the USA...</b></br><br>
+   <b>ARM, Inc.</b><br>
+      4965 Preston Park Blvd, Suite 650<br>
+      Plano, TX&nbsp; 75093<br>
+      USA<br><br>
+      800-348-8051 - Sales<br>
+      972-312-1107 - Support<br>
+      972-312-1159 - Fax<br><br>
+      <a href="mailto:sales.us@keil.com" target="_blank">sales.us@keil.com</a> - Sales E-Mail <br> 
+  </p>
+</td>
+<td valign=top width=30 nowrap></td>
+<td valign=top nowrap style="border:1 solid #800000" bgcolor="#ffffcc">
+  <p>
+   <b>In Europe...</b><br><br>
+   <b>ARM Germany GmbH</b><br>
+      Bretonischer Ring 16<br>
+      D-85630 Grasbrunn<br>
+      Germany<br><br>
+      +49 89 456040-0 - Sales<br>
+      +49 89 456040-24 - Support<br>
+      +49 89 468162 - Fax<br><br>
+      <a href="mailto:sales.intl@keil.com" target="_blank">sales.intl@keil.com</a> - Sales E-Mail<br>
+   </p>
+</td>
+</tr></table></center></div>
+   <hr><p class=TinyT>Copyright © 2018 ARM Ltd and ARM Germany GmbH.<br>
+       All rights reserved.<br>
+       Visit our web site at <a href="http://www.keil.com" target="_blank">www.keil.com</a>.
+      </p>
+
+</body>
+</html>

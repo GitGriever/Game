@@ -1,0 +1,23 @@
+This is an RL-USB-Host Human Interface Device (HID) usage example.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  25 MHz
+   - CPUCLK = 120 MHz
+   - USBCLK =  48 MHz
+
+This example shows how to use USB Keyboard as terminal input to 
+the device and it uses Graphic LCD as terminal output.
+
+The Measure example is described in detail in the Getting Started
+User's Guide.
+
+The HID_KBD program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MCBSTM32F200 OTG_FS: Standalone application for Keil MCBSTM32F200 Board using
+           USB Keyboard on OTG_FS USB Port and Graphic LCD as user interface.
+
+Notes:   - Cable necessary for connecting USB keyboard should have 
+           USB micro-A plug connector on one side and Standard USB Type-A 
+           receptacle connector on the other side.

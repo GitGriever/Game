@@ -1,0 +1,39 @@
+The 'Blinky' project is a simple demo program for Freescale Kinetis 'MK60' 
+series microcontroller using the Freescale 'TWR-K60F120M' evaluation board 
+populated with the 'K60FN1M0VLQ12' device, 
+compliant to the Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs (PTA11,PTA28,PTA29,PTA10) blink every 500 ms (250 ms on, 250 ms off) 
+
+The Blinky program is available for different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  UlinkPro-Flash:                  Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  UlinkPro-RAM:                    Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  PE OSJTAG-Flash:                 Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  PE OSJTAG-RAM:                   Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+

@@ -1,0 +1,32 @@
+The RTX_LowPower project is a simple RTX Kernel based example
+for the NXP 'LPC11U14' microcontroller using Keil 'MCB1000' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS V2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  12 MHz
+   - SYSPLL =  48 MHz
+   - USBPLL =  48 MHz
+
+Example shows how to configure RTX for Low Power applications.
+
+Application blinks the LED every 3s and goes into low power mode in between.
+Pressing the ISP push button also wakes-up the device.
+
+Power down is handled in the idle task (os_idle_demon in RTX_Conf.CM).
+
+
+The LowPower program is available for target:
+
+  LPC11U14 Flash: configured for on-chip Flash
+                  (used for production or target debugging)
+
+
+Note:
+After the application is programmed into the device and running the debug system
+is unavailable (due to application going into power down mode). It is necessary
+to put the device into Bootloader mode in order to access it again via debugger.
+This can be achieved by holding down the ISP push-button and pressing and 
+releasing the Reset push-button. After that the device is in Bootloader mode
+and can be re-programmed again.

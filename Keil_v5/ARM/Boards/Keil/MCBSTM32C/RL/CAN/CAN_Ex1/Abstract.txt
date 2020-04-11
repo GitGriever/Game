@@ -1,0 +1,40 @@
+This example program shows how to use the RTX CAN Driver on 
+'Keil MCBSTM32C' Evaluation Board with 
+'ST STM32F107VCT6' microcontroller.
+
+Clock Settings:
+ - XTAL    =               25.00 MHz
+ - PLL3    = (XTAL/5)*10 = 50.00 MHz
+ - PLL2    = (XTAL/5)* 8 = 40.00 MHz
+ - PLL1    = (PLL2/5)* 9 = 72.00 MHz
+ - SYSCLK  = PLL1        = 72.00 MHz
+ - HCLK    = SYSCLK      = 72.00 MHz
+ - PCLK1   = HCLK/2      = 36.00 MHz
+ - PCLK2   = HCLK        = 72.00 MHz
+ - ADCLK   = PCLK2/6     = 12.00 MHz
+ - SYSTICK = HCLK/2      = 36.00 MHz
+
+Example functionality:
+ - send converted analog value in first byte in CAN message on 
+   CAN 2 controller every 1 second
+ - receive CAN message on CAN 1 controller
+ - display received and transmitted byte values on 
+   Graphical LCD display
+   CAN 1 controller speed: 500 kbits
+   CAN 2 controller speed: 500 kbits
+
+This example shows how to use RTX CAN Driver and how 
+to simulate analog input in uVision.
+
+You may change the value of analog input with potentiometer 
+and watch the values on LCD display change accordingly.
+
+The CAN_Ex1 example program is available for target:
+
+STM32 Flash:  runs from Internal Flash located on chip
+              (used for production or target debugging)
+
+Notes:      
+  - To see the example functionality on hardware, loopback has 
+    to be connected between CAN1 and CAN2 (pins 7 on both DB-9 
+    headers shorted, and pins 2 on both DB-9 headers shorted)

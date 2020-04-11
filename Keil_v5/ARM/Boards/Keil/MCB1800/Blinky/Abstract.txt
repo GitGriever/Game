@@ -1,0 +1,28 @@
+The 'Blinky' project is a simple program for the LPC1850
+microcontroller using Keil 'MCB1800' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =           12.00 MHz
+   - SYSCLK  =          180.00 MHz
+
+ - Sys Timer is used in interrupt mode
+ - LEDs are blinking with speed depending on SysTick timer interrupt period
+ 
+
+The Blinky program is available in different targets:
+
+  LPC1857 Flash:       configured for on-chip Flash
+                       Valid Flash Signature is created with ElfDwT tool.
+                       See "Options for Target" - "User")
+
+  LPC1850 RAM:         runs from Internal RAM located on chip
+                       (may be used for target debugging)
+
+  LPC1850 Ext. Flash:  runs from NOR Flash located on board
+                       (used for production or target debugging)
+
+  LPC1850 SPIFI:       runs from SPIFI Flash located on board
+                       (used for production or target debugging)
+                       set jumper for boot pins to boot from SPIFI!

@@ -1,0 +1,19 @@
+The RTC project is a simple demo program for the ST 'STM32F103VB' 
+microcontroller using CQ-STARM2, CQ-STARM BaseBoard, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLK    = SYSCLK  = 72.00 MHz
+
+ - RTC is configured to generate an second interrupt
+ - seconds 0..59 are displayed on the seven segment display.
+ 
+The RTC program is available in different targets:
+
+  Simulator:          configured for software Simulator
+
+  STM32F103 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

@@ -1,0 +1,36 @@
+This example program shows how to use the RTX CAN Driver on 
+'Keil MCBTMPM360 Evaluation Board' with 
+'Toshiba TMPM364' microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =  12 MHz
+   - PLL        =  48 MHz
+   - CPU Clock  =  48 MHz
+ - CAN 1 controller speed: 500 kbits
+
+ - set converted analog value in first byte in CAN message 
+   that will automatically be sent upon reception of REMOTE
+   TRANSMISSION REQUEST message on CAN 1 controller
+ - send REMOTE TRANSMISSION REQUEST message on CAN 1
+   controller, every 1 second
+ - display higher 4 bits of received response to REMOTE 
+   TRANSMISSION REQUEST message on CAN 1 controller in 
+   hexadecimal representation on 4 LEDs
+
+This example shows how to use RTX CAN Driver.
+
+You may change the value of analog input with potentiometer (AIN0) 
+and watch the value on 4 LEDs change accordingly.
+
+The 'CAN_Ex2' example program is available for target:
+
+  TMPM364 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)
+  TMPM364 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)
+
+Notes:      
+  - To see the example functionality with using only one board 
+    press PJ4 button on power-on to initialize CAN controller 
+    in loopback mode (it receives whatever it sends)    

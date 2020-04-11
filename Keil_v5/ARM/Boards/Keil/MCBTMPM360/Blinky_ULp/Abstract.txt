@@ -1,0 +1,40 @@
+The Blinky project is a simple program for the Toshiba 'TMPM36x'
+microcontroller using Keil 'MCBTMPM360' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.30).
+
+It demonstrates the use of ULINKpro Debugger.
+
+Clock Settings:
+ - XTAL  =  12 MHz
+ - CCLK  =  48 MHz
+
+Example functionality:                                                   
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs blink with speed depending on potentiometer position
+ - AD conversion is done in interrupt mode
+ - AD settings: 10 bit resolution
+ - AD value is output onto ITM debug port #0  
+
+The Blinky program is available in different targets:
+  RAM:                       runs from Internal RAM located on chip
+
+  SWO Trace:                 runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+                             use connector "Cortex Debug"
+
+  TracePort Trace:           runs from Internal Flash
+                             shows use of LogicAnalyzer, ITM output, Exception Trace
+                             use connector "Cortex Debug + ETM"
+
+  TracePort IntructionTrace: runs from Internal Flash
+                             shows use of Instruction Trace
+                             use connector "Cortex Debug + ETM"
+
+
+ULINKpro notes
+--------------
+TMPM36x_TP.ini enables TPIU interface
+
+Instruction trace is very time and resource consuming
+therefore if you want to use instruction trace use
+nothing else (no LA, no exceptions, no ITM, no ...).

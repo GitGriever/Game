@@ -1,0 +1,23 @@
+This is a simple RTX Kernel based example which simulates
+the step-motor driver. Four LEDs are blinking simulating
+the activation of the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The BLINKY example program is available for several targets:
+
+  STM32F207 Flash:  runs from Internal Flash located on chip
+                    (used for production or target debugging)
+
+  STM32F207 RAM:    runs from Internal RAM located on chip
+                    (may be used for target debugging)
+
+Note:
+  This example also works on the STM3220F-EVAL board.

@@ -1,0 +1,40 @@
+This is a FTP Server example. It allows you to manage files
+on SD Card from PC using FTP client.
+
+Use this example to connect TWR-K70F120M Board to a LAN with DHCP
+server (most LANs have this). This example will configure the 
+LAN network parameters automatically using a DHCP protocol.
+
+If a DHCP server is not available, you may connect TWR-K70F120M
+Board to PC directly over a crosslink network cable. In this
+case configure a PC to use a static IP address 192.168.0.1 and
+disable the 'Dynamic Host Configuration' in Net_Config.c
+configuration file. The default static IP address of
+TWR-K70F120M is then 192.168.0.100
+
+To test this example, open your ftp client and enter the
+address ftp://twr_k70f120m/ or ftp://<boards IP address>
+
+Default user    : admin
+Default password: <none>
+
+The FTP_demo example is available for several targets:
+
+MK70F120M:
+    Standalone application for Freescale TWR-K70F120M Board.
+    Program code is loaded into on-chip flash.
+
+MK70F120M Debug:
+    Standalone Debug application. Debug level configured
+    in Net_Debug.c debug configuration file.
+    Connect a serial cable to RS232 port to view output
+    messages using HyperTerminal at 115200 baud,
+    8-bits, no parity, 1 stop bit, XON/XOFF.
+
+
+Jumper settings:
+  TWR-K70F120M board:
+    J18 must connect pins 2 and 3 (CLKIN0 is clock source)
+
+  TWR-SER board, Rev D:
+    J3 must connect pins 2 and 3 (Connect CLOCKIN0 to OSC)

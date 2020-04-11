@@ -1,0 +1,28 @@
+The 'RTX_Blinky' project is a simple RTX Kernel based example for
+ST 'STM32F051R8' microcontroller using ST 'STM320518-EVAL' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS V2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           48.00 MHz
+   - HCLK    = SYSCLK  = 48.00 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+
+The Blinky program is available in different targets:
+
+  STM32F051 Flash:  runs from Internal Flash located on chip
+                    (used for production or target debugging)

@@ -1,0 +1,29 @@
+The 'BlinkySimple' project is a simple demo program for
+Atmel 'ATSAM3U4E' microcontroller using Atmel 'SAM3U-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL                  =  12 MHz
+   - Main Clock            =   4 MHz
+
+
+The BlinkySimple program is available in different targets:
+
+  Simulator:             configured for software Simulator
+
+  SAM3U RAM:             configured for on-chip RAM
+                         (used for debugging)
+                         LEDs D2, D3 are blinking
+
+  SAM3U Flash:           configured for on-chip Flash
+                         (used for production or target debugging)
+                         LEDs D2, D3 are blinking
+
+  SAM3U Flash0 + GPNVM:  configured for on-chip Flash bank0
+                         configures GPNVM bits to boot from Flash Bank0
+                         only LED D2 is blinking
+
+  SAM3U Flash1 + GPNVM:  configured for on-chip Flash bank1
+                         configures GPNVM bits to boot from Flash Bank1
+                         only LED D3 is blinking

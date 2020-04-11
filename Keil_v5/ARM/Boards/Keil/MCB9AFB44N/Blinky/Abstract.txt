@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple demo program for
+Fujitsu 'MB9AFB44NA' microcontroller using Keil'MCB9AFB44N' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =   4 MHz
+   - CPU Clock  =  40 MHz
+
+ - 4 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - if any Button (SW0..SW3) is pressed all LEDs are lit.
+
+
+The Blinky program is available in different targets:
+
+  MB9AFB44N RAM:   runs from Internal RAM located on chip
+                   (used for target debugging)
+
+  MB9AFB44N Flash: runs from Internal Flash located on chip
+                   (used for production or target debugging)

@@ -1,0 +1,25 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Luminary 'LM3S9B92' microcontroller using Luminary EK-LM3S9B92' 
+evaluation board and is compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v1.20).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  16 MHz
+   - CCLK  =  50 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. One LED is blinking representing a clock task. Four
+task simulate the output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The Blinky program is available in different targets:
+  LM3S9B92 Flash:     configured for on-chip Flash
+                      (used for production or target debugging)

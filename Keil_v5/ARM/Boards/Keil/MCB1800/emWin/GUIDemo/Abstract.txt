@@ -1,0 +1,4 @@
+This is a emWin Graphic Library Demo for the Keil MCB1800 Evaluation Board.
+
+Targets:
+  LPC1800 Ext. Flash: runs from external Flash

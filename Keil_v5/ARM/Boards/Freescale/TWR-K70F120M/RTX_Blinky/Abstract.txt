@@ -1,0 +1,49 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale Kinetis 'MK70' 
+series microcontroller using the Freescale 'TWR-K70F120M' evaluation board 
+populated with the 'K70FN1M0VMJ12' device, 
+compliant to the Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 4 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The RTX_Blinky program is available for different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  UlinkPro-Flash:                  Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  UlinkPro-RAM:                    Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  PE OSJTAG-Flash:                 Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  PE OSJTAG-RAM:                   Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+

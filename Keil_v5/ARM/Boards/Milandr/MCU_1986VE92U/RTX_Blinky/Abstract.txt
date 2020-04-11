@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+Milandr 'MDR32F9Q2I' microcontroller using Milandr 'MCU 1986VE92U' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =   8 MHz
+   - CCLK  =   8 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  MDR32F9x Flash: configured for on-chip Flash
+                  (used for production or target debugging)
+
+  MDR32F9x RAM:   configured for on-chip RAM
+                  (used for target debugging)

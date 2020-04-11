@@ -1,0 +1,19 @@
+The Blinky project is a simple demo program for the NXP 'LPC812M101'
+microcontroller using Embedded Artists 'LPCXpresso LPC800' Evaluation Board,
+compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =  12 MHz
+   - CPU     =  24 MHz
+
+ - 3 LEDs blink with speed depending on potentiometer position
+
+
+The Blinky program is available in different targets:
+
+  LPC812M101 Flash:        configured for on-chip Flash
+                          (used for production or target debugging)
+
+  LPC812M101 RAM:          configured for on-chip RAM
+                          (used for target debugging)

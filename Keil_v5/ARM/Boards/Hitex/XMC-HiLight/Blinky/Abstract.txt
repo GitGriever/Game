@@ -1,0 +1,23 @@
+The Blinky project is a simple demo program for the Infineon 'XMC4500' 
+microcontroller using Hitex 'XMC-HiLight' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+ - 3 LED blinks with speed depending on potentiometer position
+ - AD settings: 12 bit resolution
+
+
+The Blinky program is available in different targets:
+
+  XMC4500 Flash:        runs from Internal Flash (uncached) located on chip
+                        (used for production or target debugging)
+
+  XMC4500 cached Flash: runs from Internal Flash (cached) located on chip
+                        (used for production or target debugging)
+
+  XMC4500 PSRAM:        runs from Internal PSRAM located on chip
+                        (used for target debugging)

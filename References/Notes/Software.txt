@@ -1,6 +1,34 @@
-1. Go to http://users.ece.utexas.edu/~valvano/arm/download.html
+1. Go to http://edx-org-utaustinx.s3.amazonaws.com/UT601x/download.html
 
-2. Download TExaS for Labs 5-15 (don't need 2).
+2. Download TExaS for Labs 4-16 (don't need 2).
 
 3. Execute the TExaS_Install.exe
+
+4. Under “C:\Keil” or whatever directory you installed it to, 
+   the starter files are found in Labware >> Lab15_VirtualSpaceInvaders.
+
+5. Run SpaceInvaders.uvproj
+
+6. Go to Project >> Options for Target ... 
+
+7. In the Target tab, change the Operating System to TExaS.
+
+8. In the Debug tab, toggle 'Use Simulator'.
+
+9. Click OK.
+
+To simulate the code:
+
+a. Rebuild all target files.
+
+b. Debug.
+
+c. Go to Peripherals on the toolbar and open:
+   - TExaS Nokia to simulate the LCD
+   - TExaS ADC to simulate the switches and slide potentiometer.
+	- Click 'Right' for SW2 and 'Left' for SW1.
+
+
+
+
 

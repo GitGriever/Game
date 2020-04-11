@@ -1,0 +1,21 @@
+The 'RTX_Blinky' project is a simple RTX Kernel based example for
+Atmel 'ATSAM4C16C' microcontroller using Atmel 'SAM4C-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =   8 MHz
+   - PLLB                  =  96 MHz
+   - Main Clock = PLLB     =  96 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  SAM4C RAM:             configured for on-chip RAM
+                         (used for debugging)
+
+  SAM4C Flash:           configured for on-chip Flash
+                         (used for production or target debugging)

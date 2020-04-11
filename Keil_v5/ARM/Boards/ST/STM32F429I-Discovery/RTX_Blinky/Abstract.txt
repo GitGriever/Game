@@ -1,0 +1,27 @@
+The 'RTX_Blinky' project is a simple RTX Kernel based example for
+ST 'STM32F429ZI' microcontroller using ST 'STM32F429I-Discovery' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =             8.00 MHz
+   - SYSCLK  =           180.00 MHz
+   - HCLK    = SYSCLK  = 180.00 MHz
+
+The example simulates a step-motor driver.
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and CW rotation direction.
+
+
+The Blinky program is available in different targets:
+
+  STM32F429 RAM:      configured for on-chip RAM
+                      (used for target debugging)
+
+  STM32F429 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

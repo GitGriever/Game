@@ -1,0 +1,17 @@
+The HID project is a demo program for the Keil MCBSTM32F400 Board 
+using a ST STM32F407  Microcontroller.
+
+It demonstrates an USB HID (Human Interface Device):
+  - 8 LEDs
+  - 3 BUTTONs (Wakeup, Tamper, Key)
+
+The USB HID is recognized by the host PC running Windows
+which will load a generic HID driver. The board LEDs
+and Push Buttons can then be accessed from the PC
+through a custom HID Client Program.
+
+The HID program is available for the following target:
+  MCBSTM32F400 HS:     configured for on-chip Flash ROM
+                      (used for production or target debugging)
+  MCBSTM32F400 FS:     configured for on-chip Flash ROM
+                      (used for production or target debugging)

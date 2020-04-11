@@ -1,0 +1,38 @@
+The SD_File project is a demo program for the TWR-K70F120M Tower 
+module using a Freescale K70FN1M0VMJ12 Microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock = 120 MHz
+   - Bus     clock =  60 MHz
+   - FlexBus clock =  30 MHz
+   - Flash   clock =  20 MHz
+   - USBFS   clock =  48 MHz
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+SD/MMC Card inserted in the target is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC running
+Windows which will load a generic Mass Storage driver.
+
+File manipulation from the target is also available over serial port.
+
+When SW2 button is pressed the USB Memory is unmounted from the PC
+and can be accessed from the target over serial port. It allows to 
+create, read, copy, delete files and format the card.
+Pressing SW2 button again, will re-mount the USB Memory on the PC.
+
+Connect a serial cable to RS232 UART1/3/4 port using HyperTerminal
+  at 115200 baud, 8-bits, no parity, 1 stop bit, No Flow Control.
+
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+The SD_File program is available for the following target:
+
+MK70 RTX:   configured for on-chip Flash ROM
+           (used for production or target debugging)
+         
+Note: Jumpers position on the TWR-SER module:
+         - J10 = 2-3 shorted => Source 5V from USB (Bus-powered device)
+         - J16 = 3-4 shorted => Device Mode (source 5V from VBUS)  

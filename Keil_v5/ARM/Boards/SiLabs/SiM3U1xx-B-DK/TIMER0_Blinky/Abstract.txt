@@ -1,0 +1,9 @@
+The TIMER0_Blinky project is a simple demo program for the SiLabs 'SiM3U167' 
+microcontroller using SiLabs 'SiM3U1xx-B-DK' Development Kit.
+
+It is created using SiLabs Precision32 AppBuilder Rapid Prototyping Utility.
+
+The project functionality is described in Silabs 
+ AN719: Precision32 IDE and AppBuilder Detailed Tutorial and Walkthrough.
+
+To compile and run the project you need to have SiLabs Precision32 Development Suite installed.

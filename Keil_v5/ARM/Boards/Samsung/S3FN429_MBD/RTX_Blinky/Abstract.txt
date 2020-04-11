@@ -1,0 +1,26 @@
+The 'RTX_Blinky' project is a simple demo program for Samsung S3FN429  
+microcontroller using Samsung 'S3FN429_MBD' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS V3.01).
+
+Example functionality
+ - Core Clock runs at 40 MHz                                                   
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 4 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+The Blinky program is available in different targets:
+  S3FN429 - Flash:                 runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+
+
+ 

@@ -1,0 +1,21 @@
+The RTX_Blinky project is a simple RTX Kernel based example for 
+SONiX 'SN32F707' microcontroller using SONiX 'SN32F707_Starter_Kit' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =    
+   - CPU     =    (IHRC) 12.00 MHz
+
+The simple RTX Kernel based example uses two RTX tasks
+to blink a LED.
+
+
+The Blinky program is available in different targets:
+
+  SN32F707 Flash:     configured for on-chip Flash
+                      (used for production or target debugging)
+
+  SN32F707 RAM:       configured for on-chip RAM
+                      (used for target debugging)

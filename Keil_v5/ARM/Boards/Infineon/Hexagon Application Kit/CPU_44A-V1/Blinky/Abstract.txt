@@ -1,0 +1,23 @@
+The Blinky project is a simple demo program for the Infineon 'XMC4400' 
+microcontroller using Infineon 'CPU_44A-V1' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 120 MHz
+
+ - 2 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+
+
+The Blinky program is available in different targets:
+
+  XMC4400 PSRAM:        runs from Internal PSRAM located on chip
+                        (used for target debugging)
+
+  XMC4400 Flash:        runs from Internal Flash (uncached) located on chip
+                        (used for production or target debugging)
+
+  XMC4400 cached Flash: runs from Internal Flash (cached) located on chip
+                        (used for production or target debugging)

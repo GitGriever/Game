@@ -1,0 +1,14 @@
+The Memory project is a demo program for the Atmel SAM3S-EK Board 
+using a Atmel SAM3S4C Microcontroller.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+The Memory program is available for the following target:
+  SAM3S-EK RTX: configured for on-chip Flash ROM - RTX version
+               (used for production or target debugging)
+
+Note:
+  example is preconfigured for SAM3S-EK Rev.B

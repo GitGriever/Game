@@ -1,0 +1,31 @@
+This is an RL-USB-Host and RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the Mass Storage 
+Device and format the device. 
+
+Example functionality:
+ - Clock Settings:
+   - XTAL   =  25 MHz
+   - PLL1   =  72 MHz
+   - PLL2   =  40 MHz
+   - PLL3   =  50 MHz
+   - SYSCLK =  72 MHz
+   - USBCLK =  48 MHz
+
+ - Communication Interface Settings:
+   - USART2: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The MSD_FILE program is a standalone application loaded into
+on-chip flash and available for one target:
+
+MCBSTM32C: Standalone application for Keil MCBSTM32C Board using
+           COM port as a communication interface.
+
+IMPORTAINT !!! Voltage on Vin pins should be in range from 5.25 to 5.5 V.
+           Do not exceed 5.5V !!!
+
+Notes:   - Cable necessary for connecting USB memory device should have 
+           USB micro-A plug connector on one side and Standard USB Type-A 
+           receptacle connector on the other side.
+
+Documentation on the Web: 
+  http://www.keil.com/support/man/docs/rlarm/rlarm_fs_ex_msd.htm

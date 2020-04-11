@@ -1,0 +1,5 @@
+The 'Smpl_NUTINY_Mini51' project is a demo program for the Nuvoton 
+MINI54LAN controller using Nuvoton 'NuTiny-EVB_Mini51' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+This example is part of "Mini51 software package" available on Nuvoton Download page.

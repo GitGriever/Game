@@ -1,0 +1,12 @@
+The 'Program Once Mem Config' project is a used for programming the "Program Once Field"
+which is located in program flash IFR. ("Program Once Field" can be programmed only once.)
+
+  ProgOnce_Cfg - ULINK:        Target Driver is configured as ULINK
+                               configures the program once field in the program flash IFR  
+                              (used for production)
+
+Perform the following steps.
+  1. Configure the fields "Program Once Field". (MKxxFlashIFR.s)
+  2. Build the Target
+  3. Click the button "LOAD", to download to flash
+ 

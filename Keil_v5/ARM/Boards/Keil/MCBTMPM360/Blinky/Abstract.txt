@@ -1,0 +1,20 @@
+The 'Blinky' project is a simple demo program for the Toshiba 'TMPM36x' 
+microcontroller using Keil 'MCBTMPM360' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL       =  12 MHz
+   - PLL        =  48 MHz
+   - CPU Clock  =  48 MHz
+ - AD settings: 10 bit resolution
+
+ - SysTick Timer is used in interrupt mode
+ - 4 LEDs blink with speed depending on potentiometer position
+ - when any of buttons PJ4..PJ7 is pressed appropriate LED is turned on
+
+The Blinky program is available in different targets:
+  TMPM36x Flash:   runs from Internal Flash located on chip
+                   (used for production or target debugging with ULINK/ULINK2)
+  TMPM36x RAM:     runs from Internal RAM located on chip
+                   (used for target debugging)

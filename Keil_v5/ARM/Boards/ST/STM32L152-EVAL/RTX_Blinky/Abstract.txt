@@ -1,0 +1,35 @@
+The RTX_Blinky project is a simple RTX Kernel based example
+for the ST 'STM32L152VB' microcontroller using ST 'STM32L152-EVAL' 
+Evaluation Board, compliant to Cortex Microcontroller 
+Software Interface Standard (CMSIS V2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           32.00 MHz
+   - HCLK    = SYSCLK  = 32.00 MHz
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. Four LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+
+The Blinky program is available in different targets:
+
+  STM32L152 Flash:  configured for on-chip Flash
+                    (used for production or target debugging)
+
+
+Jumper setting: 
+    JP18:  closed    (LED3)
+    JP19:  closed    (LED4)
+

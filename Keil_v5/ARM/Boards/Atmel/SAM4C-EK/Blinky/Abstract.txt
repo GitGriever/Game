@@ -1,0 +1,29 @@
+The 'Blinky' project is a simple demo program for
+Atmel 'ATSAM4C16C' microcontroller using Atmel 'SAM4C-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL                  =   8 MHz
+   - PLLB                  =  96 MHz
+   - Main Clock = PLLB     =  96 MHz
+
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs blink with speed depending on potentiometer position
+ - AD conversion is done in DMA or IRQ mode
+ - AD settings: 10 bit resolution
+ - AD value is output onto serial port USART2
+   - USART2 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  SAM4C RAM:             configured for on-chip RAM
+                         (used for debugging)
+
+  SAM4C Flash:           configured for on-chip Flash
+                         (used for production or target debugging)
+
+
+Note:
+   For the Serial Wire Viewer Core Clock: use 96 MHz.

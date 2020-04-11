@@ -1,0 +1,31 @@
+This example program shows how to use the RTX CAN Driver on 
+'Infineon CPU_45A-V2 CPU Board XMC4500 General Purpose' and 
+'Infineon COM_ETH-V1 Ethernet/CAN/RS485 Interface Card' with 
+'Infineon XMC4500' microcontroller.
+
+ - Clock Settings:
+   - XTAL            =  12 MHz
+   - PLL             = 120 MHz
+   - PLLUSB          =  48 MHz
+   - SYS    = PLL    = 120 MHz
+   - CPU    = SYS    = 120 MHz
+   - CCU    = SYS    = 120 MHz
+   - PERIPH = CPU    = 120 MHz
+   - USB    = PLLUSB =  48 MHz
+
+ - Communication Interface Settings:
+   - CAN node 3:       500 kbits
+
+Example functionality:
+ - send incrementing byte value in first byte in message 
+   every 1 second (ID = 0x21)
+ - display display lowest (LSB) 1 bit of received byte on the 
+   LED (ID = 0x21)
+
+This example shows how to use RTX CAN Driver.
+
+
+The CAN_Ex1 example program is available for one target:
+
+XMC4500 Flash: Standalone application for the XMC4500 Board.
+

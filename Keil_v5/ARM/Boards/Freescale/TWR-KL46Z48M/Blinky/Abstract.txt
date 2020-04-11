@@ -1,0 +1,34 @@
+The 'Blinky' project is a simple demo program for Freescale 'MKL46' series 
+microcontroller using Freescale 'TWR-KL46Z48M' evaluation board populated with
+MKL46Z256xxx4 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality
+ - Core Clock runs at 48000000 Hz                                                   
+ - SysTick Timer is used in interrupt mode
+ - Red/Green/Blue LED(PTA.5,PTA.16) blink every 500 ms 
+The Blinky program is available in different targets:
+  ULink -Flash:                    Debug/Target Driver is configured as ULink
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink -RAM:                      Debug/Target Driver is configured as ULink
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  CMSIS-DAP -Flash:                Debug/Target Driver is configured as CMSIS-DAP OpenSDA
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  CMSIS-DAP -RAM:                  Debug/Target Driver is configured as CMSIS-DAP OpenSDA
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+
+Selecting "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to TWR-KL46Z48M user manual.

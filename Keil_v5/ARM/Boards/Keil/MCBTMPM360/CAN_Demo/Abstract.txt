@@ -1,0 +1,34 @@
+This example program shows how to use the CAN on 
+'Keil MCBTMPM360 Evaluation Board' with 
+'Toshiba TMPM364' microcontroller.
+
+Example functionality:
+ - Clock Settings:
+   - XTAL       =  12 MHz
+   - PLL        =  48 MHz
+   - CPU Clock  =  48 MHz
+ - CAN 1 controller speed: 500 kbits
+
+ - send converted analog value in first byte in CAN message on 
+   CAN 1 controller every 100 millisecond
+ - display higher 4 bits of received byte on CAN 1 controller in 
+   hexadecimal representation on 4 LEDs
+
+This example can be tested by using two 'MCBTMPM360' with CAN 
+connected between themselves.
+In that configuration turning potentiometer on one board will 
+change state on LEDs on the other board and vice versa.
+
+This example can also be tested if only one 'MCBTMPM360' board 
+is availabe. By pressing PJ4 button during power-on example 
+initializes CAN controller in loopback mode so that whatever 
+CAN controller sends it also receives.
+In that configuration turning potentiometer will change state 
+of LEDs.
+
+The 'CAN_Demo' example program is available for target:
+
+  TMPM364 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)
+  TMPM364 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)

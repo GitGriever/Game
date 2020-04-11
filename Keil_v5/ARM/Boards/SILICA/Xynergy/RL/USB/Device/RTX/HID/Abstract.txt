@@ -1,0 +1,14 @@
+The HID project is a demo program for the Silica XYNERGY
+Board using a ST STM32F217 Microcontroller.
+
+It demonstrates an USB HID (Human Interface Device):
+  - 2 LEDs
+
+The USB HID is recognized by the host PC running Windows
+which will load a generic HID driver. The board LEDs
+can then be accessed from the PC through a custom HID Client 
+Program.
+
+The HID program is available for the following target:
+  STM32F217 OTG FS RTX:   configured for on-chip Flash ROM, RTX version
+                         (used for production or target debugging)

@@ -1,0 +1,10 @@
+This is a emWin Graphic Library Demo for the Keil MCB4300 Evaluation Board.
+
+Targets:
+  LPC4350 Ext. Flash: runs from external Flash
+
+Following Targets are for Flash-based parts only!
+(Valid Flash Signature is created with ElfDwT tool. See "Options for Target" - "User")
+
+  LPC4357 Flash:      runs from internal Flash
+                        (Booting from BANK A)

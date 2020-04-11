@@ -1,0 +1,13 @@
+The Memory project is a demo program for the Atmel SAM3U-EK Board.
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+NAND Flash device is used for the actual Memory.
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+
+The Memory program is available for the following target:
+  SAM3U-EK:     configured for on-chip Flash ROM
+               (used for production or target debugging)
+

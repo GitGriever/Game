@@ -1,0 +1,46 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale 'MKL46' series 
+microcontroller using Freescale 'FRDM-KL25Z' evaluation board populated with
+MKL46Z256xxx4 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality
+ - Core Clock runs at 48000000 Hz                                                   
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The RTX_Blinky program is available in different targets:
+  ULink -Flash:                    Debug/Target Driver is configured as ULink
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink -RAM:                      Debug/Target Driver is configured as ULink
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  CMSIS-DAP -Flash:                Debug/Target Driver is configured as CMSIS-DAP OpenSDA
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  CMSIS-DAP -RAM:                  Debug/Target Driver is configured as CMSIS-DAP OpenSDA
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+
+Selecting "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to TWR-KL46Z48M user manual.

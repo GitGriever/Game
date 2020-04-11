@@ -1,0 +1,49 @@
+This is an RL-USB-Host Human Interface Device (HID) usage example.
+
+Board configuration consists of: TWR-ELEV (PRIMARY+SECONDARY) + TWR-SER + 
+                                 XTWR-KL25Z48M
+
+Example functionality:
+ - Clock Settings:
+   - Core    clock =  48 MHz
+   - Flash   clock =  48 MHz
+   - USBFS   clock =  48 MHz
+
+ - Communication Interface Settings:
+   - UART0 (on TWR-SER): 115200 baud, 8 data bits, no parity, 1 stop bit
+
+This example shows how to use USB Keyboard as terminal input to 
+the device and it uses UART as terminal output.
+
+The Measure example is described in detail in the Getting Started
+User's Guide.
+
+The HID_KBD program is a standalone application loaded into
+on-chip flash and available for one target:
+
+KL25Z48M:   Standalone application for the KL25Z48M Board.
+
+Note: 
+
+      Jumpers position on the XTWR-KL25Z48M module:
+         - J1  = on
+         - J3  = 1-3 shorted
+         - J6  = off
+         - J7  = on
+         - J8  = 1-2 shorted
+         - J9  = on
+         - J14 = off
+         - J15 = off
+         - J17 = on
+         - J18 = on
+         - J19 = on
+         - J20 = on
+         - J21 = on
+         - J23 = on
+         - J24 = on
+
+Important Note !!! :
+      Power should be provided through J22 mini USB connector on the 
+      XTWR-KL25Z48M board and J13 micro USB connector on the XTWR-KL25Z48M 
+      board is used for the USB Host functionality.
+

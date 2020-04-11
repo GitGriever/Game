@@ -1,0 +1,29 @@
+The RTX_Blinky project is a simple RTX Kernel based example for
+Infineon 'XMC1200-200' microcontroller using Infineon 'XMC1200 Boot Kit'.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL (DC01) =  64 MHz
+   - CPU Clock   =   8 MHz
+
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The Blinky program is available in different targets:
+
+  XMC1200 RAM:   runs from Internal RAM located on chip
+                 (used for target debugging)
+
+  XMC1200 Flash: runs from Internal Flash located on chip
+                 (used for production or target debugging)

@@ -1,0 +1,20 @@
+The 'Blinky' project is a simple demo program for Freescale 'MK60' series 
+microcontroller using Freescale 'TWR-K60N512' evaluation board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 96 MHz                                                   
+ - SysTick Timer is used in interrupt mode
+ - 3 LEDs (PTA.11,28,29) blink every 250 ms 
+The Blinky program is available in different targets:
+  K60N512 - Flash:                 populated with MK60N512VMD100 device
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  K60N512 - RAM:                   populated with MK60N512VMD100 device
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+
+
+ 

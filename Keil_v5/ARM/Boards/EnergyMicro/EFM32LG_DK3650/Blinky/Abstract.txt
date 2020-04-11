@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple example for
+Energy Micro EFM32 LeopardGecko Series using Energy Micro 'EFM32LG_DK3650 Development Kit".
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    =
+   - CPU     =    14.00 MHz
+
+ - 16 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - "Hello World" is output onto serial port 'UART'
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  EFM32LG990F256 RAM:            runs from Internal RAM located on chip
+                                 (used for production or target debugging)
+
+  EFM32LG990F256 Flash:          runs from Internal Flash located on chip
+                                 (used for production or target debugging)

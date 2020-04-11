@@ -1,0 +1,31 @@
+The Measure project is a simple datalogger for the ST 'STM32F103RB' 
+microcontroller using Keil 'MCBSTM32' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =            8.00 MHz
+   - SYSCLK  =           72.00 MHz
+   - HCLK    = SYSCLK  = 72.00 MHz
+
+ - AD conversion is done in DMA mode
+ - AD settings: 12 bit resolution
+ - USART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+The Measure program uses analog and digital inputs to simulate a datalogger.
+You may watch the value of analog input POT1 and the state of S2, S3 Buttons
+on MCBSTM32 Evaluation Board.
+
+
+
+The program is available in different targets:
+
+  Simulator:          configured for software Simulator
+                      Serial Window #1
+                      ADC1 channel 1 simulated using a debug function.
+
+  STM32F103 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)
+
+  STM32F103 RAM:      configured for on-chip RAM
+                      (used for target debugging)

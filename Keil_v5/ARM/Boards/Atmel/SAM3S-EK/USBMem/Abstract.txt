@@ -1,0 +1,22 @@
+The 'Memory' project is a demo program for
+Atmel 'ATSAM3S4C' microcontroller using Atmel 'SAM3S-EK' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+It demonstrates an USB Memory based on USB Mass Storage Class.
+
+LEDs are used to display the following:
+  - D2: LED_CFG  is on when USB Device is configured
+  - D3: LED_SUSP is on when USB Device is suspended
+
+The USB Memory is automatically recognized by the host PC
+running Windows which will load a generic Mass Storage driver.
+
+
+The Memory program is available for the following targets:
+
+  SAM3S Flash:  configured for on-chip Flash ROM
+                (used for production or target debugging)
+
+
+Note:
+  example is preconfigured for SAM3S-EK Rev.B

@@ -1,0 +1,54 @@
+This is a HTTP Server example. It shows you how to use the
+Web Server CGI interface as well. 
+
+Use this example to connect MCB4300 Board to a LAN with DHCP
+server (most LANs have this). This example will configure the 
+LAN network parameters automatically using a DHCP protocol.
+
+You may connect MCB4300 Board to PC directly over a crosslink
+network cable. In this case configure a PC to use a static 
+IP address 192.168.0.101
+
+If after a timeout of 5 seconds DHCP did not obtain an IP address,
+this example will use a static IP address 192.168.0.100
+
+The WEB pages are included into the project under HTTP Files 
+group. You can simply add or remove a page or image. Web files
+which are compiled into the project are added to the 'Web.inp'
+Web Converter input file.
+
+To test this example, open your web browser and enter the 
+address http://mcb4300/ or http://<boards IP address>
+
+Default user    : admin
+Default password: <none>
+
+You can change the password at runtime on page 'system'
+
+The HTTP_demo example is configured for Keil MCB4300 Board and is
+available for several targets:
+
+LPC4357 Flash:
+    Standalone (no RTX Kernel) application.
+    Program code is loaded into internal flash.
+
+LPC4357 Flash Debug:
+    Standalone (no RTX Kernel) with debug output.
+    Program code is loaded into internal flash.
+
+    Debug level configured in Net_Debug.c configuration file.
+    Connect a serial cable to RS232 COM port using
+    HyperTerminal at 115200 baud, 8-bits, no parity,
+    1 stop bit, flowcontrol none.
+
+LPC4357 Flash RTX:
+    The same example configured for RTX Kernel.
+    Program code is loaded into internal flash.
+
+LPC4350 Ext. Flash:
+    Standalone (no RTX Kernel) application.
+    Program code is loaded into external NOR flash.
+
+Jumper settings:
+  J13 and J16 must connect pins 2 and 3
+  to select and enable serial output on UART0/3 connector.

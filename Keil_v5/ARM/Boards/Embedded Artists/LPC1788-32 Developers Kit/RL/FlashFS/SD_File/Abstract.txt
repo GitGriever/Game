@@ -1,0 +1,27 @@
+This is an RL Flash File System file manipulation example.
+You can create, read, copy, delete files from the SD/MMC 
+Flash Memory Card and format the card. 
+
+The SD_FILE program is a standalone application loaded into
+on-chip flash and available for two targets:
+
+LPC1788 Flash:      Standalone application for Embedded Artists LPC1788 
+                    Board using serial port as a communication interface.
+
+                    Connect a serial cable to RS232 UART2 port using
+                    HyperTerminal at 115200 baud, 8-bits, no parity,
+                    1 stop bit, XON/XOFF.
+
+LPC1788 Flash ITM:  Standalone application for Embedded Artists LPC1788 
+                    Board using ITM debug port as a communication interface.
+
+                    You can test it with ULINK2 from uVision Debug Session:
+                    Start Debug session (Ctrl + F5) and open Debug (printf)
+                    Viewer (View->Serial Windows->Debug (printf) Viewer).
+
+
+Jumper settings (OEM Base Board Rev A):
+  To enable UART2: - JP12: Connect pin 2 and 3
+                   - JP13: Connect pin 2 and 3
+                   - JP6:  Connect pin 5 and 6,
+                           pins 1, 2, 3, 4 must be open

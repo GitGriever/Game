@@ -1,0 +1,59 @@
+The 'RTX_Blinky' project is a simple demo program for Freescale 'MK20' series 
+microcontroller using Freescale 'FRDM-K20D50M' evaluation board populated with
+MK20DX128xxx5 device, compliant to Cortex Microcontroller Software Interface Standard (CMSIS v1.3).
+
+Example functionality
+ - Core Clock runs at 48 MHz                                                   
+
+The simple RTX Kernel based example simulates the step-motor 
+driver. 3 LEDs are blinking simulating the activation of 
+the four output driver stages:
+
+- phase A
+- phase B
+- phase C
+- phase D
+
+This example simulates Half step driver mode and
+CW rotation direction.
+
+
+The RTX_Blinky program is available in different targets:
+  ULink-Flash:                     Debug/Target Driver is configured as ULINK
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  ULink-RAM:                       Debug/Target Driver is configured as ULINK
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  UlinkPro-Flash:                  Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  UlinkPro-RAM:                    Debug/Target Driver is configured as ULINKPro
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+
+  PE OSJTAG-Flash:                Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  PE OSJTAG-RAM:                  Debug/Target Driver is configured as P&E Micro OSJTAG
+                                   runs from Internal RAM located on chip
+                                  (used for target debugging)
+ 
+ ULINK note: For using ULINK Debug/Target driver, Samtec FTSH-105-02-F-D or compatible connectors can be added
+      to the J6 through-hole debug connector to allow for an external debug cable to be connected.
+
+
+Selecting "PE OSJTAG" or "CMSIS-DAP" OpenSDA application:
+ 1. Start OpenSDA in bootloader mode: Unplug and plug the OpenSDA USB connection whilst pushbutton, SW1 is pressed. 
+ 2. Drag and drop "PE OSJTAG" or "CMSIS-DAP" OpenSDA application file to the OpenSDA mass storage device. 
+ 3. Unplug and plug the OpenSDA USB connection.
+ 
+Note:
+ - PE OSJTAG OpenSDA requires Freescale Kinetis OSJTAG Drivers. It must be installed to the same directory as MDK-ARM. 
+   Download the drivers from www.keil.com/download/docs/408.asp.
+ - "P&E Micro" or "CMSIS-DAP" OpenSDA application file can be downloaded here: 
+ - For more information on OpenSDA, refer to FRDM-K20D50 user manual.

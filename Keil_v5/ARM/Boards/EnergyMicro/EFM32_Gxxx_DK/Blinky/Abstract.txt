@@ -1,0 +1,23 @@
+The 'Blinky' project is a simple example for Energy Micro
+EFM32 Gecko Series using Energy Micro EFM32-Gxxx-DK Development Kit.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =    
+   - CPU     =    14.00 MHz
+
+ - 8 LEDs blink with a fixed speed, determined by SysTick Timer
+     working in interrupt mode
+ - "Hello World" is output onto serial port 'SERIAL A' 
+   UART1 settings: 115200 baud, 8 data bits, no parity, 1 stop bit
+
+
+The Blinky program is available in different targets:
+
+  EFM32G290F128 Flash:            populated with EFM32G290F128 MCU board
+                                  runs from Internal Flash located on chip
+                                  (used for production or target debugging)
+
+  EFM32G890F128 Flash:            populated with EFM32G890F128 MCU board
+                                  runs from Internal Flash located on chip
+                                  (used for production or target debugging)

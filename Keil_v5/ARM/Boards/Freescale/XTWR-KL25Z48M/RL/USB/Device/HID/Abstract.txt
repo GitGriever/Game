@@ -1,0 +1,39 @@
+The HID project is a demo program for the XTWR-KL25Z48M Tower
+module using a Freescale MKL25Z Microcontroller.
+
+It demonstrates an USB HID (Human Interface Device):
+  - 2 LEDs
+  - 2 BUTTONs (SW2, SW3)
+
+The USB HID is recognized by the host PC running Windows
+which will load a generic HID driver. The board LEDs
+and Push Buttons can then be accessed from the PC
+through a custom HID Client Program.
+
+The HID program is available for the following target:
+  KL25Z48M:  configured for on-chip Flash ROM
+            (used for production or target debugging)
+
+Note: 
+
+      Jumpers position on the XTWR-KL25Z48M module:
+         - J1  = on
+         - J3  = 1-3 shorted
+         - J6  = off
+         - J7  = on
+         - J8  = 1-2 shorted
+         - J9  = on
+         - J14 = off
+         - J15 = off
+         - J17 = on
+         - J18 = on
+         - J19 = on
+         - J20 = on
+         - J21 = on
+         - J23 = on
+         - J24 = on
+
+Important Note !!! :
+      Power should be provided through J22 mini USB connector on the 
+      XTWR-KL25Z48M board and J13 micro USB connector on the XTWR-KL25Z48M 
+      board is used for the USB device functionality.

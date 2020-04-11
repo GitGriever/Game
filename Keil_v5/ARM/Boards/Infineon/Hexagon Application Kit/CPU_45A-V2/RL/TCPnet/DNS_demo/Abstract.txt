@@ -1,0 +1,29 @@
+This program shows you how to resolve an IP address of a Host
+from the Host name. It sends a DNS request to a remote DNS server. 
+
+This example will configure the LAN network parameters for 
+the evaluation board automatically if a DHCP Server is available
+in your LAN.
+
+If you do not have a DHCP server, you need to configure
+the IP address, net mask and default gateway and Primary DNS
+and Secondary DNS Server manually in the Net_Config.c configuration
+file. You have to disable also 'Dynamic Host Configuration' under 
+the 'Ethernet Network Interface' section.
+
+The DNS_demo example is available for several targets:
+
+XMC4500:
+    Standalone application for the Hexagon Application Kit.
+    Program code is loaded into internal flash.
+    System messages printed to ITM debug port!
+
+XMC4500 Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+    
+    Debug level is configured in Net_Debug.c debug configuration file.
+    ITM debug port is used as a communication interface.
+    You can debug the application with ULINK2 from uVision Debug Session:
+    Start Debug session (Ctrl + F5) and open Debug (printf)
+    Viewer (View->Serial Windows->Debug (printf) Viewer).

@@ -1,0 +1,36 @@
+This program is an SNMP Agent demo example. It shows how to 
+use a Simple Network Management Protocol to control the
+embedded system.
+
+Use this example to connect Hexagon Application Kit board to a LAN
+with DHCP server (most LANs have this). This example will configure the
+LAN network parameters automatically using a DHCP protocol.
+
+You may connect the board to PC directly over a crosslink
+network cable. In this case configure a PC to use a static 
+IP address 192.168.0.1
+
+If after a timeout of 5 seconds DHCP did not obtain an IP address,
+this example will use a static IP address 192.168.0.100
+
+To test this example, run windows application 'SNMPTest.exe' and
+type in the ip address of your Embedded SNMP Agent and click
+'Connect'. When connected, you can change the LCD text on
+the target, control the onboard LED diodes and monitor the
+state of onboard pushbuttons.
+
+The SNMP_demo example is available for several targets:
+
+XMC4500:
+    Standalone application for the Hexagon Application Kit.
+    Program code is loaded into internal flash.
+
+XMC4500 Debug:
+    Standalone Debug application.
+    Program code is loaded into internal flash.
+    
+    Debug level is configured in Net_Debug.c debug configuration file.
+    ITM debug port is used as a communication interface.
+    You can debug the application with ULINK2 from uVision Debug Session:
+    Start Debug session (Ctrl + F5) and open Debug (printf)
+    Viewer (View->Serial Windows->Debug (printf) Viewer).
