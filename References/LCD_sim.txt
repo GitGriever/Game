@@ -1,0 +1,23 @@
+To control the simulated game on Nokia LCD using the Tiva Board:
+
+1. Open VirtualNokia5110.c file.
+
+2. Around line 38, change "VIRTUAL_NOKIA 0" to "VIRTUAL_NOKIA 1".
+	- 1 for real board
+	- 0 for simulated board
+
+3. Go to Project -> Options for target "..."
+
+4. Under Debug tab, click radio button left of "Use: Stellaris ICDI".
+
+5. Click OK.
+
+6. Open TExaSdisplay.exe application.
+
+7. In toolbar, click "open serial port" button.
+
+8. Click View -> Nokia5110
+
+9. Press Reset button on Tiva to start the game.
+
+- If nothing shows up, try going to COM -> close and open next.
