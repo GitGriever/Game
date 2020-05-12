@@ -1,0 +1,9 @@
+- intro screen
+- ADC: SW2 for jump
+- sprites
+- pipes
+- HUD: score, best score
+- fix game over screen
+
+maybe:
+- leaderboards
