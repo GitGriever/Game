@@ -1,60 +1,19 @@
-// SpaceInvaders.c
-// Runs on LM4F120/TM4C123
-// Jonathan Valvano and Daniel Valvano
-// This is a starter project for the edX Lab 15
-// In order for other students to play your game
-// 1) You must leave the hardware configuration as defined
-// 2) You must not add/remove any files from the project
-// 3) You must add your code only this this C file
-// I.e., if you wish to use code from sprite.c or sound.c, move that code in this file
-// 4) It must compile with the 32k limit of the free Keil
-
-// This virtual Nokia project only runs on the real board, this project cannot be simulated
-// Instead of having a real Nokia, this driver sends Nokia
-//   commands out the UART to TExaSdisplay
-// The Nokia5110 is 48x84 black and white
-// pixel LCD to display text, images, or other information.
-
-// April 19, 2014
-// http://www.spaceinvaders.de/
-// sounds at http://www.classicgaming.cc/classics/spaceinvaders/sounds.php
-// http://www.classicgaming.cc/classics/spaceinvaders/playguide.php
-/* This example accompanies the books
-   "Embedded Systems: Real Time Interfacing to Arm Cortex M Microcontrollers",
-   ISBN: 978-1463590154, Jonathan Valvano, copyright (c) 2013
-
-   "Embedded Systems: Introduction to Arm Cortex M Microcontrollers",
-   ISBN: 978-1469998749, Jonathan Valvano, copyright (c) 2013
-
- Copyright 2014 by Jonathan W. Valvano, valvano@mail.utexas.edu
-    You may use, edit, run or distribute this file
-    as long as the above copyright notice remains
- THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
- OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
- VALVANO SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL,
- OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
- For more information about my classes, my research, and my books, see
- http://users.ece.utexas.edu/~valvano/
- */
-// ******* Required Hardware I/O connections*******************
-// PA1, PA0 UART0 connected to PC through USB cable
-// Slide pot pin 1 connected to ground
-// Slide pot pin 2 connected to PE2/AIN1
-// Slide pot pin 3 connected to +3.3V 
-// fire button connected to PE0
-// special weapon fire button connected to PE1
-// 8*R resistor DAC bit 0 on PB0 (least significant bit)
-// 4*R resistor DAC bit 1 on PB1
-// 2*R resistor DAC bit 2 on PB2
-// 1*R resistor DAC bit 3 on PB3 (most significant bit)
-// LED on PB4
-// LED on PB5
-
 #include "..//tm4c123gh6pm.h"
 #include "Nokia5110.h"
 #include "Random.h"
 #include "TExaS.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include "switch_counter_interrupt_TivaWare.h"
+#include "inc/hw_types.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_gpio.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+#include "inc/tm4c123gh6pm.h"
+
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
@@ -305,12 +264,50 @@ const unsigned char Laser1[] = {
 #define MISSILEH    ((unsigned char)Missile0[22])
 #define PLAYERW     ((unsigned char)PlayerShip0[18])
 #define PLAYERH     ((unsigned char)PlayerShip0[22])
-
 void
 PortFunctionInit(void)
 {
+    // Enable Peripheral Clocks 
+    //
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+
+    //
+    // Enable pin PF4 for GPIOInput
+    //
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4);
+
+    //
+    // Enable pin PF0 for GPIOInput
+    //
+
+    //
+    //First open the lock and select the bits we want to modify in the GPIO commit register.
+    //
+    HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
+    HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x1;
+
+    //
+    //Now modify the configuration of the pins that we unlocked.
+    //
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
 	
+		//Enable pull-up on PF4 and PF0
+		GPIO_PORTF_PUR_R |= 0x11; 
+
 }
+void
+Interrupt_Init(void)
+{
+  IntEnable(INT_GPIOF);  							// enable interrupt 30 in NVIC (GPIOF)
+	IntPrioritySet(INT_GPIOF, 0x00); 		// configure GPIOF interrupt priority as 0
+	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
+	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
+  GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
+  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+	IntMasterEnable();       		// globally enable interrupt
+}
+
+
 struct State {
   unsigned long x;      // x coordinate
   unsigned long y;      // y coordinate
@@ -321,7 +318,7 @@ typedef struct State STyp;
 STyp Enemy[4];
 STyp Ally[5];
 
-void Init(void){ int i;			// starting position of the enemies
+void Init(void){ //int i;			// starting position of the enemies
 //	for(i=0;i<4;i++){
 //    Enemy[i].x = 20*i;
 //    Enemy[i].y = 10;
@@ -344,6 +341,24 @@ void Init(void){ int i;			// starting position of the enemies
 //    }
 //  }
 //}
+void GPIOPortF_Handler(void)
+{
+	
+	//SW1 is pressed
+	if(GPIO_PORTF_RIS_R&0x10)
+	{
+		// acknowledge flag for PF4
+		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4); 
+	}
+	
+	//SW2 is pressed
+  if(GPIO_PORTF_RIS_R&0x01)
+	{
+		// acknowledge flag for PF0
+		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);
+		Enemy[1].x -= 1;
+	}
+}
 unsigned long FrameCount=0;
 void Draw(void){ int i;
   Nokia5110_ClearBuffer();
@@ -357,6 +372,8 @@ void Draw(void){ int i;
 }
 
 int main(void){ int AnyLife = 1; int i;
+	PortFunctionInit();
+	Interrupt_Init();
   TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
   // you cannot use both the Scope and the virtual Nokia (both need UART0)
   Random_Init(1);
@@ -440,3 +457,5 @@ void Delay100ms(unsigned long count){unsigned long volatile time;
     count--;
   }
 }
+
+
