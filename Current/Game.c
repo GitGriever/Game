@@ -1,5 +1,5 @@
 // Runs on LM4F120/TM4C123
-// Jonathan Valvano and Daniel Valvano
+// Course instructed by Jonathan Valvano and Daniel Valvano
 
 // This virtual Nokia project only runs on the real board, this project cannot be simulated
 // Instead of having a real Nokia, this driver sends Nokia
