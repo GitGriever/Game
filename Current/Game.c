@@ -120,7 +120,7 @@ void Move(void){
 					Player.y -= 5;   // move up
 					
 			}
-			else if ((SW1 == 0) && (SW2 != 0))
+			else if ((SW1 == 0) && (SW2 != 0))  // SW1 is pressed
 			{
 					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
 				
