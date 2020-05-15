@@ -170,7 +170,6 @@ void Draw(void){
   FrameCount = (FrameCount+1)&0x01; // 0,1,0,1,...
 }
 
-// PF4 (0x01) is input SW1 and PF2 (0x04) is output Blue LED
 void PortF_Init(void){ 
 	
 	volatile unsigned long delay;
