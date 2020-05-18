@@ -69,6 +69,38 @@ unsigned long best;
 
 unsigned char pipeCleared;
 
+signed int c = 0; 	// timer counter
+
+void Timer1A_Handler(void){ // timer 2A in full
+// Generate pipes from the right
+	TIMER2_ICR_R = 0x00000001;	
+	c++;
+	
+	if(c>7) { c = 0; } // restart timer
+	
+// 	Pipe.var = ((Random()>>24)%3)+1;  // returns 1, 2, or 3
+//	if(Pipe.x == 0){
+//	UFOSpr = UFO_Init(0,UFOH);
+//	Sound_UFO();
+//	}
+}
+
+void Timer1_Init(unsigned long seconds){ 
+// Initalise Timer2 to trigger every few seconds(assuming 880Mhz PLL)
+  unsigned long volatile delay;
+  SYSCTL_RCGCTIMER_R |= 0x04;
+  delay = SYSCTL_RCGCTIMER_R;
+  TIMER2_CTL_R = 0x00000000;
+  TIMER2_CFG_R = 0x00000000; // 32-bit mode
+  TIMER2_TAMR_R = 0x00000002; // periodic mode, default down-count
+  TIMER2_TAILR_R = seconds * 80000000 - 1; 
+  TIMER2_TAPR_R = 0; // bus clock resolution
+  TIMER2_ICR_R = 0x00000001;
+  TIMER2_IMR_R = 0x00000001;
+  NVIC_PRI5_R = (NVIC_PRI5_R&0x0FFFFFFF)|(0x03 << 29); // priority 3
+	NVIC_EN0_R |= 1<<23;
+	TIMER2_CTL_R = 0x00000001; 
+}
 
 struct State {
   unsigned long x;      // x coordinate
@@ -92,14 +124,16 @@ typedef struct Obstacle {
   unsigned long x;      // x coordinate
   unsigned long y;      // y coordinate
   const unsigned char *image; 
+	unsigned char	var;  // pipe variant
 } OTyp;
 
 OTyp Pipe;  
 
 void Obstacle_Init(void){ 
-    Pipe.x = 66;
-    Pipe.y = 9;		
-    Pipe.image = Pipe1;
+		unsigned char	var;  // pipe variant
+    Pipe.x = 66; 
+//    Pipe.y = 9;  // PipeY --> Pipe.y = Y - 1
+			
 }
 	
 
@@ -108,6 +142,46 @@ void Move(void){
 			
 			if(Pipe.x < X_MAX) {    
 			Pipe.x  -= 1; // move left
+			}
+			else
+			{
+				Pipe.x = 66;
+			
+//				
+//						Pipe.var = ((Random()>>24)%3)+1;  // returns 1, 2, or 3
+//	
+//				switch(Pipe.var)
+//									{
+//													case 1: 
+//															Pipe.image = Pipe10;
+//															Pipe.y = 9;
+//															break;
+//													
+//													case 2: 
+//															Pipe.image = Pipe23;
+//															Pipe.y = 22;
+//															break;
+//													
+//													case 3: 
+//															Pipe.image = Pipe27;
+//															Pipe.y = 26;
+//															break;
+//													
+//													case 6: 
+//															Pipe.image = Pipe32;
+//															Pipe.y = 31;
+//															break;
+//													
+//													case 4: 
+//															Pipe.image = Pipe38;
+//															Pipe.y = 37;
+//															break;
+//													
+//													case 5: 
+//															Pipe.image = Pipe42;
+//															Pipe.y = 41;
+//															break;
+//									}
 			}
 			
 			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
@@ -154,7 +228,48 @@ void Draw(void){
   Nokia5110_ClearBuffer();
     if(Player.life > 0){			
 			Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
+			
+				if(Pipe.x == 66)
+					{
+						
+						Pipe.var = ((Random()>>24)%3)+1;  // returns 1, 2, or 3
+	
+						switch(Pipe.var)
+									{
+													case 1: 
+															Pipe.image = Pipe10;
+															Pipe.y = 9;
+															break;
+													
+													case 2: 
+															Pipe.image = Pipe23;
+															Pipe.y = 22;
+															break;
+													
+													case 3: 
+															Pipe.image = Pipe27;
+															Pipe.y = 26;
+															break;
+													
+													case 6: 
+															Pipe.image = Pipe32;
+															Pipe.y = 31;
+															break;
+													
+													case 4: 
+															Pipe.image = Pipe38;
+															Pipe.y = 37;
+															break;
+													
+													case 5: 
+															Pipe.image = Pipe42;
+															Pipe.y = 41;
+															break;
+														}
+													}
+
 			Nokia5110_PrintBMP(Pipe.x, Pipe.y, Pipe.image, 0);
+			
 						if(SW2 == 0) // SW2 is pressed
 			{
 					Nokia5110_PrintBMP(Player.x, Player.y, Player.image[2], 0);
@@ -170,6 +285,7 @@ void Draw(void){
   FrameCount = (FrameCount+1)&0x01; // 0,1,0,1,...
 }
 
+// PF4 (0x01) is input SW1 and PF2 (0x04) is output Blue LED
 void PortF_Init(void){ 
 	
 	volatile unsigned long delay;
@@ -198,9 +314,15 @@ void PortF_Init(void){
 //  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
 //}
 
+//**********************GameEngine_Init***********************
+// Calls the initialization of the SysTick and give
+// initial values to some of the game engine variables
+// It needs to be called by the main function of the program
+// inputs: none
+// outputs: none
+
 int main(void)
 	{ 
-	
 		
 	TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
   // you cannot use both the Scope and the virtual Nokia (both need UART0)
@@ -220,6 +342,8 @@ int main(void)
   Timer2_Init(80000000/10);  //  80000000/30 for 30 Hz  // increase denom to speed up		
 			
   while(1){
+		
+		 // Timer1_Init(1);  // increment counter every T seconds, slows down game for some reason
 		
 		Draw();		
 		Move();
@@ -343,31 +467,6 @@ void GameOver(void){
 	// while(!FIRE){};
   Delay100ms(10);
 }
-
-//void PortFunction_Init(void){
-
-//    // Enable Peripheral Clocks 
-//    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-
-//    // Enable pin PF2 and PF1 for GPIOOutput
-
-//    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
-//    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
-//    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
-
-//    // Enable pin PF0 and PF4 for GPIOInput
-//	  GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
-//    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4);
-//	
-//	  //Now modify the configuration of the pins that we unlocked.
-
-//    //First open the lock and select the bits we want to modify in the GPIO commit register.
-//    HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = GPIO_LOCK_KEY;
-//    HWREG(GPIO_PORTF_BASE + GPIO_O_CR) = 0x1;
-
-//     //Enable pull-up on PF0 and PF4
-//     GPIO_PORTF_PUR_R |= 0x11;
-//}
 
 void Score_Init(void){
 		score = 0;
