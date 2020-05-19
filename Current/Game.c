@@ -46,6 +46,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
 #include "driverlib/interrupt.h"
+#include "driverlib/timer.h"
 #include "..//tm4c123gh6pm.h"
 
 #define Y_MIN 2 // Minimum screen y-coord (top)
@@ -132,7 +133,7 @@ OTyp Pipe;
 
 void Obstacle_Init(void){ 
 		unsigned char	var;  // pipe variant
-    Pipe.x = 66;  
+    Pipe.x = 70;  // [0, 70]
 		Pipe.yBot = Y_MAX;
 //    Pipe.yTop = 9;  // PipeY --> Pipe.yTop = Y - 1
 			
@@ -153,61 +154,52 @@ void Move(void){
 //	 if (((Player.x-1) == Pipe.x) && (Player.y < Pipe.yTop + 8))
 			// Player.x == (Pipe.x - 9
 			// Pipe10, rightedge, ~14x10, Pipe.yTop - 2 = 9 -2 = 7
-			// Pipe23, Pipe.yTop - 15 = 22 - 15 = 7 		22 ] 15
-			//**27, 26 - 19 = 7	= Pipe.x															26 ] 19
-		// 32, 31 - 24 = 7																	31 ] 24
-		// 38. 37 - 30 = 7																	37 ] 30
-		// 42. 41 - 34 = 7																	41 ] 34
 			// 8x12 player, highest point is player.y = 7 @(0,7)
 		// x begins with leftmost pixel of the bmp, leftmost is x = 0
-	
-//	if (( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) && (Player.y < Pipe.yTop + 8))
+
+	// checks for collisions
+//		if ( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) 
 //		{			// isnt detected if flew up between range :(
+//				if (Player.y < (Pipe.yTop + 8))
 //				{
 //						Player.life = 0;
 //						GameOver();
-
-//				}
+//				}	
+//				if (Player.y > (Pipe.yTop + d)) // 18
+//				{
+//						Player.life = 0;
+//					  GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+//						GameOver();
+//				}	
 //			}	
-	
-		if ( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) 
-		{			// isnt detected if flew up between range :(
-				if (Player.y < (Pipe.yTop + 8))
-				{
-						Player.life = 0;
-						GameOver();
-				}	
-				if (Player.y > (Pipe.yTop + d)) // 18
-				{
-						Player.life = 0;
-						GameOver();
-				}	
-				
-				
-				
-			}	
 				
 	
     if((Player.y < Y_MAX) && (Player.y >= Y_MIN)){ 
 			if(Pipe.x < X_MAX) {    
 			Pipe.x  -= 1; // move left
+				
+				
 			}
 			else
 			{
-				Pipe.x = 66;
+				Pipe.x = 70;
 			}
-			
+		
 			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
 			{
-					GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
-					GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+//					GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+//					GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+//			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
 				
+				// for cyan: green, blue on
+				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+					GPIO_PORTF_DATA_R |= 0x08;	// Turn off green LED.
 			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
 				
 					Player.y -= 3;   // move up
 					
 			}
-			else if ((SW1 == 0) && (SW2 != 0))
+			else if ((SW1 == 0) && (SW2 != 0)) // SW1 is pressed
 			{
 					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
 				
@@ -221,12 +213,47 @@ void Move(void){
 			}
 			else 
 			{
+				
 			   GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
-				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+				 // GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
 				 GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
-			
-				 Player.y += 1; // move down 1
+				
+				 Player.y += 0; // move down 1  // 0 to freeze bird
 			}
+
+//			 if(GPIO_PORTF_RIS_R&0x01)
+//	{
+//		GPIO_PORTF_ICR_R = 0x01;
+//					GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+//					GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+//				
+//			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
+//				
+//					Player.y -= 3;   // move up
+//					
+//			}
+//			else  if(GPIO_PORTF_RIS_R&0x10)
+//	{
+//		GPIO_PORTF_ICR_R = 0x10;
+//					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+//				
+//				// Turn on yellow LED:
+//			    GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+//					GPIO_PORTF_DATA_R |= 0x08; // Turn on green LED.
+
+//				
+//			// make it pause game and turn on orange or yellow LED
+//				
+//			}
+//			else 
+//			{
+//				
+//			   GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+//				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+//				 GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+//				
+//				 Player.y += 1; // move down 1
+//			}
 			
     }
 		else{
@@ -236,6 +263,22 @@ void Move(void){
 		
 }
 
+//void GPIOPortF_Handler(void)
+//{
+//	//SW2 is pressed // PF0
+//  if(GPIO_PORTF_RIS_R&0x01)
+//	{
+//		GPIO_PORTF_ICR_R = 0x01;
+//		Player.y += 4;
+//		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[1], 0);
+//	}
+//    else if (GPIO_PORTF_RIS_R&0x10)
+//	{
+//		GPIO_PORTF_ICR_R = 0x10;
+//		pause game
+//	}
+//  }
+
 
 unsigned long FrameCount=0;
 void Draw(void){
@@ -243,12 +286,12 @@ void Draw(void){
 
     if(Player.life > 0){			
 			Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
-			
-			if(Pipe.x == 66)
-	//				if(c % 35 == 0)
+		//	c = c%35;
+		//	if(Pipe.x == 66)
+					if(Pipe.x  ==  70)
 					{
 						Pipe.var = ((Random()>>24)%15)+1;  // returns random num in range 1 to 15
-						// Pipe.var = 15;
+						// Pipe.var = 5;
 						
 						if((Pipe.var == 1) || Pipe.var == 2) 
 						{
@@ -410,6 +453,27 @@ void PortF_Init(void){
   GPIO_PORTF_PUR_R = 0x11;          // enable pull-up on PF0 and PF4
   GPIO_PORTF_DEN_R = 0x1F;          // enable digital I/O on PF4-0
 
+	
+	/*
+	
+  // IntEnable(INT_GPIOF);  							// enable interrupt 30 in NVIC (GPIOF)
+	// IntPrioritySet(INT_GPIOF, 0x00); 		// configure GPIOF interrupt priority as 0
+	
+	NVIC_EN0_R |= 0x40000000;  		// enable interrupt 30 in NVIC (GPIOF)
+	NVIC_PRI7_R = (NVIC_PRI7_R&0xFF00FFFF)|0x00400000; 		// configure GPIOF interrupt priority as 2
+	// NVIC_PRI7_R &= ~0x00E00000; // priority 0
+	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
+	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
+  // GPIO_PORTF_IBE_R |= 0x11;   	// PF0 and PF4 both edges trigger 
+	GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
+  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+	
+  setting bits 23-21 in NVIC_PRI7
+	0x00A00000; for 5
+	0x00400000 for priority 2
+	NVIC_PRI7_R &= ~0x00E00000; // priority 0
+	*/
+	
 }
 
 
@@ -459,12 +523,14 @@ void Timer0A_Handler(void)
 int main(void)
 	{ 
 		
+	Player.life = 1;
+	score = 0;	
+		
 	TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
   // you cannot use both the Scope and the virtual Nokia (both need UART0)
   Random_Init(1);
   Nokia5110_Init();
   EnableInterrupts(); // virtual Nokia uses UART0 interrupts
-
 		
   PortF_Init();	
 		
@@ -503,14 +569,7 @@ int main(void)
 		
 		
 	
-//	//SW2 is pressed
-//  if(GPIO_PORTF_RIS_R&0x01)
-//	{
-//		// acknowledge flag for PF0
-//		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);
-//		Player.y += 4;
-//		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[1], 0);
-//	}
+
 		
 	//~~~ During Game
 
@@ -576,7 +635,7 @@ void Delay100ms(unsigned long count){
 }
 
 void TitleScreen(void){
-
+	
   Nokia5110_ClearBuffer();
 		
 	Nokia5110_PrintBMP(16, 22, Birdy, 0);
@@ -585,15 +644,20 @@ void TitleScreen(void){
 		
   Nokia5110_DisplayBuffer();   // draw buffer
 		
-  Delay100ms(5);              // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim
+  // Delay100ms(5);              // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim
 	while(SW2 != 0){};					 // displays until SW2 is pressed		
-	Delay100ms(5);
+		//Delay100ms(5);
 	
 }
 
 void GameOver(void){
 	
+	Player.life = 0;
+	
+	if(Player.life == 0)
+	{
 	GPIO_PORTF_DATA_R &= 0x02; // Turn on red LED
+	}
 	
 	Nokia5110_ClearBuffer();
 	Nokia5110_PrintBMP(15, 17, Game_Over, 0);		// y = 21
@@ -616,6 +680,7 @@ void GameOver(void){
 				Nokia5110_OutUDec(best);
 				Nokia5110_SetCursor(0, 0); // renders screen
 				}
+		
 				
 //	Nokia5110_SetCursor(7, 5);
 //  Nokia5110_OutUDec(best); // check c	
@@ -624,41 +689,59 @@ void GameOver(void){
 
   Nokia5110_SetCursor(0, 0); // renders screen
 	
-//	if(SW2 == 0)
-//	{
-//		TitleScreen();
-//	}
-  Delay100ms(10);
+//			if ((SW2 == 0) && (SW1 != 0)) 
+//			{
+//			main();
+//			}
+			
+  // Delay100ms(10);
 }
 
 void Score_Init(void){
 	
 				// best = 0;
 				score = 0;
-				score = (c / 35);
+
+		// score = ((37+c) / 37); // 35
+	score = c/37;
 				// score = Pipe.var; or c for check
-				GPIO_PORTF_DATA_R &= 0x08; // Turn on green LED
 	
 		if (score > best){
 		best = score;
 			// display rainbow led?
 			}
 		
- if(Player.life > 0){
+ if(Player.life > 0){  // ingame score
 				if(score < 10)
 				{
-				Nokia5110_SetCursor(11, 0);
-				Nokia5110_OutUDec(score);
+			Nokia5110_SetCursor(11, 0);
+			Nokia5110_OutUDec(score);
+					
+					Nokia5110_SetCursor(10, 0);
+			//	Nokia5110_OutUDec(c);
+					
 				Nokia5110_SetCursor(0, 0); // renders screen
 				}
 				if((score < 100) && (score >= 10) )
 				{
 				Nokia5110_SetCursor(10, 0);
+				// Nokia5110_OutUDec(c);
 				Nokia5110_OutUDec(score);
 				Nokia5110_SetCursor(0, 0); // renders screen
 				}
+				
+				if (Pipe.x == Player.x) 
+				{
+					GPIO_PORTF_DATA_R |= 0x08; // turn on green led
+					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+				}
+					
+				
 			}
-	
+					else if(Player.life == 0)
+				{ GPIO_PORTF_DATA_R |= 0x02; // turn on red led
+					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.	
+				}  
 	}
 
 
