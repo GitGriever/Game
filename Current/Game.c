@@ -61,15 +61,19 @@ void TitleScreen(void);
 void GameOver(void);
 void PortFunction_Init(void);
 void Score_Init(void); // Initializes player's score
+void Player_Crash(void);
+void Crash_Check(void);
 
 unsigned long TimerCount;
 unsigned long Semaphore;
-unsigned long score;
-unsigned long best;
+unsigned long score = 0; 
+unsigned long best = 0;
+unsigned long d = 0;  // offset for bottom collision check
+unsigned long c = 0; 	// timer counter
 
 unsigned char pipeCleared;
 
-signed int c = 0; 	// timer counter
+
 
 void Timer1A_Handler(void){ // timer 2A in full
 // Generate pipes from the right
@@ -111,9 +115,9 @@ struct State {
 
 typedef struct State STyp;
 STyp Player;		
-void Init(void){ 
-    Player.x = 5;
-    Player.y = 23;		
+void Init(void){  // 8x12, xrange is [0. ?]. yrange is [height-5, ?]
+    Player.x = 0; // 5 , begins with leftmost pixel of the bmp, leftmost is x = 0
+    Player.y = 23;		// 23, highest point is y = 7
     Player.image[0] = Sprite;
     Player.image[1] = Sprite_fall;
     Player.image[2] = Sprite_fly;
@@ -122,8 +126,10 @@ void Init(void){
 
 typedef struct Obstacle {
   unsigned long x;      // x coordinate
-  unsigned long y;      // y coordinate
-  const unsigned char *image; 
+  unsigned long yTop;      // yTop coordinate
+  unsigned long yBot;      // yBot coordinate
+  const unsigned char *top;
+	const unsigned char *bottom;
 	unsigned char	var;  // pipe variant
 } OTyp;
 
@@ -131,57 +137,69 @@ OTyp Pipe;
 
 void Obstacle_Init(void){ 
 		unsigned char	var;  // pipe variant
-    Pipe.x = 66; 
-//    Pipe.y = 9;  // PipeY --> Pipe.y = Y - 1
+    Pipe.x = 66;  
+		Pipe.yBot = Y_MAX;
+//    Pipe.yTop = 9;  // PipeY --> Pipe.yTop = Y - 1
 			
+}
+
+void Crash_Check(void)
+{
+	if ((Player.x == Pipe.x) && (Player.y == Pipe.x))
+	{
+		Player.life = 0;
+		GameOver();
+	}
 }
 	
 
 void Move(void){
-    if((Player.y < Y_MAX) && (Player.y > Y_MIN)){    
-			
+	
+//	 if (((Player.x-1) == Pipe.x) && (Player.y < Pipe.yTop + 8))
+			// Player.x == (Pipe.x - 9
+			// Pipe10, rightedge, ~14x10, Pipe.yTop - 2 = 9 -2 = 7
+			// Pipe23, Pipe.yTop - 15 = 22 - 15 = 7 		22 ] 15
+			//**27, 26 - 19 = 7	= Pipe.x															26 ] 19
+		// 32, 31 - 24 = 7																	31 ] 24
+		// 38. 37 - 30 = 7																	37 ] 30
+		// 42. 41 - 34 = 7																	41 ] 34
+			// 8x12 player, highest point is player.y = 7 @(0,7)
+		// x begins with leftmost pixel of the bmp, leftmost is x = 0
+	
+//	if (( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) && (Player.y < Pipe.yTop + 8))
+//		{			// isnt detected if flew up between range :(
+//				{
+//						Player.life = 0;
+//						GameOver();
+
+//				}
+//			}	
+	
+		if ( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) 
+		{			// isnt detected if flew up between range :(
+				if (Player.y < (Pipe.yTop + 8))
+				{
+						Player.life = 0;
+						GameOver();
+				}	
+				if (Player.y > (Pipe.yTop + d)) // 18
+				{
+						Player.life = 0;
+						GameOver();
+				}	
+				
+				
+				
+			}	
+				
+	
+    if((Player.y < Y_MAX) && (Player.y >= Y_MIN)){ 
 			if(Pipe.x < X_MAX) {    
 			Pipe.x  -= 1; // move left
 			}
 			else
 			{
 				Pipe.x = 66;
-			
-//				
-//						Pipe.var = ((Random()>>24)%3)+1;  // returns 1, 2, or 3
-//	
-//				switch(Pipe.var)
-//									{
-//													case 1: 
-//															Pipe.image = Pipe10;
-//															Pipe.y = 9;
-//															break;
-//													
-//													case 2: 
-//															Pipe.image = Pipe23;
-//															Pipe.y = 22;
-//															break;
-//													
-//													case 3: 
-//															Pipe.image = Pipe27;
-//															Pipe.y = 26;
-//															break;
-//													
-//													case 6: 
-//															Pipe.image = Pipe32;
-//															Pipe.y = 31;
-//															break;
-//													
-//													case 4: 
-//															Pipe.image = Pipe38;
-//															Pipe.y = 37;
-//															break;
-//													
-//													case 5: 
-//															Pipe.image = Pipe42;
-//															Pipe.y = 41;
-//															break;
-//									}
 			}
 			
 			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
@@ -191,7 +209,7 @@ void Move(void){
 				
 			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
 				
-					Player.y -= 5;   // move up
+					Player.y -= 3;   // move up
 					
 			}
 			else if ((SW1 == 0) && (SW2 != 0))
@@ -212,63 +230,158 @@ void Move(void){
 				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
 				 GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
 			
-				 Player.y += 1; // move down
+				 Player.y += 1; // move down 1
 			}
 			
     }
 		else{
       Player.life = 0;
       GameOver();
-			
     }
+		
 }
+
 
 unsigned long FrameCount=0;
 void Draw(void){
   Nokia5110_ClearBuffer();
+
     if(Player.life > 0){			
 			Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
 			
-				if(Pipe.x == 66)
+			if(Pipe.x == 66)
+	//				if(c % 35 == 0)
 					{
+						Pipe.var = ((Random()>>24)%15)+1;  // returns random num in range 1 to 15
+						// Pipe.var = 15;
 						
-						Pipe.var = ((Random()>>24)%3)+1;  // returns 1, 2, or 3
-	
+						if((Pipe.var == 1) || Pipe.var == 2) 
+						{
+							d = (2*Pipe.var) + 16;
+						}
+						else if(Pipe.var == 15)
+						{
+							d = 22;
+						}
+						else
+						{
+							d = 21;
+						}
+						
 						switch(Pipe.var)
 									{
-													case 1: 
-															Pipe.image = Pipe10;
-															Pipe.y = 9;
+										
+													case 1:  // 7bit diff b/t top and bottom
+															Pipe.top = Pipe0;
+															Pipe.yTop = 0;
+															Pipe.bottom = Pipe29b;
+															// d = 18;
 															break;
 													
 													case 2: 
-															Pipe.image = Pipe23;
-															Pipe.y = 22;
+															Pipe.top = Pipe0;
+															Pipe.yTop = 0;
+													    Pipe.bottom = Pipe27b;
+															// d = 20;
 															break;
 													
 													case 3: 
-															Pipe.image = Pipe27;
-															Pipe.y = 26;
-															break;
-													
-													case 6: 
-															Pipe.image = Pipe32;
-															Pipe.y = 31;
+															Pipe.top = Pipe2;
+															Pipe.yTop = 1;
+													    Pipe.bottom = Pipe25b;
+															// d = 21;
 															break;
 													
 													case 4: 
-															Pipe.image = Pipe38;
-															Pipe.y = 37;
+															Pipe.top = Pipe4;
+															Pipe.yTop = 3;
+													    Pipe.bottom = Pipe23b;
+															// d = 21;
 															break;
 													
 													case 5: 
-															Pipe.image = Pipe42;
-															Pipe.y = 41;
+															Pipe.top = Pipe6;
+															Pipe.yTop = 5;
+													    Pipe.bottom = Pipe21b;
+															// d = 21;
+															break;
+													
+													case 6: 
+															Pipe.top = Pipe8;
+															Pipe.yTop = 7;
+													    Pipe.bottom = Pipe19b;
+															// d = 21;
+															break;
+													
+													case 7: 
+															Pipe.top = Pipe10;
+															Pipe.yTop = 9;
+													    Pipe.bottom = Pipe17b;
+															// d = 21;
+															break;
+									
+														case 8:
+															Pipe.top = Pipe12;
+															Pipe.yTop = 11;
+													    Pipe.bottom = Pipe15b;
+															// d = 21;
+															break;
+														
+														case 9:
+															Pipe.top = Pipe14;
+															Pipe.yTop = 13;
+													    Pipe.bottom = Pipe13b;
+															// d = 21;
+															break;
+														
+														case 10:
+															Pipe.top = Pipe16;
+															Pipe.yTop = 15;
+													    Pipe.bottom = Pipe11b;
+															// d = 21;
+															break;
+														
+														case 11:
+															Pipe.top = Pipe18;
+															Pipe.yTop = 17;
+													    Pipe.bottom = Pipe9b;
+															// d = 21;
+															break;
+														
+														case 12:
+															Pipe.top = Pipe20;
+															Pipe.yTop = 19;
+													    Pipe.bottom = Pipe7b;
+															// d = 21;
+															break;
+														
+														case 13:
+															Pipe.top = Pipe22;
+															Pipe.yTop = 21;
+													    Pipe.bottom = Pipe5b;
+															// d = 21;
+															break;
+														
+														case 14:
+															Pipe.top = Pipe24;
+															Pipe.yTop = 23;
+													    Pipe.bottom = Pipe3b;
+															break;
+														
+														case 15:
+															Pipe.top = Pipe25;
+															Pipe.yTop = 24;
+															Pipe.bottom = Pipe0b;
+															// d = 22;
 															break;
 														}
+													// edge of Player.y  = -bot + 47
+														
+								
 													}
 
-			Nokia5110_PrintBMP(Pipe.x, Pipe.y, Pipe.image, 0);
+			Nokia5110_PrintBMP(Pipe.x, Pipe.yTop, Pipe.top, 0);
+			Nokia5110_PrintBMP(Pipe.x, Pipe.yBot, Pipe.bottom, 0);
 			
 						if(SW2 == 0) // SW2 is pressed
 			{
@@ -282,7 +395,7 @@ void Draw(void){
 			}
     }
   Nokia5110_DisplayBuffer();      // draw buffer
-  FrameCount = (FrameCount+1)&0x01; // 0,1,0,1,...
+	
 }
 
 // PF4 (0x01) is input SW1 and PF2 (0x04) is output Blue LED
@@ -303,6 +416,33 @@ void PortF_Init(void){
   GPIO_PORTF_DEN_R = 0x1F;          // enable digital I/O on PF4-0
 
 }
+
+
+
+void Timer0A_Init(unsigned char second)
+{
+	volatile uint32_t ui32Loop;
+	SYSCTL_RCGC1_R |= SYSCTL_RCGC1_TIMER0; // activate timer0
+  ui32Loop = SYSCTL_RCGC1_R;				// Do a dummy read to insert a few cycles after enabling the peripheral.
+  TIMER0_CTL_R &= ~0x00000001;     // disable timer0A during setup
+  TIMER0_CFG_R = 0x00000000;       // configure for 32-bit timer mode
+  TIMER0_TAMR_R = 0x00000002;      // configure for periodic mode, default down-count settings
+  TIMER0_TAILR_R = (second*16000000)-1;       // reload value
+	NVIC_PRI4_R &= ~0xE0000000; 	 // configure Timer0A interrupt priority as 0
+  NVIC_EN0_R |= 0x00080000;     // enable interrupt 19 in NVIC (Timer0A)
+	TIMER0_IMR_R |= 0x00000001;      // arm timeout interrupt
+  TIMER0_CTL_R |= 0x00000001;      // enable timer0A																	// configure GPIOF interrupt priority as 0 
+}
+
+void Timer0A_Handler(void)
+{
+	  // acknowledge flag for Timer0A
+	  TIMER0_ICR_R |= 0X00000001;
+	
+    // Update the periodic interrupt counter.
+	  c++;
+}	
+
 
 //void Interrupt_Init(void)
 //{
@@ -329,7 +469,8 @@ int main(void)
   Random_Init(1);
   Nokia5110_Init();
   EnableInterrupts(); // virtual Nokia uses UART0 interrupts
-	
+
+		
   PortF_Init();	
 		
 	// Interrupt_Init();
@@ -339,14 +480,21 @@ int main(void)
   Init();
 	Obstacle_Init();
 		
+//			 //initialize Timer0 and configure the interrupt
+//	 Timer0A_Init(1);	// increments counter every 1 second
+	
+	// Crash_Check();
+		
   Timer2_Init(80000000/10);  //  80000000/30 for 30 Hz  // increase denom to speed up		
-			
+//		Timer2_Init(16000000);
   while(1){
-		
-		 // Timer1_Init(1);  // increment counter every T seconds, slows down game for some reason
-		
+
 		Draw();		
 		Move();
+		
+		Score_Init();
+		
+//		Player_Crash();
 		
 //		Nokia5110_Clear();
 //	
@@ -379,9 +527,9 @@ int main(void)
 //	
 //	Nokia5110_SetCursor(0, 4);	// 6 rows (0-5), 12 characters wide
 //	Nokia5110_OutString("____________"); 	
-//	Nokia5110_SetCursor(0, 5);
-//	Nokia5110_OutString("//Score:1 ||"); 		
-//	Nokia5110_SetCursor(0, 0); // renders screen
+//Nokia5110_SetCursor(0, 5);
+//Nokia5110_OutUDec(c);
+//Nokia5110_SetCursor(0, 0); // renders screen
 		
 
 		
@@ -417,6 +565,8 @@ void Timer2A_Handler(void){
   TimerCount++;
   Move(); 
   Semaphore = 1; // trigger
+	if(Player.life > 0)
+	{c++;}
 }
 
 void Delay100ms(unsigned long count){
@@ -454,41 +604,110 @@ void GameOver(void){
 	Nokia5110_PrintBMP(15, 17, Game_Over, 0);		// y = 21
 	Nokia5110_DisplayBuffer();   // draw buffer
 	
+	Nokia5110_SetCursor(8, 3);
+	Nokia5110_OutUDec(score);
 	Nokia5110_SetCursor(1, 3);
   Nokia5110_OutString("Score:");
-	//	Nokia5110_OutUDec(Score);
-	 Nokia5110_SetCursor(1, 5);
-   Nokia5110_OutString("Best:"); 
-  //	Nokia5110_OutUDec(bestScore);	
 	
+	if(best < 10)
+				{
+				Nokia5110_SetCursor(8, 5);
+				Nokia5110_OutUDec(best);
+				Nokia5110_SetCursor(0, 0); // renders screen
+				}
+				if((best < 100) && (best >= 10) )
+				{
+				Nokia5110_SetCursor(7, 5);
+				Nokia5110_OutUDec(best);
+				Nokia5110_SetCursor(0, 0); // renders screen
+				}
+				
+//	Nokia5110_SetCursor(7, 5);
+//  Nokia5110_OutUDec(best); // check c	
+	Nokia5110_SetCursor(1, 5);
+  Nokia5110_OutString("Best:"); 
+
   Nokia5110_SetCursor(0, 0); // renders screen
 	
-//	Delay100ms(5);	
-	// while(!FIRE){};
+//	if(SW2 == 0)
+//	{
+//		TitleScreen();
+//	}
   Delay100ms(10);
 }
 
 void Score_Init(void){
-		score = 0;
-
-		while(Player.life > 0){
-		if(pipeCleared){
+	
+				// best = 0;
 				score = 0;
-				score += 1;
+				score = (c / 35);
+				// score = Pipe.var; or c for check
 				GPIO_PORTF_DATA_R &= 0x08; // Turn on green LED
-			}
 	
 		if (score > best){
 		best = score;
 			// display rainbow led?
 			}
+		
+ if(Player.life > 0){
+				if(score < 10)
+				{
+				Nokia5110_SetCursor(11, 0);
+				Nokia5110_OutUDec(score);
+				Nokia5110_SetCursor(0, 0); // renders screen
+				}
+				if((score < 100) && (score >= 10) )
+				{
+				Nokia5110_SetCursor(10, 0);
+				Nokia5110_OutUDec(score);
+				Nokia5110_SetCursor(0, 0); // renders screen
+				}
+			}
 	
 	}
 
+
+char Screen[X_MAX*Y_MAX/8]; // buffer stores the next image to be printed on the screen
+
+//********Nokia5110_AskPixel*****************
+// Evaluates if the pixel searched is on or off
+// inputs: x - horizontal coordinate of the pixel, must be less than 84
+//         y - vertical coordinate of the pixel, must be less than 48
+// outputs: true if the pixel is setted already, false if the pixel is cleared
+bool Nokia5110_AskPixel(unsigned char x, unsigned char y) 
+{
+  unsigned short PixelByte;            // byte# in screen buffer
+  unsigned char PixelBit;              // bit# in byte
+	unsigned char Result;
+  if ((x<84) && (y<48)) 
+	{              // check screen boundaries
+    PixelByte = ((y/8)*84) + x;
+    PixelBit = y % 8;
+    Result = Screen[PixelByte]&(1U<<PixelBit);
+  }
+	return (bool)Result;
 }
-
-
  
+//**********************Enemy_ControlDeath***********************
+// This function controls the death of an enemy pointed by "this".
+// It determines when the enemy should die based on the pixels that 
+// are already turned on
+// inputs: enemy: Pointer to an element of the enemy array
+// outputs: 1: Enemy was killed, 0: Enemy was not killed
+void Player_Crash(void)
+{
+	unsigned char i = Player.y;
+	while (Player.life == 1)	//i corresponds to the coordinates in Y axis from the bottom of
+	{																												//the enemy image to its top
+		if (Nokia5110_AskPixel(Player.x - 2, i) && (Pipe.x < Player.x - 4))		//If a pixel is turned on 2 pixels before the enemy image
+		{																											//the enemy is killed
+			Player.life = 0;
+			GameOver();
+			// Sound_GameOver();
+		}
+		i--;
+	}
+}
 
 	
 
