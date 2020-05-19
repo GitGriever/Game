@@ -199,13 +199,18 @@ void Move(void){
 					Player.y -= 3;   // move up
 					
 			}
-			else if ((SW1 == 0) && (SW2 != 0)) // SW1 is pressed
+			else if ((SW1 == 0) && (SW2 != 0)) // SW1 is pressed to pause the game
 			{
+				while(SW2 != 0) // game remains paused as long as the user does not press SW2
+				{
 					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
 				
-				// Turn on yellow LED:
-			    GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+					// Turn on yellow LED:
+			    		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
 					GPIO_PORTF_DATA_R |= 0x08; // Turn on green LED.
+					Player.y -= 0;
+					Pipe.x  -= 0;
+				}
 
 				
 			// make it pause game and turn on orange or yellow LED
