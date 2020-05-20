@@ -485,24 +485,23 @@ void PortF_Init(void){
 	0x00A00000; for 5
 	0x00400000 for priority 2
 	NVIC_PRI7_R &= ~0x00E00000; // priority 0
-	
-	
 	*/
 	
 }
 
-//void Interrupt_Init(void)
-//{
-//	NVIC_EN0_R |= 0x40000000;  		// enable interrupt 30 in NVIC (GPIOF)
-//	NVIC_PRI7_R = (NVIC_PRI7_R&0xFF00FFFF)|0x00400000; 		// configure GPIOF interrupt priority as 2
-//	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
-//	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
-//  GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
-//  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
-//}
+void Interrupt_Init(void)
+{
+	NVIC_EN0_R |= 0x40000000;  		// enable interrupt 30 in NVIC (GPIOF)
+	NVIC_PRI7_R = (NVIC_PRI7_R&0xFF00FFFF)|0x00400000; 		// configure GPIOF interrupt priority as 2
+	// NVIC_PRI7_R &= ~0x00E00000; // priority 0
+	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
+	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
+  GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
+  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+}
 
-//void GPIOPortF_Handler(void)
-//{
+void GPIOPortF_Handler(void)
+{
 //	if (GPIO_PORTF_RIS_R&0x01)
 //	{
 //		GPIO_PORTF_ICR_R = 0x01; 
@@ -518,7 +517,7 @@ void PortF_Init(void){
 //		GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
 //		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
 //	}
-//}
+}
 
 void Timer0A_Init(unsigned char second)
 {
@@ -544,6 +543,9 @@ void Timer0A_Handler(void)
 	  c++;
 }	
 
+
+
+
 // Initialize SysTick interrupts  // for random
 void SysTick_Init(unsigned long period){
 	NVIC_ST_CTRL_R = 0;           // disable SysTick during setup
@@ -555,13 +557,13 @@ void SysTick_Init(unsigned long period){
 }
 
 void SysTick_Handler(void){
-TitleScreen();
-GPIO_PORTF_DATA_R |= 0x04; // Turn off blue LED.
-GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+//	srand(NVIC_ST_CURRENT_R);
 }
 
 int main(void)
-	{ 		
+	{ 
+
+		
 	TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
   // you cannot use both the Scope and the virtual Nokia (both need UART0)
   //Random_Init(NVIC_ST_CTRL_R);  //  from systick
@@ -575,13 +577,10 @@ int main(void)
   PortF_Init();	
 	Interrupt_Init();
 		
-	// SysTick_Init(1);
 	TitleScreen();	
 	Random_Init(seed);
   Init();
 	Obstacle_Init();
-		
-
 		
 
   Timer2_Init(80000000/30);  //  80000000/30 for 30 Hz  // increase denom to speed up		 // 10 // 12 // max = 4294967295)
@@ -764,13 +763,6 @@ void Score_Init(void){
 				Nokia5110_OutUDec(score);
 				Nokia5110_SetCursor(0, 0); // renders screen
 				}	
-				if((score > 100) && (score < 1000)) 
-				{
-					Nokia5110_SetCursor(9, 0);			
-					Nokia5110_OutUDec(score);
-					Nokia5110_SetCursor(0, 0); // renders screen
-				}
-					
 			}
 					else if(Player.life == 0)
 				{ GPIO_PORTF_DATA_R |= 0x02; // turn on red led
