@@ -1,12 +1,14 @@
-
 #include "Nokia5110.h"
 #include "Random.h"
 #include "TExaS.h"
 #include "Images.h"
+// #include "ADC.h"
 #include "Switches.h"
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 #include "inc/hw_types.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_gpio.h"
@@ -14,6 +16,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
 #include "driverlib/interrupt.h"
+#include "driverlib/timer.h"
 #include "..//tm4c123gh6pm.h"
 
 #define Y_MIN 2 // Minimum screen y-coord (top)
@@ -24,14 +27,16 @@
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Timer2_Init(unsigned long period);
-void Delay100ms(unsigned long count); // Delay for count*100ms (excluding interrupts)
+void SysTick_Init(unsigned long period);
+void Delay100ms(float count); // Delay for count*100ms (excluding interrupts)
 void TitleScreen(void);
-void Dup(void);
+void PauseMenu(void);
 void GameOver(void);
 void PortFunction_Init(void);
 void Score_Init(void); // Initializes player's score
 void Player_Crash(void);
 void Crash_Check(void);
+void Dup(void);
 
 unsigned long TimerCount;
 unsigned long Semaphore;
@@ -39,6 +44,8 @@ unsigned long score = 0;
 unsigned long best = 0;
 unsigned long d = 0;  // offset for bottom collision check
 unsigned long c = 0; 	// timer counter
+unsigned long buttonPress = 0;
+unsigned long seed = 0;
 
 unsigned char pipeCleared;
 
@@ -46,10 +53,13 @@ unsigned char pipeCleared;
 
 void Timer1A_Handler(void){ // timer 2A in full
 // Generate pipes from the right
-	TIMER2_ICR_R = 0x00000001;	
-	c++;
-	
-	if(c>7) { c = 0; } // restart timer
+	TIMER1_ICR_R = 0x00000001;	
+	while(SW2 != 0)
+	{
+	seed++;
+	}
+	// if(c>7) { c = 0; } // restart timer
+
 }
 
 void Timer1_Init(unsigned long seconds){ 
@@ -73,7 +83,7 @@ struct State {
   unsigned long x;      // x coordinate
   unsigned long y;      // y coordinate
   const unsigned char *image[3];				// pointer to image
-  long life;            // 0=dead, 1= alive
+  long life;            // 0=dead, 1=
 };         
 
 typedef struct State STyp;
@@ -100,23 +110,28 @@ OTyp Pipe;
 
 void Obstacle_Init(void){ 
 		unsigned char	var;  // pipe variant
-    Pipe.x = 66;  
+    Pipe.x = 70;  // [0, 70]
 		Pipe.yBot = Y_MAX;
 //    Pipe.yTop = 9;  // PipeY --> Pipe.yTop = Y - 1
+			
 }
 
 void Crash_Check(void)
 {
-	if ((Player.x == Pipe.x) || ((Player.y == Pipe.yTop) || (Player.y == Pipe.yBot)))
+	if ((Player.x == Pipe.x) && (Player.y == Pipe.x))
 	{
 		Player.life = 0;
 		GameOver();
 	}
 }
+	
 
 void Move(void){
-	int CounterReturn = 0;
 	
+				if(buttonPress > 2)
+				{ buttonPress = 0; }
+	
+	// checks for collisions
 		if ( (Player.x >= (Pipe.x - 9)) && ((Player.x) <= Pipe.x) ) 
 		{			// isnt detected if flew up between range :(
 				if (Player.y < (Pipe.yTop + 8))
@@ -127,23 +142,26 @@ void Move(void){
 				if (Player.y > (Pipe.yTop + d)) // 18
 				{
 						Player.life = 0;
+					  GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
 						GameOver();
 				}	
 			}	
-	
+				
     if((Player.y < Y_MAX) && (Player.y >= Y_MIN)){ 
 			if(Pipe.x < X_MAX) {    
 			Pipe.x  -= 1; // move left
 			}
 			else
 			{
-				Pipe.x = 66;
+				Pipe.x = 70;
 			}
-			
-			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed using negative logic
+		
+			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
 			{
-					GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
-					GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+				buttonPress = 0;
+				// for cyan: green, blue on
+				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+					GPIO_PORTF_DATA_R |= 0x08;	// Turn off green LED.
 			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
 				
 					Player.y -= 3;   // move up
@@ -151,37 +169,72 @@ void Move(void){
 			}
 			else if (SW1 == 0)// && (SW2 != 0))
 			{
-					Delay100ms(2);
-					CounterReturn++;
-			
+				//buttonPress++;
+				//Delay100ms(0.0000000000000000000000000000000000117); // helps with switch debounce
+				Delay100ms(.1);
+				buttonPress = 1;
+								
+				if(SW1 == 0)
+				{ 
+					PauseMenu();
+				}
+				
+					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+					GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+				GPIO_PORTF_DATA_R |= 0x08; // Turn on green LED.
+				
+				if(buttonPress == 1)
+				{
+				PauseMenu();
+				}
+				
+				if(buttonPress == 2)
+				{
+					Delay100ms(3.5);
+					TitleScreen();
+				}
+			}
+			else 
+			{
+				
+			   GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+				 // GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+				 GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+				
+				 Player.y += 0; // move down 1  // 0 to freeze bird
+			}
+
+			 if(GPIO_PORTF_RIS_R&0x01)
+	{
+		GPIO_PORTF_ICR_R = 0x01;
+					GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
+					GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
+				
+			    GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
+				
+					Player.y -= 3;   // move up
+					
+			}
+			else  if(GPIO_PORTF_RIS_R&0x10)
+	{
+		GPIO_PORTF_ICR_R = 0x10;
 					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
 				
 				// Turn on yellow LED:
 			    GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
 					GPIO_PORTF_DATA_R |= 0x08; // Turn on green LED.
-					while((SW2 != 0) && (CounterReturn !=2))
-					{
-						Player.y += 0;
-						Pipe.x  -= 0;
-						if(SW1==0)
-								{
-									CounterReturn++;
-								}
-					}
-					if (CounterReturn==2)
-						{
-							Dup();
-						}
-					 
-		
+
+				
+			// make it pause game and turn on orange or yellow LED
+				
 			}
-			
 			else 
 			{
+				
 			   GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
 				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
 				 GPIO_PORTF_DATA_R &= ~0x08;	// Turn off green LED.
-			
+				
 				 Player.y += 1; // move down 1
 			}
 			
@@ -193,6 +246,22 @@ void Move(void){
 		
 }
 
+//void GPIOPortF_Handler(void)
+//{
+//	//SW2 is pressed // PF0
+//  if(GPIO_PORTF_RIS_R&0x01)
+//	{
+//		GPIO_PORTF_ICR_R = 0x01;
+//		Player.y += 4;
+//		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[1], 0);
+//	}
+//    else if (GPIO_PORTF_RIS_R&0x10)
+//	{
+//		GPIO_PORTF_ICR_R = 0x10;
+//		pause game
+//	}
+//  }
+
 
 unsigned long FrameCount=0;
 void Draw(void){
@@ -200,12 +269,12 @@ void Draw(void){
 
     if(Player.life > 0){			
 			Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
-			
-			if(Pipe.x == 66)
-	//				if(c % 35 == 0)
+					if(Pipe.x  ==  70) 
 					{
 						Pipe.var = ((Random()>>24)%15)+1;  // returns random num in range 1 to 15
-						// Pipe.var = 15;
+					// Pipe.var = (rand() % 15)+1;
+						// Pipe.var = (10*rand() /16);
+						// Pipe.var = 5;
 						
 						if((Pipe.var == 1) || Pipe.var == 2) 
 						{
@@ -350,7 +419,6 @@ void Draw(void){
 	
 }
 
-// PF4 (0x01) is input SW1 and PF2 (0x04) is output Blue LED
 void PortF_Init(void){ 
 	
 	volatile unsigned long delay;
@@ -366,10 +434,29 @@ void PortF_Init(void){
   GPIO_PORTF_AFSEL_R = 0x00;        // disable alt funct on PF7-0
   GPIO_PORTF_PUR_R = 0x11;          // enable pull-up on PF0 and PF4
   GPIO_PORTF_DEN_R = 0x1F;          // enable digital I/O on PF4-0
-	// IntEnable(INT_GPIOF);  // enable interrupt 30 in NVIC (GPIOF)
-	// IntPrioritySet(INT_GPIOF, 0x00); // configure GPIOF interrupt priority as 0
-}
 
+	
+	/*
+	
+  // IntEnable(INT_GPIOF);  							// enable interrupt 30 in NVIC (GPIOF)
+	// IntPrioritySet(INT_GPIOF, 0x00); 		// configure GPIOF interrupt priority as 0
+	
+	NVIC_EN0_R |= 0x40000000;  		// enable interrupt 30 in NVIC (GPIOF)
+	NVIC_PRI7_R = (NVIC_PRI7_R&0xFF00FFFF)|0x00400000; 		// configure GPIOF interrupt priority as 2
+	// NVIC_PRI7_R &= ~0x00E00000; // priority 0
+	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
+	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
+  // GPIO_PORTF_IBE_R |= 0x11;   	// PF0 and PF4 both edges trigger 
+	GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
+  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+	
+  setting bits 23-21 in NVIC_PRI7
+	0x00A00000; for 5
+	0x00400000 for priority 2
+	NVIC_PRI7_R &= ~0x00E00000; // priority 0
+	*/
+	
+}
 
 
 void Timer0A_Init(unsigned char second)
@@ -396,39 +483,73 @@ void Timer0A_Handler(void)
 	  c++;
 }	
 
+
+//void Interrupt_Init(void)
+//{
+//  IntEnable(INT_GPIOF);  							// enable interrupt 30 in NVIC (GPIOF)
+//	IntPrioritySet(INT_GPIOF, 0x00); 		// configure GPIOF interrupt priority as 0
+//	GPIO_PORTF_IM_R |= 0x11;   		// arm interrupt on PF0 and PF4
+//	GPIO_PORTF_IS_R &= ~0x11;     // PF0 and PF4 are edge-sensitive
+//  GPIO_PORTF_IBE_R &= ~0x11;   	// PF0 and PF4 not both edges trigger 
+//  GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+//}
+
+// Initialize SysTick interrupts  // for random
+void SysTick_Init(unsigned long period){
+	NVIC_ST_CTRL_R = 0;           // disable SysTick during setup
+  NVIC_ST_RELOAD_R = period-1;     // reload value
+  NVIC_ST_CURRENT_R = 0;        // any write to current clears it
+  NVIC_SYS_PRI3_R = NVIC_SYS_PRI3_R&0x00FFFFFF; // priority 0               
+  NVIC_ST_CTRL_R = 0x00000007;  // enable with core clock and interrupts
+  EnableInterrupts();
+}
+
+void SysTick_Handler(void){
+//	srand(NVIC_ST_CURRENT_R);
+}
+
 int main(void)
 	{ 
-	TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
-  // you cannot use both the Scope and the virtual Nokia (both need UART0)
-  Random_Init(1);
-  Nokia5110_Init();
-  EnableInterrupts(); // virtual Nokia uses UART0 interrupts
 
 		
+	TExaS_Init(NoLCD_NoScope);  // set system clock to 80 MHz
+  // you cannot use both the Scope and the virtual Nokia (both need UART0)
+  //Random_Init(NVIC_ST_CTRL_R);  //  from systick
+	// Random_Init(1); // same random order
+	// srand(NVIC_ST_CTRL_R);	
+	// srand(c);
+	// srand(buttonPress);	
+	
+  Nokia5110_Init();
+  EnableInterrupts(); // virtual Nokia uses UART0 interrupts
   PortF_Init();	
-		
 	// Interrupt_Init();
-		
-	TitleScreen();		
+	TitleScreen();	
+	Random_Init(seed);
   Init();
 	Obstacle_Init();
 		
-//			 //initialize Timer0 and configure the interrupt
-//	 Timer0A_Init(1);	// increments counter every 1 second
-	
-	// Crash_Check();
-		
-  Timer2_Init(80000000/10);  //  80000000/30 for 30 Hz  // increase denom to speed up		
+
+  Timer2_Init(80000000/30);  //  80000000/30 for 30 Hz  // increase denom to speed up		 // 10 // 12 // max = 4294967295)
 //		Timer2_Init(16000000);
   while(1){
-
-		Draw();		
-		Move();
-		
+		 Draw();		
+		 Move();
 		Score_Init();
-		Delay100ms(1);    // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim
+		
+		  Delay100ms(1);    // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim // time = 300000;
+			// increase to slow down speed
 	}
 }			
+		
+void Timer2A_Handler(void){ 
+  TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
+  TimerCount++;
+  Semaphore = 1; // trigger
+	if(Player.life > 0)
+	{c++;}
+}
+
 // You can use this timer only if you learn how it works
 void Timer2_Init(unsigned long period){ 
   unsigned long volatile delay;
@@ -450,31 +571,20 @@ void Timer2_Init(unsigned long period){
   TIMER2_CTL_R = 0x00000001;    // 10) enable timer2A
 }
 
-void Timer2A_Handler(void){ 
-  TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
-  TimerCount++;
-  Move(); 
-  Semaphore = 1; // trigger
-	if(Player.life > 0)
-	{c++;}
-}
-
-void Delay100ms(unsigned long count){
+void Delay100ms(float count){
 	unsigned long volatile time;
   while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
+    // time = 727240;  // 0.1sec at 80 MHz
+		time = 300000; // decrease to speed up // flickers a lot when score < 10
     while(time){
 	  	time--;
     }
     count--;
   }
 }
-void Dup(void){
 
-  main();
-}
 void TitleScreen(void){
-
+	
   Nokia5110_ClearBuffer();
 		
 	Nokia5110_PrintBMP(16, 22, Birdy, 0);
@@ -483,13 +593,44 @@ void TitleScreen(void){
 		
   Nokia5110_DisplayBuffer();   // draw buffer
 		
-  Delay100ms(1);              // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim
-	while(SW2 != 0){};					 // displays until SW2 is pressed	
-	Delay100ms(1);
+  // Delay100ms(5);              // delay 5 sec at 80 MHz //c 50 to 1 to speed up sim
+	while(SW2 != 0){seed++;};					 // displays until SW2 is pressed		
+		//Delay100ms(5);
+	
+}
+
+void PauseMenu(void){
+if(buttonPress == 1)
+{
+  Nokia5110_ClearBuffer();
+		
+	Nokia5110_PrintBMP(23, 16, Paused, 0);  // 18
+	Nokia5110_PrintBMP(17, 28, Continue, 0);			
+	
+  Nokia5110_PrintBMP(10, 44, No, 0);				// 10, 47
+	Nokia5110_PrintBMP(52, 44, Yes, 0);			// 52, 47
+		
+  Nokia5110_DisplayBuffer();   // draw buffer
+	
+	// Nokia5110_SetCursor(8, 3);
+	// Nokia5110_OutUDec(buttonPress);
+	
+		if(SW1 == 0)
+		{
+			Delay100ms(0.1); 
+			if(SW1 == 0){
+			TitleScreen();
+			}
+		}
+		
+		if(SW2 == 0)
+{ buttonPress = 0; }
+
+	while((SW1!= 0) && (SW2 != 0)){}
+}	
 }
 
 void GameOver(void){
-	
 	GPIO_PORTF_DATA_R &= 0x02; // Turn on red LED
 	
 	Nokia5110_ClearBuffer();
@@ -520,83 +661,61 @@ void GameOver(void){
   Nokia5110_OutString("Best:"); 
 				
   Nokia5110_SetCursor(0, 0); // renders screen
-	
+	Delay100ms(1);
 	if ((SW2 == 0) && (SW1 != 0)) 
 	{
+		score=0;
+		
 		main();
 	}
+	
 }
 
 void Score_Init(void){
 	
 				// best = 0;
-				score = 0;
-				score = (c / 35);
-				// score = Pipe.var; or c for check
-				GPIO_PORTF_DATA_R &= ~0x08; // Turn on green LED
+			
+				if (Pipe.x == Player.x) 
+				{
+					GPIO_PORTF_DATA_R |= 0x08; // turn on green led
+					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.
+					score = score + 1;
+				}
 	
 		if (score > best){
 		best = score;
 			// display rainbow led?
 			}
 		
- if(Player.life > 0){
+ if(Player.life > 0){  // ingame score
 				if(score < 10)
 				{
-				Nokia5110_SetCursor(11, 0);
-				Nokia5110_OutUDec(score);
+			Nokia5110_SetCursor(11, 0);
+			Nokia5110_OutUDec(score);
+					
+			//		Nokia5110_SetCursor(10, 0); // make sure to comment out if not used to remove flickering
+			//	Nokia5110_OutUDec(c);
+					
 				Nokia5110_SetCursor(0, 0); // renders screen
 				}
 				if((score < 100) && (score >= 10) )
 				{
-				Nokia5110_SetCursor(10, 0);
+				 Nokia5110_SetCursor(10, 0);
+				// Nokia5110_OutUDec(c);
 				Nokia5110_OutUDec(score);
 				Nokia5110_SetCursor(0, 0); // renders screen
-				}
+				}	
 			}
-	
+					else if(Player.life == 0)
+				{ GPIO_PORTF_DATA_R |= 0x02; // turn on red led
+					GPIO_PORTF_DATA_R &= ~0x04; // Turn off blue LED.	
+				}  
+				
 	}
 
-
-char Screen[X_MAX*Y_MAX/8]; // buffer stores the next image to be printed on the screen
-
-//********Nokia5110_AskPixel*****************
-// Evaluates if the pixel searched is on or off
-// inputs: x - horizontal coordinate of the pixel, must be less than 84
-//         y - vertical coordinate of the pixel, must be less than 48
-// outputs: true if the pixel is setted already, false if the pixel is cleared
-bool Nokia5110_AskPixel(unsigned char x, unsigned char y) 
-{
-  unsigned short PixelByte;            // byte# in screen buffer
-  unsigned char PixelBit;              // bit# in byte
-	unsigned char Result;
-  if ((x<84) && (y<48)) 
-	{              // check screen boundaries
-    PixelByte = ((y/8)*84) + x;
-    PixelBit = y % 8;
-    Result = Screen[PixelByte]&(1U<<PixelBit);
-  }
-	return (bool)Result;
-}
- 
-//**********************Enemy_ControlDeath***********************
-// This function controls the death of an enemy pointed by "this".
-// It determines when the enemy should die based on the pixels that 
-// are already turned on
-// inputs: enemy: Pointer to an element of the enemy array
-// outputs: 1: Enemy was killed, 0: Enemy was not killed
-void Player_Crash(void)
-{
-	unsigned char i = Player.y;
-	while (Player.life == 1)	//i corresponds to the coordinates in Y axis from the bottom of
-	{																												//the enemy image to its top
-		if (Nokia5110_AskPixel(Player.x-2, i) && (Pipe.x < Player.x-4))		//If a pixel is turned on 2 pixels before the enemy image
-		{																											//the enemy is killed
-			Player.life = 0;
-			GameOver();
-		}
-		i--;
-	}
+void Dup(void)
+{ 
+	main();
 }
 
 	
