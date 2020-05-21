@@ -108,9 +108,9 @@ void Init(void){  // 8x12, xrange is [0. ?]. yrange is [height-5, ?]
 }
 
 typedef struct Obstacle {
-  unsigned long x;      // x coordinate
+  unsigned long x;      		// x coordinate
   unsigned long yTop;      // yTop coordinate
-  unsigned long yBot;      // yBot coordinate
+  unsigned long yBot;     // yBot coordinate
   const unsigned char *top;
 	const unsigned char *bottom;
 	// const unsigned char *mark;
@@ -163,7 +163,13 @@ void Move(void){
 				Pipe.x = 70;
 			}
 		buttonPress = 0;
-		Countdown = 0;
+		while(Countdown==1)
+		{
+			if(SW1==0)
+			{
+				Countdown=0;
+			}
+		}
 			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
 			{
 //				buttonPress = 0;
@@ -181,12 +187,14 @@ void Move(void){
 				Delay100ms(1.06); // 0.1
 				// buttonPress = 1;
 				TIMER2_CTL_R &= ~0x00000001;
+				Delay100ms(1);
 				while(SW2 != 0)
 				{
 					PauseMenu();
 				}
 					if(SW1 == 0)
 					{ 
+						Delay100ms(1);
 						buttonPress++;
 					}
 					
