@@ -70,8 +70,13 @@ void Score_Init(void); // Initializes player's score
 void Player_Crash(void);
 void Crash_Check(void);
 void Dup(void);
+void Ready(void);
+void Timer2A_Start(void);
+void Timer2A_Stop(void);
 
+unsigned long Countdown;
 unsigned long TimerCount;
+unsigned long tSeconds;
 unsigned long Semaphore;
 unsigned long score = 0; 
 unsigned long best = 0;
@@ -81,6 +86,7 @@ unsigned long buttonPress = 0;
 unsigned long seed = 0;
 void cdelay(unsigned long);
 unsigned int s = 1;
+
 
 unsigned char pipeCleared;
 
@@ -156,6 +162,8 @@ void Obstacle_Init(void){
 
 void Move(void){
 	
+//	while(Countdown != 1){}
+	
 				if(buttonPress > 2)
 				{ buttonPress = 0; }
 	
@@ -176,8 +184,7 @@ void Move(void){
 						GameOver();
 				}	
 			}	
-				
-				
+						
     if((Player.y < Y_MAX) && (Player.y >= Y_MIN)){ 
 			
 			if(Pipe.x < X_MAX) {    
@@ -270,6 +277,7 @@ void Move(void){
       // Player.life = 0;
       GameOver();
     }
+	
 		
 }
 
@@ -293,11 +301,12 @@ void Move(void){
 unsigned long FrameCount=0;
 void Draw(void){
   Nokia5110_ClearBuffer();
-
+// while(Countdown != 1){}
     if(Player.life > 0){			
 			Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
 					if(Pipe.x  ==  70) 
 					{
+						while(Countdown != 0)
 						Pipe.var = ((Random()>>24)%15)+1;  // returns random num in range 1 to 15
 					// Pipe.var = (rand() % 15)+1;
 						// Pipe.var = (10*rand() /16);
@@ -452,6 +461,190 @@ void Draw(void){
 	
 }
 
+void Timer2A_Handler(void){ 
+  TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
+	if(Countdown == 1)
+	{
+ TimerCount++;
+	}
+	
+		if (Countdown == 1)
+	{
+		//TimerCount++;
+		Timer2A_Start();
+		Nokia5110_ClearBuffer();
+		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[2], 0);
+		Nokia5110_DisplayBuffer();
+		Player.y = 23;
+	}
+	
+	if((TimerCount % 30) == 0)
+	{ 
+		tSeconds++;
+	}
+//	
+//	if(tSeconds < 7){
+//				Nokia5110_ClearBuffer();
+//		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[2], 0);
+//		Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
+//		Nokia5110_DisplayBuffer();
+//	}
+	
+	if(tSeconds > 7)
+	{
+		TimerCount = 0;
+		tSeconds = 0;
+		Nokia5110_ClearBuffer();
+	//	Nokia5110_Clear();
+		Countdown = 0;
+		Timer2A_Stop();
+	}
+if (tSeconds == 1){
+		// Nokia5110_Clear();
+	GPIO_PORTF_DATA_R |= 0x02; // Turn on  LED.
+		GPIO_PORTF_DATA_R &= ~0x04;
+		GPIO_PORTF_DATA_R &= ~0x08;
+		Nokia5110_SetCursor(1, 2);
+    Nokia5110_OutString("Ready,");
+}
+else if (tSeconds == 3){
+	Nokia5110_ClearBuffer();
+	GPIO_PORTF_DATA_R |= 0x08; // Turn on  LED.
+	GPIO_PORTF_DATA_R &= ~0x04;
+	GPIO_PORTF_DATA_R |= 0x02;
+	Nokia5110_SetCursor(1, 3);
+    Nokia5110_OutString("Set,");
+}
+else if (tSeconds == 5){
+	Nokia5110_ClearBuffer();
+	GPIO_PORTF_DATA_R |= 0x08; // Turn on  LED.
+	GPIO_PORTF_DATA_R &= ~0x04;
+	GPIO_PORTF_DATA_R &= ~0x02;
+	Nokia5110_SetCursor(1, 4);
+    Nokia5110_OutString("Go!");
+}
+else if (tSeconds == 6){
+		Nokia5110_Clear();
+	  Nokia5110_ClearBuffer();
+}
+else{
+	Nokia5110_ClearBuffer();
+  Nokia5110_Clear();
+	
+		  GPIO_PORTF_DATA_R &= ~0x08; 
+		GPIO_PORTF_DATA_R &= ~0x04; 
+		GPIO_PORTF_DATA_R &= ~0x02; 
+	
+//	  GPIO_PORTF_DATA_R |= 0x08; 
+//		GPIO_PORTF_DATA_R |= 0x04; 
+//		GPIO_PORTF_DATA_R |= 0x02; 
+}
+}
+
+void Ready(void){
+//	Countdown = 1;
+	tSeconds = 0;
+	Nokia5110_Clear();
+Nokia5110_ClearBuffer();
+		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[2], 0);
+		Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
+		Nokia5110_DisplayBuffer();
+	
+	if(Countdown == 1)
+	{
+ TimerCount++;
+	}
+	
+	if((TimerCount % 30) == 0)
+	{ 
+		tSeconds++;
+	}
+	
+	if(tSeconds > 7)
+	{
+		TimerCount = 0;
+		tSeconds = 0;
+		Nokia5110_ClearBuffer();
+		Nokia5110_Clear();
+		Countdown = 0;
+		Timer2A_Stop();
+	}
+	
+	if (Countdown == 1)
+	{
+		//TimerCount++;
+		Timer2A_Start();
+		Nokia5110_ClearBuffer();
+		Nokia5110_PrintBMP(Player.x, Player.y, Player.image[2], 0);
+		Nokia5110_PrintBMP(X_MIN, Y_MAX, Ground, 0);
+		Nokia5110_DisplayBuffer();
+		Player.y = 23;
+		
+	}
+//	else{
+//	  TimerCount = 0;
+//		tSeconds = 0;
+//		Timer2A_Stop();
+//	}
+	
+	if (tSeconds > 7){
+		Timer2A_Stop();
+	}
+	
+	if (tSeconds == 1){
+		// Nokia5110_Clear();
+	GPIO_PORTF_DATA_R |= 0x02; // Turn on  LED.
+		GPIO_PORTF_DATA_R &= ~0x04;
+		GPIO_PORTF_DATA_R &= ~0x08;
+		Nokia5110_SetCursor(4, 2);
+    Nokia5110_OutString("Ready,");
+}
+else if (tSeconds == 3){
+	Nokia5110_ClearBuffer();
+	GPIO_PORTF_DATA_R |= 0x08; // Turn on  LED.
+	GPIO_PORTF_DATA_R &= ~0x04;
+	GPIO_PORTF_DATA_R |= 0x02;
+	Nokia5110_SetCursor(4, 3);
+    Nokia5110_OutString("Set,");
+}
+else if (tSeconds == 5){
+	Nokia5110_ClearBuffer();
+	GPIO_PORTF_DATA_R |= 0x08; // Turn on  LED.
+	GPIO_PORTF_DATA_R &= ~0x04;
+	GPIO_PORTF_DATA_R &= ~0x02;
+	Nokia5110_SetCursor(4, 4);
+    Nokia5110_OutString("Go!");
+}
+else if (tSeconds == 6){
+		Nokia5110_Clear();
+	  Nokia5110_ClearBuffer();
+}
+else{
+	Nokia5110_ClearBuffer();
+  Nokia5110_Clear();
+	
+		  GPIO_PORTF_DATA_R &= ~0x08; 
+		GPIO_PORTF_DATA_R &= ~0x04; 
+		GPIO_PORTF_DATA_R &= ~0x02; 
+	
+//	  GPIO_PORTF_DATA_R |= 0x08; 
+//		GPIO_PORTF_DATA_R |= 0x04; 
+//		GPIO_PORTF_DATA_R |= 0x02; 
+}
+	
+}	
+
+void Timer2A_Start(void)
+{
+	TIMER2_CTL_R |= 0x00000001;
+}
+
+void Timer2A_Stop(void)
+{
+	TIMER2_CTL_R &= ~0x00000001;
+}
+
+
 void PortF_Init(void){ 
 	
 	volatile unsigned long delay;
@@ -501,24 +694,24 @@ void Interrupt_Init(void)
   GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
 }
 
-void GPIOPortF_Handler(void)
-{
-	if (GPIO_PORTF_RIS_R&0x01)
-	{
-		GPIO_PORTF_ICR_R = 0x01; 
-		// pink
-		GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
-		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
-	}
-	else if (GPIO_PORTF_RIS_R&0x10)
-	{
-		GPIO_PORTF_ICR_R = 0x10;
-		// white
-		GPIO_PORTF_DATA_R |= 0x08; // Turn on blue LED.
-		GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
-		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
-	}
-}
+//void GPIOPortF_Handler(void)
+//{
+//	if (GPIO_PORTF_RIS_R&0x01)
+//	{
+//		GPIO_PORTF_ICR_R = 0x01; 
+//		// pink
+//		GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
+//		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+//	}
+//	else if (GPIO_PORTF_RIS_R&0x10)
+//	{
+//		GPIO_PORTF_ICR_R = 0x10;
+//		// white
+//		GPIO_PORTF_DATA_R |= 0x08; // Turn on blue LED.
+//		GPIO_PORTF_DATA_R |= 0x04; // Turn on blue LED.
+//		GPIO_PORTF_DATA_R |= 0x02; // Turn on red LED.
+//	}
+//}
 
 void Timer0A_Init(unsigned char second)
 {
@@ -588,6 +781,7 @@ int main(void)
   Timer2_Init(80000000/30);  //  80000000/30 for 30 Hz  // increase denom to speed up		 // 10 // 12 // max = 4294967295)
 //		Timer2_Init(16000000);
   while(1){
+		//Ready();
 		 Draw();		
 		 Move();
 		Score_Init();
@@ -597,13 +791,13 @@ int main(void)
 	}
 }			
 		
-void Timer2A_Handler(void){ 
-  TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
-  TimerCount++;
-  Semaphore = 1; // trigger
-	if(Player.life > 0)
-	{c++;}
-}
+//void Timer2A_Handler(void){ 
+//  TIMER2_ICR_R = 0x00000001;   // acknowledge timer2A timeout
+//  TimerCount++;
+//  Semaphore = 1; // trigger
+//	if(Player.life > 0)
+//	{c++;}
+//}
 
 // You can use this timer only if you learn how it works
 void Timer2_Init(unsigned long period){ 
@@ -639,6 +833,9 @@ void Delay100ms(float count){
 }
 
 void TitleScreen(void){
+	
+	Countdown = 1;
+	
 	
 	score = 0;
 	
@@ -687,7 +884,8 @@ if(buttonPress == 1)
 		{
 			Delay100ms(0.1); // 0.1 
 			if(SW1 == 0){
-			TitleScreen();
+			//TitleScreen();
+				main();
 			}
 		}
 
