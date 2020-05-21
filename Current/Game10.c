@@ -1,35 +1,3 @@
-// Runs on LM4F120/TM4C123
-// Jonathan Valvano and Daniel Valvano
-
-// This virtual Nokia project only runs on the real board, this project cannot be simulated
-// Instead of having a real Nokia, this driver sends Nokia
-//   commands out the UART to TExaSdisplay
-// The Nokia5110 is 48x84 black and white
-// pixel LCD to display text, images, or other information.
-
-// April 19, 2014
-// http://www.spaceinvaders.de/
-// sounds at http://www.classicgaming.cc/classics/spaceinvaders/sounds.php
-// http://www.classicgaming.cc/classics/spaceinvaders/playguide.php
-/* This example accompanies the books
-   "Embedded Systems: Real Time Interfacing to Arm Cortex M Microcontrollers",
-   ISBN: 978-1463590154, Jonathan Valvano, copyright (c) 2013
-
-   "Embedded Systems: Introduction to Arm Cortex M Microcontrollers",
-   ISBN: 978-1469998749, Jonathan Valvano, copyright (c) 2013
-
- Copyright 2014 by Jonathan W. Valvano, valvano@mail.utexas.edu
-    You may use, edit, run or distribute this file
-    as long as the above copyright notice remains
- THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
- OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
- VALVANO SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL,
- OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
- For more information about my classes, my research, and my books, see
- http://users.ece.utexas.edu/~valvano/
- */
-
 #include "Nokia5110.h"
 #include "Random.h"
 #include "TExaS.h"
@@ -194,10 +162,11 @@ void Move(void){
 			{
 				Pipe.x = 70;
 			}
+		buttonPress = 0;
 		Countdown = 0;
 			if ((SW2 == 0) && (SW1 != 0))  //SW2 is pressed
 			{
-				buttonPress = 0;
+//				buttonPress = 0;
 				// for cyan: green, blue on
 				 GPIO_PORTF_DATA_R &= ~0x02; // Turn off red LED.
 					GPIO_PORTF_DATA_R |= 0x08;	// Turn off green LED.
@@ -212,16 +181,20 @@ void Move(void){
 				Delay100ms(1.06); // 0.1
 				// buttonPress = 1;
 				TIMER2_CTL_R &= ~0x00000001;
-				if(SW1 == 0)
-				{ 
+				while(SW2 != 0)
+				{
 					PauseMenu();
 				}
-				
-				if(buttonPress == 1)
-				{
-				Countdown = 0;
-				PauseMenu();
-				}
+					if(SW1 == 0)
+					{ 
+						buttonPress++;
+					}
+					
+					if(buttonPress == 1)
+					{
+	//				Countdown = 0;
+					GameOver();
+					}
 //				
 //				if(buttonPress == 2)
 //				{
