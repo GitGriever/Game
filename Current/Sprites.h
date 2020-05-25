@@ -1,5 +1,5 @@
-#ifndef IMAGES_H
-#define IMAGES_H
+#ifndef SPRITES_H
+#define SPRITES_H
 
 //	~~~~~~~~ BIRD SPRITES ~~~~~~~~
 
